@@ -1,13 +1,26 @@
 import java.io.Serializable;
 import java.util.*;
 
-public class CourseManager implements Serializable{
+/**
+ * <code>CourseManager</code>
+ * 
+ * @author LFM
+ */
+public class CourseManager{
     private static final String COURSE_FILENAME = "Course.txt";
     Scanner sc = new Scanner("System.in");
 
-
-
-    // Finds a course according to the courseID
+    /**
+     * Returns a <code>Course</code> object corresponding to the course ID 
+     * that can then be used to extract information of the specific 
+     * course.
+     * <p>
+     * 
+     * 
+     * @param courseID - a unique ID corresponding to an existing Course
+     * @return Course 
+     * @see Course 
+     */
     public Course getCourse(String courseID) {
         for (Course temp : retrieveCourses() ) {
             if(temp.getCourseID() == courseID) {
@@ -28,7 +41,11 @@ public class CourseManager implements Serializable{
         System.out.println("Course has been added to database.");
     }
 
-    //Adds lessons (labs/tutorials) to a new course.
+    /**
+     * 
+     * @param course
+     * @param lessonIDs
+     */
     public void addLesson(Course course, String[] lessonIDs) {
 
     }
@@ -65,7 +82,7 @@ public class CourseManager implements Serializable{
 
     // Writes the object into the database
     public void updateCourseDatabase(Object obj){
-        DataBaseManager.updateData(obj,COURSE_FILENAME);
+    	DataBaseManager.updateData(obj,COURSE_FILENAME);
     }
 
 
