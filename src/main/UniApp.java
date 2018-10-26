@@ -1,5 +1,9 @@
+package main;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import courses.CourseManager;
+import students.StudentManager;
 
 public class UniApp {
 

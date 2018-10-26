@@ -1,5 +1,5 @@
-
-public class Lecture implements Lessons {
+package courses;
+public class Tutorial implements Lessons{
 
     @Override
     public void setProfName() {
@@ -14,13 +14,13 @@ public class Lecture implements Lessons {
     }
 
     @Override
-    public void setStudentIDs() {
+    public void lecturerID() {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void lecturerID() {
+    public void setStudentIDs() {
         // TODO Auto-generated method stub
 
     }

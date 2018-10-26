@@ -1,5 +1,8 @@
+package students;
 import java.io.Serializable;
 import java.util.*;
+
+import courses.CourseInfo;
 
 public class Student implements Serializable{
 

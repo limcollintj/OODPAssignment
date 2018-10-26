@@ -1,5 +1,9 @@
+package students;
 import java.io.Serializable;
 import java.util.*;
+
+import courses.CourseInfo;
+import util.DataBaseManager;
 
 public class StudentManager implements Serializable{
     private static final String STUDENT_FILENAME = "students.txt";

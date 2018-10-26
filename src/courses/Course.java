@@ -1,4 +1,7 @@
+package courses;
 import java.util.*;
+
+import students.Student;
 
 public class Course {
 	private ArrayList<Student> registeredStudents;

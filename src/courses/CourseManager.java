@@ -1,5 +1,8 @@
+package courses;
 import java.io.Serializable;
 import java.util.*;
+
+import util.DataBaseManager;
 
 /**
  * <code>CourseManager</code>
