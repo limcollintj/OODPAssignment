@@ -1,15 +1,17 @@
 package courses;
+import java.io.Serializable;
 import java.util.*;
 
 import students.Student;
 
-public class Course {
+public class Course implements Serializable {
 	private ArrayList<Student> registeredStudents;
-	private String courseId;
-	
-	
-	Course(String courseId){
+	private final String courseId;
+    private int vacancy;
+    
+	Course(String courseId, int vacancy){
 		this.courseId = courseId;
+		this.vacancy = vacancy;
 		this.registeredStudents = new ArrayList<Student>();
 	}
 	
@@ -22,22 +24,26 @@ public class Course {
 		return this.registeredStudents;
 	}
 	
-	public void registerStudent(Student student) {
-		if() {
-			
+	public void addStudent(Student student) throws Exception{
+		if(this.checkStudentRegistered(student)) {
+			throw new Exception();	//TODO:Create new specific exception class
 		}
 		registeredStudents.add(student);
 	}
 	
-	private boolean checkStudentRegistered(Student student) {
-		for(Student registeredStudent : registeredStudents) {
-			if(registeredStudent.getStudentID() == student.getStudentID()) {
-				return true;
-			}
-		}
-		return false;
+	public boolean removeStudent(Student student){
+		return registeredStudents.remove(student);
 	}
 	
+	public String getCourseID() {
+		return this.courseId;
+	}
 	
+	public int getVacancy() {
+		return this.vacancy;
+	}
 	
+	private boolean checkStudentRegistered(Student student) {
+		return registeredStudents.contains(student);
+	}
 }

@@ -19,23 +19,23 @@ import java.io.Serializable;
  */
 public class CourseInfo implements Serializable {
 
-    private String courseID;
+    private final String courseID;
     private String courseName;
-    private String[] lecturerID;
-    private int vacancy;
+    private final int maxVacancy;
     boolean haveSubComponents;
     int exWeightage, cwWeightage, asWeightage, cpWeightage;
     ArrayList<Lessons> lessons;
     ArrayList<String> profNames;
-  
-    
-    
-    CourseInfo(String ID, String[] lecturerID) {
+
+
+    CourseInfo(String ID, int maxVacancy) {
+
         this.courseID = ID;
-        this.lecturerID = lecturerID;
+        this.profNames = new ArrayList<String>();
+        this.maxVacancy = maxVacancy;
+        this.courseName = "Unknown Course";
         this.haveSubComponents = false;
-        this.exWeightage = 0;
-        this.cwWeightage = this.asWeightage = this.cpWeightage = 0;
+        this.exWeightage = this.cwWeightage = this.asWeightage = this.cpWeightage = 0;
         this.lessons = new ArrayList<Lessons>();
     }
 
@@ -45,16 +45,43 @@ public class CourseInfo implements Serializable {
      * @return course ID
      */
     public String getCourseID() {
-        return courseID;
+        return this.courseID;
     }
-
+    
+    public String getCourseName() {
+    	return this.courseName;
+    }
+    
+    public void setCourseName(String courseName) {
+    	this.courseName = courseName;
+    }
     /**
-     * Return an array of IDs of lecturer-in-charge in no particular order.
+     * Return an array of names of lecturer-in-charge in no particular order.
      * 
      * @return <code>Array</code> of lecturer IDs
      */
-    public String[] getLecturerID() {
-        return lecturerID;
+    public ArrayList<String> getProfNames() {
+        return this.profNames;
+    }
+    
+    public void addProfName(String profName) {
+    	this.profNames.add(profName);
+    }
+    
+    public int getMaxVacancy() {
+    	return this.maxVacancy;
+    }
+    
+    public ArrayList<Lessons> getLessons(){
+    	return this.lessons;
+    }
+    
+    public void addLessons(Lessons lesson) {
+    	this.lessons.add(lesson);
+    }
+    
+    private boolean validWeightage(){
+    	return (this.exWeightage + this.cwWeightage + this.asWeightage + this.cpWeightage) == 100;
     }
     
     

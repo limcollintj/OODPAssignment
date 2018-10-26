@@ -8,8 +8,8 @@ public class Student implements Serializable{
 
     private String name, studentID;
     ArrayList<CourseInfo> courses;
-
-
+    
+    
     Student(String name, String matricNumber){
         this.name = name;
         this.studentID = matricNumber;
