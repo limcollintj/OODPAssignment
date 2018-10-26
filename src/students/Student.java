@@ -2,18 +2,18 @@ package students;
 import java.io.Serializable;
 import java.util.*;
 
-import courses.CourseInfo;
+import courses.Course;
 
 public class Student implements Serializable{
 
     private String name, studentID;
-    ArrayList<CourseInfo> courses;
+    ArrayList<Course> courses;
     
     
     Student(String name, String matricNumber){
         this.name = name;
         this.studentID = matricNumber;
-        this.courses = new ArrayList<CourseInfo>();
+        this.courses = new ArrayList<Course>();
     }
 
 
@@ -35,7 +35,7 @@ public class Student implements Serializable{
         this.studentID = studentID;
     }
 
-    public void setCourses(ArrayList<CourseInfo> courses) {
+    public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
     }
 

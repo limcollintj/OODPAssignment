@@ -2,7 +2,7 @@ package students;
 import java.io.Serializable;
 import java.util.*;
 
-import courses.CourseInfo;
+import courses.Course;
 import util.DataBaseManager;
 
 public class StudentManager implements Serializable{
@@ -30,7 +30,7 @@ public class StudentManager implements Serializable{
         return null;
     }
 
-    public void registerCourse(String studentID, CourseInfo course) {
+    public void registerCourse(String studentID, Course course) {
 
     }
 
