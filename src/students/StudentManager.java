@@ -18,30 +18,80 @@ public class StudentManager implements Serializable{
         System.out.println("Student has been added.");
     }
 
+    
     // Finds a student according to his studentID
-    public Student getStudent(String studentID) {
-
-        for (Student temp : retrieveStudents() ) {
-            if(temp.getStudentID() == studentID) {
-                return temp;
-            }
-        }
-        System.out.println("This student cannot be found");
-        return null;
+    public Student getStudent(String studentID) throws Exception {
+    	
+  
+    		 for (Student temp : retrieveStudents() ) {
+    	        	
+    	            if(temp.getStudentID().equals(studentID)) {
+    	                return temp;
+    	            }
+    	        }
+    
+        throw new Exception("This student cannot be found");
+       
     }
 
-    public void registerCourse(String studentID, Course course) {
-
+    
+    // Registers a student to the course
+    public void registerCourse(String id, Course course) {
+    	ArrayList<Student> temp = retrieveStudents(); 
+    	
+    	for(Student stud : temp) {
+    		if(stud.getStudentID().equals(id)) {
+    			stud.courses.add(course);
+    		}
+    	}
+    	
+    	updateStudentDatabase(temp);
+    	
     }
 
 
-    // Prints out the list of students
+    
+    
+    // Prints out information about students
+    
+    // Prints out the whole list of students in the school
+   
+
+    
+    // Prints out the courses a student has registered in 
+    public void printCoursesRegistered(String studentID) {
+    	Student stud;
+    	System.out.println(studentID + " has registered in ");
+    	
+		try {
+			stud = getStudent(studentID);
+			for(Course course : stud.getCourses()) {
+	    		course.printCourseInfo();
+	    	}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} 
+    	
+    	
+    }
+    
+    
+    
+    
+    // Prints out all the students and its course information 
     public void printStudents() {
         for(Student temp : retrieveStudents()) {
-            System.out.println("Name: " + temp.getName()+ "\nStudentID: "+ temp.getStudentID());
+            System.out.println("Name: " + temp.getName()+ "\nStudentID: "+ temp.getStudentID() + "\n");
+            for(Course course : temp.getCourses()) {
+            	course.printCourseInfo();
+            }
         }
     }
-
+    
+    
+    
+    // Writes the arraylist to the student database
     // Database managers
 
     // Writes the object into the database
@@ -52,6 +102,7 @@ public class StudentManager implements Serializable{
 
     // Retrieves data from database
     public ArrayList<Student> retrieveStudents() {
+
         if((ArrayList<Student>) DataBaseManager.retrieveData(STUDENT_FILENAME) == null) {
             ArrayList<Student> students = new ArrayList<Student>();
             DataBaseManager.updateData(students, STUDENT_FILENAME);
@@ -61,5 +112,9 @@ public class StudentManager implements Serializable{
             return (ArrayList<Student>) DataBaseManager.retrieveData(STUDENT_FILENAME);
         }
     }
-
+    
+    // Resets the students database
+    public void resetStudents() {
+    	updateStudentDatabase(new ArrayList<Student>());
+    }
 }

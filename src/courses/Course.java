@@ -2,6 +2,7 @@ package courses;
 import java.io.Serializable;
 import java.util.*;
 
+import lessons.Lessons;
 import students.Student;
 
 import java.io.Serializable;
@@ -24,24 +25,25 @@ public class Course implements Serializable {
 
     private final String courseID;
     private String courseName;
-    private final int maxVacancy;
+    private int maxVacancy;
     private int vacancy;
     boolean haveSubComponents;
     int exWeightage, cwWeightage, asWeightage, cpWeightage;
-    ArrayList<String> registeredStudentIDs;
+    ArrayList<Student> registeredStudents;
     ArrayList<Lessons> lessons;
     ArrayList<String> profNames;
     
     
-    Course(String ID, int maxVacancy) {
+    Course(String ID, int vacancy) {
 
         this.courseID = ID;
         this.profNames = new ArrayList<String>();
-        this.maxVacancy = maxVacancy;
+        this.vacancy = vacancy;
         this.courseName = "Unknown Course";
         this.haveSubComponents = false;
         this.exWeightage = this.cwWeightage = this.asWeightage = this.cpWeightage = 0;
         this.lessons = new ArrayList<Lessons>();
+        this.registeredStudents = new ArrayList<Student>();
     }
 
     /**
@@ -81,15 +83,22 @@ public class Course implements Serializable {
     	return this.vacancy;
     }
     
-    public ArrayList<String> getRegisteredStudents(){
-		return this.registeredStudentIDs;
+    public ArrayList<Student> getRegisteredStudents(){
+		return this.registeredStudents;
 	}
     
-    public void addStudent(String studentID) throws Exception{
-		if(this.checkStudentRegistered(studentID)) {
+    
+    
+    
+    // adding student into course
+    public void addStudent(Student student) throws Exception{
+    	
+		if(this.checkStudentRegistered(student)) {
 			throw new Exception();	//TODO:Create new specific exception class
 		}
-		registeredStudentIDs.add(studentID);
+		
+		
+		registeredStudents.add(student);
 	}
     
     public ArrayList<Lessons> getLessons(){
@@ -104,9 +113,23 @@ public class Course implements Serializable {
     	return (this.exWeightage + this.cwWeightage + this.asWeightage + this.cpWeightage) == 100;
     }
     
-    private boolean checkStudentRegistered(String studentID) {
-		return registeredStudentIDs.contains(studentID);
+    private boolean checkStudentRegistered(Student student) {
+		return registeredStudents.contains(student);
 	}
+   
     
+    
+    // printing course information 
+    public void printCourseInfo() {
+    	System.out.println("CourseID: "+ courseID + "," + "Vacancy: "+ vacancy);
+    }
+    
+    // Reduces Vacancy 
+    public void reduceVacancy() throws Exception {
+    	if(this.vacancy == 0) {
+    		throw new Exception("No more Vacancies");
+    	}
+    	this.vacancy -= 1;
+    }
     
 }

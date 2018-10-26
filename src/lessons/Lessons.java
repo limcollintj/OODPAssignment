@@ -1,4 +1,4 @@
-package courses;
+package lessons;
 import java.util.ArrayList;
 
 public interface Lessons {
@@ -7,6 +7,7 @@ public interface Lessons {
     void setlecturerID(String id);
     void setStudentIDs(String[] studentIDs);
     void setVacancy(int vacancy);
+    void printInfo();
     
     String getLessonID(); 
     String getLecturerID(); 

@@ -1,16 +1,20 @@
-package courses;
+package lessons;
 
 import java.util.ArrayList;
 
-public class Lecture implements Lessons {
+import courses.Group;
 
+public class Lab extends Group{
 	
 	private String[] studentIDs;
 	private String lecturerID,lessonID;
+	String groupID;
 	private int vacancy;
 	
-	Lecture(String lecturerID, String lessonID, int vacancy){
+	
+	public Lab(String lecturerID, String lessonID, int vacancy,  String groupID){
 		studentIDs = new String[vacancy]; 
+		this.groupID = groupID; 
 		this.vacancy = vacancy; 
 		this.lecturerID = lecturerID; 
 		this.lessonID = lessonID;
@@ -39,6 +43,12 @@ public class Lecture implements Lessons {
 		this.lessonID = id;
 	}
 
+	@Override
+	public void setGroupID(String id) {
+		this.groupID = id;
+		
+	}
+
 
 	/**
 	 * @return the studentIDs
@@ -65,14 +75,34 @@ public class Lecture implements Lessons {
 
 
 	/**
+	 * @return the groupID
+	 */
+	public String getGroupID() {
+		return groupID;
+	}
+
+
+	/**
 	 * @return the vacancy
 	 */
 	public int getVacancy() {
 		return vacancy;
 	}
 
- 
-	
-	
+
+	@Override
+	public void printInfo() {
+		System.out.println("(Lab) GroupID: " + groupID + ", LessonID: " + lessonID + ", Vacancy:" + vacancy);
+	}
+
+
+	@Override
+	public String getstudentID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+  
+
 
 }

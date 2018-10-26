@@ -2,37 +2,38 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import courses.Course;
 import courses.CourseManager;
+import students.Student;
 import students.StudentManager;
 
 public class UniApp {
 
-    public static void main(String[] args) {
+	// TODO: Handle All Exceptions
+	
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         StudentManager sm = new StudentManager();
-        Object students = sm.retrieveStudents();
+      
         int choice;
 
         do {
             showMenu();
             choice = sc.nextInt();
             switchCase(choice);
-        } while (choice != 11);
+        } while (choice != 17);
     }
 
-    public static void switchCase(int a) {
+    public static void switchCase(int a) throws Exception {
         Scanner sc = new Scanner(System.in);
         StudentManager sm1 = new StudentManager();
         CourseManager cm1 = new CourseManager();
-        String courseID;
-
-
+       
         switch(a) {
             case 1:
                 //Add new student
                 System.out.println("Enter student's name: ");
                 String name = sc.next();
-                System.out.println(name);
                 System.out.println("Enter student's matric number: ");
                 String matric = sc.next();
                 sm1.addNewStudent(name, matric);
@@ -41,15 +42,30 @@ public class UniApp {
             case 2:
                 //Add course
                 System.out.println("Enter course ID: ");
-                courseID = sc.nextLine();
-                System.out.println("Enter each teaching faculty's ID, separated by a space:");
-                String[] lectID = sc.nextLine().split(" ");
-                cm1.addNewCourse(courseID, lectID);
+                String courseID = sc.nextLine();
+                System.out.println("Enter Maximum Vacancy for the course");
+                int maxVacancy = sc.nextInt();
+                cm1.addNewCourse(courseID, maxVacancy);
+             
                 break;
 
             case 3:
-                break;
-
+            	// Register Student for a course
+            	
+            	
+            		System.out.println("Enter Student ID");
+                	String studentID = sc.nextLine(); 
+                	Student student = sm1.getStudent(studentID);
+                	
+                	System.out.println("Enter Course ID you want to add student to");
+                	courseID = sc.nextLine(); 
+                	Course course = cm1.getCourse(courseID);
+                	
+                	
+                	sm1.registerCourse(studentID, course);
+                	cm1.registerStudent(student, courseID);
+                	
+            
             case 4:
                 break;
 
@@ -59,8 +75,8 @@ public class UniApp {
             case 6:
                 // Enter course assessment weightage.
                 System.out.println("Enter course ID: ");
-                courseID = sc.next();
-                cm1.editCourseWeightage(cm1.getCourse(courseID));
+//                courseID = sc.next();
+//                cm1.editCourseWeightage(cm1.getCourse(courseID));
                 break;
 
             case 7:
@@ -77,16 +93,64 @@ public class UniApp {
 
             case 10:
                 break;
+                
+            
+            case 11: 
+            	cm1.printCourses();
+            	break;
 
-            case 11:
-                System.out.println("Program terminating.");
+            case 12: 
+            	System.out.println("Enter Student ID");
+            
+          
+            	sm1.printCoursesRegistered(sc.nextLine());
+             	break;
+            
+            
+            case 13:
 
+            	sm1.printStudents();
+            	break;
+              
+                
+                
+            case 14: 
+            	System.out.println("Enter Course ID");
+            	try {
+            		cm1.printStudentsRegisteredInCourse(sc.nextLine());
+            	}
+            	
+            	catch (Exception e){
+            		System.out.println(e.getMessage());
+            	}
+            	
+            	break;
+            	
+            
+            case 15: 
+            	cm1.resetCourses();
+            	break;
+            
+            case 16: 
+            	sm1.resetStudents();
+            	break;
+            	
+            case 17: 
+            	  System.out.println("Program terminating.");
+                  break;
+                  
+            case 18: 
+            	
+          
+            	break;
+            	
             default:
                 System.out.println("Please enter valid integer choice.");
         }
 
     }
-
+    
+  
 
     public static void showMenu() {
         System.out.print(
@@ -101,8 +165,40 @@ public class UniApp {
                         "		8. Enter exam mark\n" +
                         "		9. Print course statistics\n" +
                         "		10. Print student transcript\n" +
-                        "       11. Terminate Program.\n"
+                        "		11. Print Courses\n"+
+                        "		12. Print Courses a student has registered in \n"+
+                        "		13. Print All students \n" + 
+                        "		14. Print All students registered in a course"+
+                        "		15. Reset Courses\n"+
+                        "		16. Reset Students\n"+
+                        "       17. Terminate Program.\n"+
+                        "		18. Run test function"
+                        
+                       
+                        
         );
     }
+    
+    
+    
+    
+//    public void editCourseWeightage(CourseInfo course) {
+//        System.out.println("Enter Exam Weightage (out of 100% course weightage): ");
+//        course.exWeightage = sc.nextInt();
+//        course.cwWeightage = 100 - course.exWeightage;
+//        System.out.println("The coursework weightage (out of 100% coursework weightage) is " + course.cwWeightage);
+//        System.out.println("Does the coursework have sub-components?\nY: Yes\nN: no");
+//        char in = sc.next().toUpperCase().charAt(0);
+//        if (in == 'Y') {
+//            course.haveSubComponents = true;
+//        }
+//        if (course.haveSubComponents) {
+//            System.out.println("Enter Assignment weightage (out of 100% coursework weightage): ");
+//            course.asWeightage = sc.nextInt();
+//            course.cpWeightage = 100 - course.asWeightage;
+//            System.out.println("The class participation weightage (out of 100% coursework weightage) is " + course.cpWeightage);
+//        }
+//        System.out.println("Course Weightage has been edited.");
+//    }
 
 }

@@ -7,12 +7,12 @@ import courses.Course;
 public class Student implements Serializable{
 
     private String name, studentID;
-    ArrayList<Course> courses;
+    public ArrayList<Course> courses;
     
     
-    Student(String name, String matricNumber){
+    Student(String name, String studentID){
         this.name = name;
-        this.studentID = matricNumber;
+        this.studentID = studentID;
         this.courses = new ArrayList<Course>();
     }
 
@@ -26,6 +26,12 @@ public class Student implements Serializable{
         return studentID;
     }
 
+    
+    public ArrayList<Course> getCourses() {
+    	return courses;
+    }
+    
+    
     // Setters:
     public void setName(String name) {
         this.name = name;
@@ -37,6 +43,12 @@ public class Student implements Serializable{
 
     public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
+    }
+    
+    
+    // Print information 
+    public void printInfo() {
+    	System.out.println("Name: "+ name + ", StudentID: "+ studentID );
     }
 
 }

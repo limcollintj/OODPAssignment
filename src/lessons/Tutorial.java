@@ -1,15 +1,14 @@
-package courses;
+package lessons;
 
-import java.util.ArrayList;
+import courses.Group;
 
-public class Lab extends Group{
-	
+public class Tutorial extends Group{
+
 	private String[] studentIDs;
 	private String lecturerID,lessonID,groupID;
 	private int vacancy;
 	
-	
-	Lab(String lecturerID, String lessonID, int vacancy,  String groupID){
+	public Tutorial(String lecturerID, String lessonID, int vacancy, String groupID){
 		studentIDs = new String[vacancy]; 
 		this.groupID = groupID; 
 		this.vacancy = vacancy; 
@@ -86,7 +85,22 @@ public class Lab extends Group{
 		return vacancy;
 	}
 
-  
 
+	@Override
+	public String getstudentID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void printInfo() {
+		System.out.println("(Tutorial), GroupID: " + groupID + ", LessonID: " + lessonID + ", Vacancy:" + vacancy);
+	}
+
+	
+	
+
+  
 
 }
