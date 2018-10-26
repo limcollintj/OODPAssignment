@@ -37,7 +37,8 @@ public class CourseManager{
     // Adds a new course to the data base
     // COLLIN QUESTION: DOES THIS HAVE THE SAME ARRAYLIST AS THE ARRAYLIST<COURSE> in student or are they different??
     public void addNewCourse(String courseID, String[] lecturerID) {
-        CourseInfo course1 = new CourseInfo(courseID, lecturerID);
+        CourseInfo course1 = new CourseInfo(courseID);
+        Course course = new Course(courseID);
         ArrayList<CourseInfo> temp = retrieveCourses();
         temp.add(course1);
         updateCourseDatabase(temp);

@@ -10,6 +10,7 @@ public class StudentManager implements Serializable{
 
     // Adds a new student to the data base
     public void addNewStudent(String name, String matricNum) {
+    	//Do check to see if student already exist
         Student student = new Student(name, matricNum);
         ArrayList<Student> temp = retrieveStudents();
         temp.add(student);
