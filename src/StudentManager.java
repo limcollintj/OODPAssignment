@@ -25,7 +25,7 @@ public class StudentManager implements Serializable{
         return null;
     }
 
-    public void registerCourse(String studentID, Course course) {
+    public void registerCourse(String studentID, CourseInfo course) {
 
     }
 

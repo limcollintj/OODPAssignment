@@ -4,13 +4,13 @@ import java.util.*;
 public class Student implements Serializable{
 
     private String name, studentID;
-    ArrayList<Course> courses;
+    ArrayList<CourseInfo> courses;
 
 
     Student(String name, String matricNumber){
         this.name = name;
         this.studentID = matricNumber;
-        this.courses = new ArrayList<Course>();
+        this.courses = new ArrayList<CourseInfo>();
     }
 
 
@@ -32,7 +32,7 @@ public class Student implements Serializable{
         this.studentID = studentID;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
+    public void setCourses(ArrayList<CourseInfo> courses) {
         this.courses = courses;
     }
 

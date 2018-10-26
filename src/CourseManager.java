@@ -19,10 +19,10 @@ public class CourseManager{
      * 
      * @param courseID - a unique ID corresponding to an existing Course
      * @return Course 
-     * @see Course 
+     * @see CourseInfo 
      */
-    public Course getCourse(String courseID) {
-        for (Course temp : retrieveCourses() ) {
+    public CourseInfo getCourse(String courseID) {
+        for (CourseInfo temp : retrieveCourses() ) {
             if(temp.getCourseID() == courseID) {
                 return temp;
             }
@@ -34,8 +34,8 @@ public class CourseManager{
     // Adds a new course to the data base
     // COLLIN QUESTION: DOES THIS HAVE THE SAME ARRAYLIST AS THE ARRAYLIST<COURSE> in student or are they different??
     public void addNewCourse(String courseID, String[] lecturerID) {
-        Course course1 = new Course(courseID, lecturerID);
-        ArrayList<Course> temp = retrieveCourses();
+        CourseInfo course1 = new CourseInfo(courseID, lecturerID);
+        ArrayList<CourseInfo> temp = retrieveCourses();
         temp.add(course1);
         updateCourseDatabase(temp);
         System.out.println("Course has been added to database.");
@@ -46,11 +46,11 @@ public class CourseManager{
      * @param course
      * @param lessonIDs
      */
-    public void addLesson(Course course, String[] lessonIDs) {
+    public void addLesson(CourseInfo course, String[] lessonIDs) {
 
     }
 
-    public void editCourseWeightage(Course course) {
+    public void editCourseWeightage(CourseInfo course) {
         System.out.println("Enter Exam Weightage (out of 100% course weightage): ");
         course.exWeightage = sc.nextInt();
         course.cwWeightage = 100 - course.exWeightage;
@@ -73,7 +73,7 @@ public class CourseManager{
 
     // Prints out the list of courses based on lecture, lab and tutorial group.
     public void printCourses() {
-        for(Course temp : retrieveCourses()) {
+        for(CourseInfo temp : retrieveCourses()) {
             //System.out.println("Name: " + temp.getName()+ "\nStudentID: "+ temp.getStudentID());
         }
     }
@@ -87,14 +87,14 @@ public class CourseManager{
 
 
     // Retrieves data from database
-    public ArrayList<Course> retrieveCourses() {
-        if((ArrayList<Course>) DataBaseManager.retrieveData(COURSE_FILENAME) == null) {
-            ArrayList<Course> courses = new ArrayList<Course>();
+    public ArrayList<CourseInfo> retrieveCourses() {
+        if((ArrayList<CourseInfo>) DataBaseManager.retrieveData(COURSE_FILENAME) == null) {
+            ArrayList<CourseInfo> courses = new ArrayList<CourseInfo>();
             DataBaseManager.updateData(courses, COURSE_FILENAME);
             return courses;
         }
         else {
-            return (ArrayList<Course>) DataBaseManager.retrieveData(COURSE_FILENAME);
+            return (ArrayList<CourseInfo>) DataBaseManager.retrieveData(COURSE_FILENAME);
         }
     }
 
