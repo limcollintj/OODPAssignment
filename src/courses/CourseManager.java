@@ -18,67 +18,15 @@ public class CourseManager{
     private static final String COURSE_FILENAME = "Course.txt";
     
     
-    /**
-     * Returns a <code>Course</code> object corresponding to the course ID 
-     * that can then be used to extract information of the specific 
-     * course.
-     * <p>
-     * 
-     * 
-     * @param courseID - a unique ID corresponding to an existing Course
-     * @return Course 
-     * @see Course 
-     */
-    
-    
-    public Course getCourse(String courseID) {
-        for (Course temp : retrieveCourses() ) {
-            if(temp.getCourseID() == courseID) {
-                return temp;
-            }
-        }
-        System.out.println("This course cannot be found");
-        return null;
-    }
-
-    // Adds a new course to the data base
-    // COLLIN QUESTION: DOES THIS HAVE THE SAME ARRAYLIST AS THE ARRAYLIST<COURSE> in student or are they different??
-    public void addNewCourse(String courseID, String[] lecturerID) {
-        Course course1 = new Course(courseID);
-        Course course = new Course(courseID);
-        ArrayList<Course> temp = retrieveCourses();
-        temp.add(course1);
-        updateCourseDatabase(temp);
-        System.out.println("Course has been added to database.");
-    }
-
+   
   
-    
-
-    public void editCourseWeightage(Course course) {
-        System.out.println("Enter Exam Weightage (out of 100% course weightage): ");
-        course.exWeightage = sc.nextInt();
-        course.cwWeightage = 100 - course.exWeightage;
-        System.out.println("The coursework weightage (out of 100% coursework weightage) is " + course.cwWeightage);
-        System.out.println("Does the coursework have sub-components?\nY: Yes\nN: no");
-        char in = sc.next().toUpperCase().charAt(0);
-        if (in == 'Y') {
-            course.haveSubComponents = true;
-        }
-        if (course.haveSubComponents) {
-            System.out.println("Enter Assignment weightage (out of 100% coursework weightage): ");
-            course.asWeightage = sc.nextInt();
-            course.cpWeightage = 100 - course.asWeightage;
-            System.out.println("The class participation weightage (out of 100% coursework weightage) is " + course.cpWeightage);
-        }
-        System.out.println("Course Weightage has been edited.");
-    }
+   
 
 
 
     // Prints out the list of courses based on lecture, lab and tutorial group.
     public void printCourses() {
-        for(Course temp : retrieveCourses()) {
+        for(CourseInfo temp : retrieveCourses()) {
             //System.out.println("Name: " + temp.getName()+ "\nStudentID: "+ temp.getStudentID());
         }
     }
@@ -125,7 +73,7 @@ public class CourseManager{
     	
     	}
     	
-    	ArrayList<Lessons> temp = courseInfo.getLessons(); 
+    	ArrayList<Lessons> temp = course.getLessons(); 
     	lessons.add(les);
     	
     	
@@ -156,6 +104,48 @@ public class CourseManager{
     }
     
    
+    
+    
+
+    // Adds a new course to the data base
+    
+    public void addNewCourse(String courseID, String[] lecturerID) {
+       
+        Course course = new Course(courseID,lecturerID, null);
+        ArrayList<Course> temp = retrieveCourses();
+        temp.add(course);
+        updateCourseDatabase(temp);
+        System.out.println("Course has been added to database.");
+    }
+
+  
+    
+    
+    
+    // Utility methods 
+    
+    // finds the course in database according to courseID
+    /**
+     * Returns a <code>Course</code> object corresponding to the course ID 
+     * that can then be used to extract information of the specific 
+     * course.
+     * <p>
+     * 
+     * 
+     * @param courseID - a unique ID corresponding to an existing Course
+     * @return Course 
+     * @see CourseInfo 
+     */
+    public Course getCourse(String courseID) {
+        for (Course temp : retrieveCourses() ) {
+            if(temp.getCourseID() == courseID) {
+                return temp;
+            }
+        }
+        System.out.println("This course cannot be found");
+        return null;
+    }
+    
     
     
     
