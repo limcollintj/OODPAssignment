@@ -27,8 +27,9 @@ public class CourseInfo implements Serializable {
     int exWeightage, cwWeightage, asWeightage, cpWeightage;
     ArrayList<Lessons> lessons;
     ArrayList<String> profNames;
-    // shouldn't courses also have an arraylist of students??
-
+  
+    
+    
     CourseInfo(String ID, String[] lecturerID) {
         this.courseID = ID;
         this.lecturerID = lecturerID;
@@ -55,4 +56,15 @@ public class CourseInfo implements Serializable {
     public String[] getLecturerID() {
         return lecturerID;
     }
+    
+    
+    public ArrayList<Lessons> getLessons(){
+    	return lessons;
+    }
+    
+    public void setLessons() {
+    	
+    }
+    
+    
 }
