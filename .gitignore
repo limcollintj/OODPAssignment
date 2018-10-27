@@ -22,5 +22,5 @@
 /bin/
 
 # Data files
-*.Students.txt
-*.Courses.txt
+Students.txt
+Courses.txt
