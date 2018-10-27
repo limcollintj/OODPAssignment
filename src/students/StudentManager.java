@@ -2,10 +2,11 @@ package students;
 import java.util.*;
 
 import courses.Course;
+import courses.CourseManager;
 import util.DataBaseManager;
 
 public class StudentManager{
-    private static final String STUDENT_FILENAME = "students.txt";
+    private static final String STUDENT_FILENAME = "Students.txt";
 
     // Adds a new student to the data base
     public void addNewStudent(String name, String matricNum) {
@@ -19,28 +20,24 @@ public class StudentManager{
 
     
     // Finds a student according to his studentID
-    public Student getStudent(String studentID) throws Exception {
-    	
-  
+    public static Student getStudent(String studentID) throws Exception {
     		 for (Student temp : retrieveStudents() ) {
     	        	
     	            if(temp.getStudentID().equals(studentID)) {
     	                return temp;
     	            }
     	        }
-    
         throw new Exception("This student cannot be found");
        
     }
 
     
     // Registers a student to the course
-    public void registerCourse(String id, Course course) {
+    public void registerCourse(String studentId, Course course) throws Exception{
     	ArrayList<Student> temp = retrieveStudents(); 
-    	
     	for(Student stud : temp) {
-    		if(stud.getStudentID().equals(id)) {
-    			stud.courses.add(course);	
+    		if(stud.getStudentID().equals(studentId)) {
+    			stud.addCourse(course);	
     		}
     	}
     	
@@ -59,13 +56,12 @@ public class StudentManager{
     
     // Prints out the courses a student has registered in 
     public void printCoursesRegistered(String studentID) {
-    	Student stud;
-    	System.out.println(studentID + " has registered in ");
-    	
+    	Student student;    	
 		try {
-			stud = getStudent(studentID);
-			for(Course course : stud.getCourses()) {
-	    		course.printCourseInfo();
+			student = getStudent(studentID);
+			for(String courseID : student.getCourseIDs()) {
+	    		CourseManager.getCourse(courseID).printCourseInfo();
+	        	System.out.println(studentID + " has registered in ");
 	    	}
 			
 		} catch (Exception e) {
@@ -79,11 +75,11 @@ public class StudentManager{
     
     
     // Prints out all the students and its course information 
-    public void printStudents() {
+    public void printStudents() throws Exception{
         for(Student temp : retrieveStudents()) {
             System.out.println("Name: " + temp.getName()+ "\nStudentID: "+ temp.getStudentID() + "\n");
-            for(Course course : temp.getCourses()) {
-            	course.printCourseInfo();
+            for(String courseID : temp.getCourseIDs()) {
+            	CourseManager.getCourse(courseID).printCourseInfo();
             }
         }
     }
@@ -98,7 +94,7 @@ public class StudentManager{
 
 
     // Retrieves data from database
-    public ArrayList<Student> retrieveStudents() {
+    public static ArrayList<Student> retrieveStudents() {
 
         if((ArrayList<Student>) DataBaseManager.retrieveData(STUDENT_FILENAME) == null) {
             ArrayList<Student> students = new ArrayList<Student>();

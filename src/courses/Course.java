@@ -29,9 +29,9 @@ public class Course implements Serializable {
     private int vacancy;
     boolean haveSubComponents;
     int exWeightage, cwWeightage, asWeightage, cpWeightage;
-    ArrayList<Student> registeredStudents;
-    ArrayList<Lessons> lessons;
-    ArrayList<String> profNames;
+    private ArrayList<String> registeredStudentIDs;
+    private ArrayList<Lessons> lessons;
+    private ArrayList<String> profNames;
     
     
     Course(String ID, int vacancy) {
@@ -43,7 +43,7 @@ public class Course implements Serializable {
         this.haveSubComponents = false;
         this.exWeightage = this.cwWeightage = this.asWeightage = this.cpWeightage = 0;
         this.lessons = new ArrayList<Lessons>();
-        this.registeredStudents = new ArrayList<Student>();
+        this.registeredStudentIDs = new ArrayList<String>();
     }
     
     
@@ -87,8 +87,8 @@ public class Course implements Serializable {
     	return this.vacancy;
     }
     
-    public ArrayList<Student> getRegisteredStudents(){
-		return this.registeredStudents;
+    public ArrayList<String> getregisteredStudentIDs(){
+		return this.registeredStudentIDs;
 	}
     
         
@@ -98,7 +98,7 @@ public class Course implements Serializable {
 		if(this.studentRegistered(student)) {
 			throw new Exception();	//TODO:Create new specific exception class
 		}
-		registeredStudents.add(student);
+		registeredStudentIDs.add(student.getStudentID());
 	}
     
     public ArrayList<Lessons> getLessons(){
@@ -114,7 +114,7 @@ public class Course implements Serializable {
     }
     
     private boolean studentRegistered(Student student) {
-		return registeredStudents.contains(student);
+		return registeredStudentIDs.contains(student.getStudentID());
 	}
     
     // printing course information 

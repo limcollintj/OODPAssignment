@@ -7,6 +7,7 @@ import lessons.Lecture;
 import lessons.Lessons;
 import lessons.Tutorial;
 import students.Student;
+import students.StudentManager;
 import util.DataBaseManager;
 
 /**
@@ -15,10 +16,9 @@ import util.DataBaseManager;
  * @author LFM
  */
 // Problems: When you add Students into a course, only the course copy gets updated(Vacancy Reduces). The student copy remains the same. : Work around is to Store a reference in the student copy. 
-// TODO: Store a reference of courses instead of an arraylist of courses in Students
 
 public class CourseManager{
-	private static final String COURSE_FILENAME = "Course.txt";
+	private static final String COURSE_FILENAME = "Courses.txt";
     
 	
 
@@ -58,8 +58,8 @@ public class CourseManager{
 	// Prints the students registered in a course
     public void printStudentsRegisteredInCourse(String courseID) throws Exception {
     	Course temp = getCourse(courseID); 
-    	for (Student stud : temp.getRegisteredStudents()) {
-    		stud.printInfo();
+    	for (String studentID : temp.getregisteredStudentIDs()) {
+    		StudentManager.getStudent(studentID).printInfo();
     	}
     }
     
@@ -121,7 +121,6 @@ public class CourseManager{
     
     // Find Lesson 
     public Lessons findLesson(String lessonID) {
-    	
     	for(Lessons temp : lessons) {
     		if(temp.getLessonID() == lessonID) {
     			return temp;
@@ -159,7 +158,7 @@ public class CourseManager{
      * @throws Exception 
      * @see CourseInfo 
      */
-    public Course getCourse(String courseID) throws Exception {
+    public static Course getCourse(String courseID) throws Exception {
         for (Course temp : retrieveCourses() ) {
             if(temp.getCourseID().equals(courseID)) {
                 return temp;
@@ -181,7 +180,7 @@ public class CourseManager{
 
 
     // Retrieves data from database
-    public ArrayList<Course> retrieveCourses() {
+    public static ArrayList<Course> retrieveCourses() {
         if((ArrayList<Course>) DataBaseManager.retrieveData(COURSE_FILENAME) == null) {
             ArrayList<Course> courses = new ArrayList<Course>();
             DataBaseManager.updateData(courses, COURSE_FILENAME);

@@ -7,28 +7,28 @@ import courses.Course;
 public class Student implements Serializable{
 
     private String name, studentID;
-    public ArrayList<Course> courses;
+    private ArrayList<String> courseIDs;
     
     
     Student(String name, String studentID){
         this.name = name;
         this.studentID = studentID;
-        this.courses = new ArrayList<Course>();
+        this.courseIDs = new ArrayList<String>();
     }
 
 
     // getters:
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getStudentID() {
-        return studentID;
+        return this.studentID;
     }
 
     
-    public ArrayList<Course> getCourses() {
-    	return courses;
+    public ArrayList<String> getCourseIDs() {
+    	return this.courseIDs;
     }
     
     
@@ -45,12 +45,12 @@ public class Student implements Serializable{
     	if(this.registeredCourse(course)) {
     		throw new Exception(); //TODO: Create specfic exception
     	}
-        this.courses.add(course);
+        this.courseIDs.add(course.getCourseID());
     }
     
     //Check if student already registered for course
     private boolean registeredCourse(Course course) {
-    	return courses.contains(course);
+    	return courseIDs.contains(course.getCourseID());
     }
     
     // Print information 
