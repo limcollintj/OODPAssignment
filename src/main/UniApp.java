@@ -54,21 +54,23 @@ public class UniApp {
             case 3:
             	// Register Student for a course
             	
-            	
             		System.out.println("Enter Student ID");
                 	String studentID = sc.nextLine(); 
-                	Student student = sm1.getStudent(studentID);
+                	Student student = StudentManager.getStudent(studentID);
                 	
                 	System.out.println("Enter Course ID you want to add student to");
                 	courseID = sc.nextLine(); 
-                	Course course = cm1.getCourse(courseID);
+                	Course course = CourseManager.getCourse(courseID);
                 	
                 	
                 	sm1.registerCourse(studentID, course);
                 	cm1.registerStudent(student, courseID);
                 	
             
-            case 4:
+            case 4:	//Check available slot in a course
+            	System.out.println("-----Course Vacancy------\n"
+            			+ "Enter Course ID: ");
+            	courseID = sc.nextLine();
             	
                 break;
 

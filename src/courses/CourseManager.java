@@ -16,11 +16,11 @@ import util.DataBaseManager;
  * @author LFM
  */
 // Problems: When you add Students into a course, only the course copy gets updated(Vacancy Reduces). The student copy remains the same. : Work around is to Store a reference in the student copy. 
+//TODO: Decide whether we are using id or the object itself
+
 
 public class CourseManager{
 	private static final String COURSE_FILENAME = "Courses.txt";
-    
-	
 
     // Adds a new course to the data base
     public void addNewCourse(String courseID, int maxVacancy, ArrayList<String> profNames) {
@@ -40,19 +40,16 @@ public class CourseManager{
     
     // Registers a student to the course
 	// Updates ArrayList<Student> in Course
-	public void registerStudent(Student student, String id) throws Exception {
-		
-		
+	public void registerStudent(Student student, String courseId) throws Exception {
 		ArrayList<Course> temp = retrieveCourses(); 
     	
     	for(Course course : temp) {
-    		if(course.getCourseID().equals(id)) {
+    		if(course.getCourseID().equals(courseId)) {
     			course.addStudent(student);
     			course.reduceVacancy();
     		}
     	}
     	updateCourseDatabase(temp);
-		
 	}
 
 	// Prints the students registered in a course
@@ -90,6 +87,18 @@ public class CourseManager{
 	    	updateCourseDatabase(temp);
 	    }
 	 
+	 //Check Vacancy
+	 private int getVacancy(String courseID) throws Exception{
+		 return getCourse(courseID).getVacancy();
+	 }
+	 
+	 private int getMaxVacancy(String courseID) throws Exception{
+		 return getCourse(courseID).getMaxVacancy();
+	 }
+	 
+	 public void printVacancy(String courseID) throws Exception{
+		 System.out.println(getVacancy(courseID) + "/" + getMaxVacancy(courseID));
+	 }
 	 
 	 //Prints the lessons in the course 
 	 public void printLessons(String id) throws Exception {
