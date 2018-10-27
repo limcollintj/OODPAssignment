@@ -20,3 +20,7 @@
 *.classpath
 *.project
 /bin/
+
+# Data files
+*.Students.txt
+*.Courses.txt
