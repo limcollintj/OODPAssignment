@@ -41,10 +41,17 @@ public class Student implements Serializable{
         this.studentID = studentID;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
+    public void addCourse(Course course) throws Exception{
+    	if(this.registeredCourse(course)) {
+    		throw new Exception(); //TODO: Create specfic exception
+    	}
+        this.courses.add(course);
     }
     
+    //Check if student already registered for course
+    private boolean registeredCourse(Course course) {
+    	return courses.contains(course);
+    }
     
     // Print information 
     public void printInfo() {

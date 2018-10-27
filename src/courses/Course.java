@@ -93,7 +93,7 @@ public class Course implements Serializable {
     // adding student into course
     public void addStudent(Student student) throws Exception{
     	
-		if(this.checkStudentRegistered(student)) {
+		if(this.studentRegistered(student)) {
 			throw new Exception();	//TODO:Create new specific exception class
 		}
 		
@@ -113,7 +113,7 @@ public class Course implements Serializable {
     	return (this.exWeightage + this.cwWeightage + this.asWeightage + this.cpWeightage) == 100;
     }
     
-    private boolean checkStudentRegistered(Student student) {
+    private boolean studentRegistered(Student student) {
 		return registeredStudents.contains(student);
 	}
    

@@ -67,6 +67,7 @@ public class UniApp {
                 	
             
             case 4:
+            	
                 break;
 
             case 5:
@@ -154,25 +155,25 @@ public class UniApp {
 
     public static void showMenu() {
         System.out.print(
-                "State your choice\n"+
-                        "		1. Add a student\n" +
-                        "		2. Add a course\n" +
-                        "		3. Register student for a course\n" +
-                        "		4. Check available slot in a class (vacancy in a class)\n" +
-                        "		5. Print student list for a course.\n" +
-                        "		6. Enter Course Assessment Components Weightage\n" +
-                        "		7. Enter coursework mark\n" +
-                        "		8. Enter exam mark\n" +
-                        "		9. Print course statistics\n" +
-                        "		10. Print student transcript\n" +
-                        "		11. Print Courses\n"+
-                        "		12. Print Courses a student has registered in \n"+
-                        "		13. Print All students \n" + 
-                        "		14. Print All students registered in a course"+
-                        "		15. Reset Courses\n"+
-                        "		16. Reset Students\n"+
-                        "       17. Terminate Program.\n"+
-                        "		18. Run test function"
+                "State your choice:\n"+
+                        "\t1. Add a student\n" +
+                        "\t2. Add a course\n" +
+                        "\t3. Register student for a course\n" +
+                        "\t4. Check available slot in a class (vacancy in a class)\n" +
+                        "\t5. Print student list for a course.\n" +
+                        "\t6. Enter Course Assessment Components Weightage\n" +
+                        "\t7. Enter coursework mark\n" +
+                        "\t8. Enter exam mark\n" +
+                        "\t9. Print course statistics\n" +
+                        "\t10. Print student transcript\n" +
+                        "\t11. Print Courses\n"+
+                        "\t12. Print Courses a student has registered in \n"+
+                        "\t13. Print All students \n" + 
+                        "\t14. Print All students registered in a course\n"+
+                        "\t15. Reset Courses\n"+
+                        "\t16. Reset Students\n"+
+                        "\t17. Terminate Program.\n"+
+                        "\t18. Run test function\n"
                         
                        
                         

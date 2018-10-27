@@ -1,11 +1,10 @@
 package students;
-import java.io.Serializable;
 import java.util.*;
 
 import courses.Course;
 import util.DataBaseManager;
 
-public class StudentManager implements Serializable{
+public class StudentManager{
     private static final String STUDENT_FILENAME = "students.txt";
 
     // Adds a new student to the data base
@@ -41,7 +40,7 @@ public class StudentManager implements Serializable{
     	
     	for(Student stud : temp) {
     		if(stud.getStudentID().equals(id)) {
-    			stud.courses.add(course);
+    			stud.courses.add(course);	
     		}
     	}
     	
@@ -88,8 +87,6 @@ public class StudentManager implements Serializable{
             }
         }
     }
-    
-    
     
     // Writes the arraylist to the student database
     // Database managers
