@@ -14,16 +14,31 @@ import util.DataBaseManager;
  * 
  * @author LFM
  */
+// Problems: When you add Students into a course, only the course copy gets updated(Vacancy Reduces). The student copy remains the same. : Work around is to Store a reference in the student copy. 
+// TODO: Store a reference of courses instead of an arraylist of courses in Students
+
 public class CourseManager{
 	private static final String COURSE_FILENAME = "Course.txt";
     
 	
-	// Searching functions: searchStudents, searchStudentsByLessons, 
-	
-	 // Registers a student to the course
-    
 
-	
+    // Adds a new course to the data base
+    public void addNewCourse(String courseID, int maxVacancy, ArrayList<String> profNames) {
+ 
+        Course course = new Course(courseID, maxVacancy);
+        for(String name : profNames) {
+        	course.addProfName(name);
+        }
+        ArrayList<Course> temp = retrieveCourses();
+        temp.add(course);
+        updateCourseDatabase(temp);
+        System.out.println("Course has been added to database.");
+        
+    }
+
+  
+    
+    // Registers a student to the course
 	// Updates ArrayList<Student> in Course
 	public void registerStudent(Student student, String id) throws Exception {
 		
@@ -40,10 +55,53 @@ public class CourseManager{
 		
 	}
 
+	// Prints the students registered in a course
+    public void printStudentsRegisteredInCourse(String courseID) throws Exception {
+    	Course temp = getCourse(courseID); 
+    	for (Student stud : temp.getRegisteredStudents()) {
+    		stud.printInfo();
+    	}
+    }
     
-    // Searching functions
- 
-   
+    
+    
+	
+	
+	// Adds new lesson to course 
+	// Updates ArrayList<Lesson> in Course 
+	 public void addLesson(Course course,int option, String lessonID, String lecturerID, int vacancy, String groupID) {
+	    	Lessons les = null;
+	    	
+	    	switch(option) {
+	    	case 1: 
+	    		les = new Tutorial(lecturerID, lessonID, vacancy, groupID); 
+	    		break; 
+	    	case 2: 
+	    		les = new Lab(lecturerID, lessonID, vacancy, groupID);
+	    		break; 
+	    	case 3: 
+	    		les = new Lecture(lecturerID, lessonID, vacancy); 
+	    		break;
+	    	
+	    	}
+	    	
+	    	ArrayList<Lessons> temp = course.getLessons(); 
+	    	temp.add(les);
+	    	updateCourseDatabase(temp);
+	    }
+	 
+	 
+	 //Prints the lessons in the course 
+	 public void printLessons(String id) throws Exception {
+		 Course temp = getCourse(id); 
+			for(Lessons lesson : temp.getLessons()) {
+	    		lesson.printInfo();
+	    	}
+	 }
+	 
+	
+	
+	
     // Lessons logic
   
     // Add Lessons
@@ -58,26 +116,7 @@ public class CourseManager{
     
     
     // Add lessons
-    public void addLessons(Course course,int option, String lessonID, String lecturerID, int vacancy, String groupID) {
-    	Lessons les = null;
-    	
-    	switch(option) {
-    	case 1: 
-    		les = new Tutorial(lecturerID, lessonID, vacancy, groupID); 
-    		break; 
-    	case 2: 
-    		les = new Lab(lecturerID, lessonID, vacancy, groupID);
-    		break; 
-    	case 3: 
-    		les = new Lecture(lecturerID, lessonID, vacancy); 
-    		break;
-    	
-    	}
-    	
-    	ArrayList<Lessons> temp = course.getLessons(); 
-    	lessons.add(les);
-    	
-    }
+   
     
     
     // Find Lesson 
@@ -105,22 +144,6 @@ public class CourseManager{
     
     
 
-    // Adds a new course to the data base
-    
-    public void addNewCourse(String courseID, int maxVacancy) {
- 
-        Course course = new Course(courseID, maxVacancy);
-        ArrayList<Course> temp = retrieveCourses();
-        temp.add(course);
-        updateCourseDatabase(temp);
-        System.out.println("Course has been added to database.");
-        
-    }
-
-  
-    
-    
-    
     // Utility methods 
     
     // finds the course in database according to courseID
@@ -183,16 +206,7 @@ public class CourseManager{
     	}
     }
     
-    
-    public void printStudentsRegisteredInCourse(String courseID) throws Exception {
-    	Course temp = getCourse(courseID); 
-    	for (Student stud : temp.getRegisteredStudents()) {
-    		stud.printInfo();
-    	}
-    }
-    
-    
-    
+
     public void resetCourses() {
     	updateCourseDatabase(new ArrayList<Course>());
     }

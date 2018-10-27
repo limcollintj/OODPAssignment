@@ -45,6 +45,10 @@ public class Course implements Serializable {
         this.lessons = new ArrayList<Lessons>();
         this.registeredStudents = new ArrayList<Student>();
     }
+    
+    
+    
+    
 
     /**
      * Returns course ID of the <code>CourseInfo</code>
@@ -87,17 +91,13 @@ public class Course implements Serializable {
 		return this.registeredStudents;
 	}
     
-    
-    
+        
     
     // adding student into course
     public void addStudent(Student student) throws Exception{
-    	
 		if(this.studentRegistered(student)) {
 			throw new Exception();	//TODO:Create new specific exception class
 		}
-		
-		
 		registeredStudents.add(student);
 	}
     
@@ -116,12 +116,15 @@ public class Course implements Serializable {
     private boolean studentRegistered(Student student) {
 		return registeredStudents.contains(student);
 	}
-   
-    
     
     // printing course information 
     public void printCourseInfo() {
-    	System.out.println("CourseID: "+ courseID + "," + "Vacancy: "+ vacancy);
+    	System.out.print("CourseID: "+ courseID + "," + "Vacancy: "+ vacancy + ", ProfNames: ");
+    	for(String name : profNames) {
+    		System.out.print(name + ",");
+    	}
+    	System.out.print("\n");
+    	
     }
     
     // Reduces Vacancy 

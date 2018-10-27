@@ -40,12 +40,14 @@ public class UniApp {
                 break;
 
             case 2:
-                //Add course
+//              // Add course
                 System.out.println("Enter course ID: ");
                 String courseID = sc.nextLine();
                 System.out.println("Enter Maximum Vacancy for the course");
                 int maxVacancy = sc.nextInt();
-                cm1.addNewCourse(courseID, maxVacancy);
+                
+                // addProfs() returns an arraylist of profs
+                cm1.addNewCourse(courseID, maxVacancy, addProfs());
              
                 break;
 
@@ -173,12 +175,32 @@ public class UniApp {
                         "\t15. Reset Courses\n"+
                         "\t16. Reset Students\n"+
                         "\t17. Terminate Program.\n"+
-                        "\t18. Run test function\n"
-                        
-                       
-                        
+                        "\t18. Run test function\n"+
+                        "\t19. Register a student for a lesson\n" + 
+                        "\t20. Print students by lesson\n"
         );
     }
+    
+    public static ArrayList<String> addProfs() {
+    	
+    	  Scanner sc = new Scanner(System.in);
+    	  System.out.println("Enter Prof Names for the course, enter -1 after the last entry");
+          
+          ArrayList<String> profNames = new ArrayList<String>(); 
+          String profName;
+          do {
+          	System.out.println("Enter Prof Name");
+          	profName = sc.nextLine();
+          	if(!profName.equals("-1")) {
+          		profNames.add(profName);
+          	}
+          }
+          while(!profName.equals("-1"));
+          
+          return profNames;
+          
+    }
+    
     
     
     
