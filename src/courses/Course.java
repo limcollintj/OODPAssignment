@@ -1,5 +1,6 @@
 package courses;
 import java.io.Serializable;
+
 import java.util.*;
 
 import lessons.Lessons;
@@ -38,12 +39,15 @@ public class Course implements Serializable {
 
         this.courseID = ID;
         this.profNames = new ArrayList<String>();
-        this.vacancy = vacancy;
+        this.maxVacancy = this.vacancy = vacancy;
         this.courseName = "Unknown Course";
         this.haveSubComponents = false;
-        this.exWeightage = this.cwWeightage = this.asWeightage = this.cpWeightage = 0;
+        this.exWeightage = 100;
+        this.cwWeightage = this.asWeightage = 0;
+        this.cpWeightage = 100;
         this.lessons = new ArrayList<Lessons>();
         this.registeredStudentIDs = new ArrayList<String>();
+        
     }
     
     
@@ -110,12 +114,44 @@ public class Course implements Serializable {
     }
     
     private boolean validWeightage(){
-    	return (this.exWeightage + this.cwWeightage + this.asWeightage + this.cpWeightage) == 100;
+    	return (this.exWeightage + this.cwWeightage == 100) && (this.asWeightage + this.cpWeightage == 100);
     }
     
     private boolean studentRegistered(Student student) {
 		return registeredStudentIDs.contains(student.getStudentID());
 	}
+    
+    public int getEXWeightage() {	
+    	return this.exWeightage;	//exam
+    }
+    
+    public void setEXWeightage(int exWeightage) {
+    	this.exWeightage = exWeightage;
+    }
+    
+    public int getCWWeightage() {
+    	return this.cwWeightage;	//coursework
+    }
+    
+    public void setCWWeightage(int cwWeightage) {
+    	this.cwWeightage = cwWeightage;
+    }
+    
+    public int getASWeightage() {
+    	return this.asWeightage;	//assignment
+    }
+    
+    public void setASWeightage(int asWeightage) {
+    	this.asWeightage = asWeightage;
+    }
+    
+    public int getCPWeightage() {
+    	return this.cpWeightage;	//class participation
+    }
+    
+    public void setCPWeightage() {
+    	this.cpWeightage = cpWeightage;
+    }
     
     // printing course information 
     public void printCourseInfo() {

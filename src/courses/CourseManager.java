@@ -9,6 +9,7 @@ import lessons.Tutorial;
 import students.Student;
 import students.StudentManager;
 import util.DataBaseManager;
+import results.ResultManager;
 
 /**
  * <code>CourseManager</code>
@@ -24,7 +25,7 @@ public class CourseManager{
 
     // Adds a new course to the data base
     public void addNewCourse(String courseID, int maxVacancy, ArrayList<String> profNames) {
- 
+    	
         Course course = new Course(courseID, maxVacancy);
         for(String name : profNames) {
         	course.addProfName(name);
@@ -40,15 +41,18 @@ public class CourseManager{
     
     // Registers a student to the course
 	// Updates ArrayList<Student> in Course
-	public void registerStudent(Student student, String courseId) throws Exception {
+	public void registerStudent(Student student, String courseID) throws Exception {
 		ArrayList<Course> temp = retrieveCourses(); 
     	
     	for(Course course : temp) {
-    		if(course.getCourseID().equals(courseId)) {
+    		if(course.getCourseID().equals(courseID)) {
     			course.addStudent(student);
     			course.reduceVacancy();
     		}
     	}
+    	//Add Result entry
+    	ResultManager rm = new ResultManager();
+    	rm.addResult(courseID, student.getStudentID());
     	updateCourseDatabase(temp);
 	}
 
@@ -108,7 +112,10 @@ public class CourseManager{
 	    	}
 	 }
 	 
-	
+	public void setCourseworkWeightage(Course course, int weightage) {
+		course.setCWWeightage(weightage);
+		course.setEXWeightage(100 - weightage);
+	}
 	
 	
     // Lessons logic

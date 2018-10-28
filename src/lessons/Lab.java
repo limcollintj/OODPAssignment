@@ -6,14 +6,14 @@ import courses.Group;
 
 public class Lab extends Group{
 	
-	private String[] studentIDs;
+	private ArrayList<String> studentIDs;
 	private String lecturerID,lessonID;
 	String groupID;
 	private int vacancy;
 	
 	
-	public Lab(String lecturerID, String lessonID, int vacancy,  String groupID){
-		studentIDs = new String[vacancy]; 
+	public Lab(String lecturerID, String lessonID, int vacancy, String groupID){
+		studentIDs = new ArrayList<String>(vacancy); 
 		this.groupID = groupID; 
 		this.vacancy = vacancy; 
 		this.lecturerID = lecturerID; 

@@ -1,91 +1,113 @@
 package main;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import courses.Course;
 import courses.CourseManager;
 import students.Student;
 import students.StudentManager;
+import results.Result;
+import results.ResultManager;
+import util.Scan;
 
 public class UniApp {
 
 	// TODO: Handle All Exceptions
 	
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
         StudentManager sm = new StudentManager();
       
         int choice;
 
         do {
             showMenu();
-            choice = sc.nextInt();
+            choice = Scan.readInteger();
             switchCase(choice);
         } while (choice != 17);
     }
 
     public static void switchCase(int a) throws Exception {
-        Scanner sc = new Scanner(System.in);
         StudentManager sm1 = new StudentManager();
         CourseManager cm1 = new CourseManager();
+        ResultManager rm1 = new ResultManager();
        
         switch(a) {
             case 1:
                 //Add new student
                 System.out.println("Enter student's name: ");
-                String name = sc.next();
+                String name = Scan.readString();
                 System.out.println("Enter student's matric number: ");
-                String matric = sc.next();
+                String matric = Scan.readString();
                 sm1.addNewStudent(name, matric);
                 break;
 
             case 2:
 //              // Add course
                 System.out.println("Enter course ID: ");
-                String courseID = sc.nextLine();
+                String courseID = Scan.readString();
                 System.out.println("Enter Maximum Vacancy for the course");
-                int maxVacancy = sc.nextInt();
+                int maxVacancy = Scan.readInteger();
                 
                 // addProfs() returns an arraylist of profs
                 cm1.addNewCourse(courseID, maxVacancy, addProfs());
-             
+                //Prompt User to add lessons
+                
                 break;
 
             case 3:
             	// Register Student for a course
             	
             		System.out.println("Enter Student ID");
-                	String studentID = sc.nextLine(); 
+                	String studentID = Scan.readString(); 
                 	Student student = StudentManager.getStudent(studentID);
                 	
                 	System.out.println("Enter Course ID you want to add student to");
-                	courseID = sc.nextLine(); 
+                	courseID = Scan.readString(); 
                 	Course course = CourseManager.getCourse(courseID);
                 	
                 	
                 	sm1.registerCourse(studentID, course);
                 	cm1.registerStudent(student, courseID);
-                	
+                	cm1.printVacancy(courseID);
+                	break;
             
             case 4:	//Check available slot in a course
-            	System.out.println("-----Course Vacancy------\n"
+            	System.out.print("----- Course Vacancy -----\n"
             			+ "Enter Course ID: ");
-            	courseID = sc.nextLine();
-            	
+            	courseID = Scan.readString();
+            	System.out.print("Vacancy: ");
+            	cm1.printVacancy(courseID);
                 break;
 
-            case 5:
+            case 5:	//Print student list for a course
+            	System.out.print("----- Registered Students ------\n"
+            			+ "Enter Course ID: ");
+            	courseID = Scan.readString();
+            	cm1.printStudentsRegisteredInCourse(courseID);
                 break;
 
             case 6:
                 // Enter course assessment weightage.
-                System.out.println("Enter course ID: ");
-//                courseID = sc.next();
-//                cm1.editCourseWeightage(cm1.getCourse(courseID));
+                System.out.print("Enter course ID: ");
+                courseID = Scan.readString();
+                System.out.print("Enter Weightage of Assesment");
+                int cwWeightage = Scan.readInteger();
+                cm1.setCourseworkWeightage(cm1.getCourse(courseID), cwWeightage);
                 break;
 
             case 7:
                 // Enter coursework mark
+            	System.out.print("----- Coursework Mark ------\n"
+            			+ "Enter Course ID:");
+            	courseID = Scan.readString();
+            	System.out.print("Enter Student ID: ");
+            	studentID = Scan.readString();
+            	System.out.print("Enter assignment marks: ");
+            	double assignmentMarks = Scan.readDouble();
+            	rm1.updateResult(courseID, studentID, assignmentMarks, 2);
+            	System.out.print("\nEnter class participation marks: ");
+            	double classPartMarks = Scan.readDouble();
+            	rm1.updateResult(courseID, studentID, classPartMarks, 3);
+            	
                 break;
 
             case 8:
@@ -93,10 +115,13 @@ public class UniApp {
 
                 break;
 
-            case 9:
+            case 9:	//Print course statistics
                 break;
 
-            case 10:
+            case 10: //Print student transcript
+            	System.out.print("Enter student ID: ");
+            	studentID = Scan.readString();
+            	rm1.printTranscript(studentID);
                 break;
                 
             
@@ -108,7 +133,7 @@ public class UniApp {
             	System.out.println("Enter Student ID");
             
           
-            	sm1.printCoursesRegistered(sc.nextLine());
+            	sm1.printCoursesRegistered(Scan.readString());
              	break;
             
             
@@ -122,7 +147,7 @@ public class UniApp {
             case 14: 
             	System.out.println("Enter Course ID");
             	try {
-            		cm1.printStudentsRegisteredInCourse(sc.nextLine());
+            		cm1.printStudentsRegisteredInCourse(Scan.readString());
             	}
             	
             	catch (Exception e){
@@ -185,14 +210,13 @@ public class UniApp {
     
     public static ArrayList<String> addProfs() {
     	
-    	  Scanner sc = new Scanner(System.in);
     	  System.out.println("Enter Prof Names for the course, enter -1 after the last entry");
           
           ArrayList<String> profNames = new ArrayList<String>(); 
           String profName;
           do {
           	System.out.println("Enter Prof Name");
-          	profName = sc.nextLine();
+          	profName = Scan.readString();
           	if(!profName.equals("-1")) {
           		profNames.add(profName);
           	}

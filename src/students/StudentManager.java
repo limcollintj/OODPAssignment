@@ -1,6 +1,5 @@
 package students;
 import java.util.*;
-
 import courses.Course;
 import courses.CourseManager;
 import util.DataBaseManager;
@@ -70,9 +69,6 @@ public class StudentManager{
     	
     	
     }
-    
-    
-    
     
     // Prints out all the students and its course information 
     public void printStudents() throws Exception{
