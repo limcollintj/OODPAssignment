@@ -22,17 +22,20 @@ import results.ResultManager;
 
 public class CourseManager{
 	private static final String COURSE_FILENAME = "Courses.txt";
+	private ArrayList<Course> courses;
+	
+	public CourseManager() {
+		this.courses = retrieveCourses();
+	}
 
     // Adds a new course to the data base
     public void addNewCourse(String courseID, int maxVacancy, ArrayList<String> profNames) {
-    	
         Course course = new Course(courseID, maxVacancy);
         for(String name : profNames) {
         	course.addProfName(name);
         }
-        ArrayList<Course> temp = retrieveCourses();
-        temp.add(course);
-        updateCourseDatabase(temp);
+        this.courses.add(course);
+        updateCourseDatabase(this.courses);
         System.out.println("Course has been added to database.");
         
     }
@@ -42,9 +45,7 @@ public class CourseManager{
     // Registers a student to the course
 	// Updates ArrayList<Student> in Course
 	public void registerStudent(Student student, String courseID) throws Exception {
-		ArrayList<Course> temp = retrieveCourses(); 
-    	
-    	for(Course course : temp) {
+    	for(Course course : this.courses) {
     		if(course.getCourseID().equals(courseID)) {
     			course.addStudent(student);
     			course.reduceVacancy();
@@ -53,7 +54,7 @@ public class CourseManager{
     	//Add Result entry
     	ResultManager rm = new ResultManager();
     	rm.addResult(courseID, student.getStudentID());
-    	updateCourseDatabase(temp);
+    	updateCourseDatabase(this.courses);
 	}
 
 	// Prints the students registered in a course
@@ -63,10 +64,6 @@ public class CourseManager{
     		StudentManager.getStudent(studentID).printInfo();
     	}
     }
-    
-    
-    
-	
 	
 	// Adds new lesson to course 
 	// Updates ArrayList<Lesson> in Course 
@@ -113,25 +110,23 @@ public class CourseManager{
 	 }
 	 
 	public void setCourseworkWeightage(String courseID, int weightage) throws Exception{
-		ArrayList<Course> temp = retrieveCourses(); 
-		for(Course course : temp) {
+		for(Course course : this.courses) {
 			if(course.getCourseID().equals(courseID)) {
 				course.setCWWeightage(weightage);
 				course.setEXWeightage(100 - weightage);
 			}
 		}
-		updateCourseDatabase(temp);
+		updateCourseDatabase(this.courses);
 	}
 	
 	public void setClassParticipationWeightage(String courseID, int weightage) throws Exception{
-		ArrayList<Course> temp = retrieveCourses();
-		for(Course course : temp) {
+		for(Course course : this.courses) {
 			if(course.getCourseID().equals(courseID)) {
 				course.setCPWeightage(weightage);
 				course.setASWeightage(100 - weightage);
 			}
 		}
-		updateCourseDatabase(temp);
+		updateCourseDatabase(this.courses);
 	}
 	
     // Lessons logic
@@ -232,7 +227,7 @@ public class CourseManager{
     
     // These methods are not to be used for actual app usage 
     public void printCourses() {
-    	for (Course temp : retrieveCourses()) {
+    	for (Course temp : this.courses) {
     		temp.printCourseInfo();
     	}
     }

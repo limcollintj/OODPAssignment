@@ -6,14 +6,18 @@ import util.DataBaseManager;
 
 public class StudentManager{
     private static final String STUDENT_FILENAME = "Students.txt";
+    private ArrayList<Student> students;
 
+    public StudentManager() {
+    	this.students = retrieveStudents();
+    }
+    
     // Adds a new student to the data base
     public void addNewStudent(String name, String matricNum) {
     	//Do check to see if student already exist
         Student student = new Student(name, matricNum);
-        ArrayList<Student> temp = retrieveStudents();
-        temp.add(student);
-        updateStudentDatabase(temp);
+        this.students.add(student);
+        updateStudentDatabase(this.students);
         System.out.println("Student has been added.");
     }
 
@@ -21,7 +25,6 @@ public class StudentManager{
     // Finds a student according to his studentID
     public static Student getStudent(String studentID) throws Exception {
     		 for (Student temp : retrieveStudents() ) {
-    	        	
     	            if(temp.getStudentID().equals(studentID)) {
     	                return temp;
     	            }
@@ -33,14 +36,13 @@ public class StudentManager{
     
     // Registers a student to the course
     public void registerCourse(String studentId, Course course) throws Exception{
-    	ArrayList<Student> temp = retrieveStudents(); 
-    	for(Student stud : temp) {
+    	//Do checks to see if student already registered
+    	for(Student stud : this.students) {
     		if(stud.getStudentID().equals(studentId)) {
     			stud.addCourse(course);	
     		}
     	}
-    	
-    	updateStudentDatabase(temp);
+    	updateStudentDatabase(this.students);
     	
     }
 
@@ -72,9 +74,9 @@ public class StudentManager{
     
     // Prints out all the students and its course information 
     public void printStudents() throws Exception{
-        for(Student temp : retrieveStudents()) {
-            System.out.println("Name: " + temp.getName()+ "\nStudentID: "+ temp.getStudentID() + "\n");
-            for(String courseID : temp.getCourseIDs()) {
+        for(Student student : this.students) {
+            System.out.println("Name: " + student.getName()+ "\nStudentID: "+ student.getStudentID() + "\n");
+            for(String courseID : student.getCourseIDs()) {
             	CourseManager.getCourse(courseID).printCourseInfo();
             }
         }
