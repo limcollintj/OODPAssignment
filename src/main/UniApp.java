@@ -22,6 +22,7 @@ public class UniApp {
             showMenu();
             choice = Scan.readInteger();
             switchCase(choice);
+            Thread.sleep(1000);
         } while (choice != 17);
     }
 
@@ -89,9 +90,13 @@ public class UniApp {
                 // Enter course assessment weightage.
                 System.out.print("Enter course ID: ");
                 courseID = Scan.readString();
-                System.out.print("Enter Weightage of Assesment");
+                System.out.print("Enter coursework weightage: ");
                 int cwWeightage = Scan.readInteger();
                 cm1.setCourseworkWeightage(courseID, cwWeightage);
+                System.out.print("Enter class participation weightage: ");
+                int cpWeightage = Scan.readInteger();
+                cm1.setClassParticipationWeightage(courseID, cpWeightage);
+                System.out.println("Course Assesment components updated.");
                 break;
 
             case 7:
@@ -123,6 +128,10 @@ public class UniApp {
                 break;
 
             case 9:	//Print course statistics
+            	System.out.print("Enter course ID: ");
+            	courseID = Scan.readString();
+            	rm1.printCourseStatistics(courseID);
+            	
                 break;
 
             case 10: //Print student transcript

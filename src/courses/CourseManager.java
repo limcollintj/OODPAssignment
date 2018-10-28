@@ -123,6 +123,16 @@ public class CourseManager{
 		updateCourseDatabase(temp);
 	}
 	
+	public void setClassParticipationWeightage(String courseID, int weightage) throws Exception{
+		ArrayList<Course> temp = retrieveCourses();
+		for(Course course : temp) {
+			if(course.getCourseID().equals(courseID)) {
+				course.setCPWeightage(weightage);
+				course.setASWeightage(100 - weightage);
+			}
+		}
+		updateCourseDatabase(temp);
+	}
 	
     // Lessons logic
   

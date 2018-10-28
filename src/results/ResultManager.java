@@ -70,6 +70,24 @@ public class ResultManager {
 		}
 	}
 	
+	public void printCourseStatistics(String courseID) throws Exception{
+		Course course = CourseManager.getCourse(courseID);
+		double sum = 0;
+		int count = 0;
+		for(Result result : this.results) {
+			if(result.getCourseID().equals(courseID)) {
+				sum += result.getMark();
+				count++;
+			}
+		}
+		
+		System.out.println("----- Course Statistics ------"
+				+ "\nCourse Name " + course.getCourseName() 
+				+ "\nCourse ID: " + courseID
+				+ "\nNumber of students: " + count
+				+ "\nAverage Score: " + sum/count);
+	}
+	
 	private void updateAllResult(String courseID, String studentID) throws Exception{
 		Course course = CourseManager.getCourse(courseID);
 		int index = getResultIndex(courseID, studentID);
@@ -80,9 +98,6 @@ public class ResultManager {
 			double overall = course.getEXWeightage()*getEXResult(result)/100
 					+ course.getCWWeightage()*getCWResult(result)/100;
 			setCWResult(index, cwComponent);
-			System.out.println(course.getCPWeightage() +  " " + course.getASWeightage());
-			System.out.println(course.getEXWeightage() + " " + course.getCWWeightage() );
-			System.out.println(cwComponent + " " + overall);
 			setOverallResult(index, overall);
 			updateResultDatabase(this.results);
 		}

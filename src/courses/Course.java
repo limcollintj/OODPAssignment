@@ -29,7 +29,7 @@ public class Course implements Serializable {
     private int maxVacancy;
     private int vacancy;
     boolean haveSubComponents;
-    int exWeightage, cwWeightage, asWeightage, cpWeightage;
+    private int exWeightage, cwWeightage, asWeightage, cpWeightage;
     private ArrayList<String> registeredStudentIDs;
     private ArrayList<Lessons> lessons;
     private ArrayList<String> profNames;
@@ -149,7 +149,7 @@ public class Course implements Serializable {
     	return this.cpWeightage;	//class participation
     }
     
-    public void setCPWeightage() {
+    public void setCPWeightage(int cpWeightage) {
     	this.cpWeightage = cpWeightage;
     }
     
