@@ -112,9 +112,15 @@ public class CourseManager{
 	    	}
 	 }
 	 
-	public void setCourseworkWeightage(Course course, int weightage) {
-		course.setCWWeightage(weightage);
-		course.setEXWeightage(100 - weightage);
+	public void setCourseworkWeightage(String courseID, int weightage) throws Exception{
+		ArrayList<Course> temp = retrieveCourses(); 
+		for(Course course : temp) {
+			if(course.getCourseID().equals(courseID)) {
+				course.setCWWeightage(weightage);
+				course.setEXWeightage(100 - weightage);
+			}
+		}
+		updateCourseDatabase(temp);
 	}
 	
 	

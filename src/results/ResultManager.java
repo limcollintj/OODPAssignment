@@ -80,6 +80,9 @@ public class ResultManager {
 			double overall = course.getEXWeightage()*getEXResult(result)/100
 					+ course.getCWWeightage()*getCWResult(result)/100;
 			setCWResult(index, cwComponent);
+			System.out.println(course.getCPWeightage() +  " " + course.getASWeightage());
+			System.out.println(course.getEXWeightage() + " " + course.getCWWeightage() );
+			System.out.println(cwComponent + " " + overall);
 			setOverallResult(index, overall);
 			updateResultDatabase(this.results);
 		}

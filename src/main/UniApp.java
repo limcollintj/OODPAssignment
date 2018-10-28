@@ -91,7 +91,7 @@ public class UniApp {
                 courseID = Scan.readString();
                 System.out.print("Enter Weightage of Assesment");
                 int cwWeightage = Scan.readInteger();
-                cm1.setCourseworkWeightage(cm1.getCourse(courseID), cwWeightage);
+                cm1.setCourseworkWeightage(courseID, cwWeightage);
                 break;
 
             case 7:
@@ -112,7 +112,14 @@ public class UniApp {
 
             case 8:
                 // Enter exam mark
-
+            	System.out.print("----- Exam Result ------"
+            			+ "\nEnter student ID: ");
+            	studentID = Scan.readString();
+            	System.out.print("Enter course ID: ");
+            	courseID = Scan.readString();
+            	System.out.print("Enter exam marks: ");
+            	double exMark = Scan.readDouble();
+            	rm1.updateResult(courseID, studentID, exMark, 1);
                 break;
 
             case 9:	//Print course statistics
