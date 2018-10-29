@@ -14,15 +14,22 @@ public class UniApp {
 	// TODO: Handle All Exceptions
 	
     public static void main(String[] args) throws Exception {
-        StudentManager sm = new StudentManager();
       
-        int choice;
+        int choice,choice1;
 
         do {
-            showMenu();
-            choice = Scan.readInteger();
-            switchCase(choice);
-            Thread.sleep(1000);
+        	System.out.println("Make another action? 1=Yes 2=No");
+        	choice = Scan.readInteger();
+        	if(choice == 1) {
+                showMenu();
+                choice = Scan.readInteger();
+                switchCase(choice);
+                Thread.sleep(1000);
+        	}
+        	else {
+        		System.out.println("Program Terminated.");
+        		break;
+        	}
         } while (choice != 17);
     }
 

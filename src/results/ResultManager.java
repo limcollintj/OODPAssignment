@@ -124,6 +124,15 @@ public class ResultManager {
 		return result.getMark();
 	}
 	
+	private int getResultIndex(String courseID, String studentID) {
+		for(Result result : this.results) {
+			if(result.getCourseID().equals(courseID) && result.getStudentID().equals(studentID)) {
+				return this.results.indexOf(result);
+			}
+		}
+		return -1;
+	}
+	
 	//Setter
 	private void setASResult(int index, double mark) {
 		this.results.get(index).getSubComponent().get(1).getSubComponent().get(0).setMark(mark);
@@ -145,15 +154,10 @@ public class ResultManager {
 		this.results.get(index).setMark(mark);
 	}
 	
-	private int getResultIndex(String courseID, String studentID) {
-		for(Result result : this.results) {
-			if(result.getCourseID().equals(courseID) && result.getStudentID().equals(studentID)) {
-				return this.results.indexOf(result);
-			}
-		}
-		return -1;
-	}
 	
+	
+	
+	// Database Handlers 
 	private void updateResultDatabase(Object obj){
     	DataBaseManager.updateData(obj, RESULT_FILENAME);
     }

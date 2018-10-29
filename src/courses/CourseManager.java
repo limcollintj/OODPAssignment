@@ -221,8 +221,6 @@ public class CourseManager{
    
     
     
-    
-    
     // Testing methods : Methods for testing database 
     
     // These methods are not to be used for actual app usage 
