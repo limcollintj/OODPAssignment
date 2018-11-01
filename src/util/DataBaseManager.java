@@ -22,19 +22,15 @@ public class DataBaseManager {
      * @param fileName - name of .ser file to read from
      * @return <code>Object</code> from .ser file, or null if an exception was raised
      */
-    public static Object retrieveData(String fileName) {
-        try {
+    public static Object retrieveData(String fileName) throws Exception {
+
             FileInputStream fi = new FileInputStream(new File(fileName));
             ObjectInputStream oi = new ObjectInputStream(fi);
             Object temp = oi.readObject();
             fi.close();
             oi.close();
             return temp;
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+       
     }
 
 

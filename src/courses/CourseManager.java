@@ -2,6 +2,8 @@ package courses;
 import java.io.Serializable;
 import java.util.*;
 
+import functionalityClasses.FindByID;
+import functionalityClasses.FindCoursesByID;
 import lessons.Lab;
 import lessons.Lecture;
 import lessons.Lessons;
@@ -23,9 +25,13 @@ import results.ResultManager;
 public class CourseManager{
 	private static final String COURSE_FILENAME = "Courses.txt";
 	private ArrayList<Course> courses;
+	private FindByID fbID;
+	
+	
 	
 	public CourseManager() {
 		this.courses = retrieveCourses();
+		this.fbID = new FindCoursesByID();
 	}
 
     // Adds a new course to the data base
@@ -37,7 +43,6 @@ public class CourseManager{
         this.courses.add(course);
         updateCourseDatabase(this.courses);
         System.out.println("Course has been added to database.");
-        
     }
 
   
@@ -51,7 +56,9 @@ public class CourseManager{
     			course.reduceVacancy();
     		}
     	}
-    	//Add Result entry
+    	
+    	
+    //Add Result entry
     	ResultManager rm = new ResultManager();
     	rm.addResult(courseID, student.getStudentID());
     	updateCourseDatabase(this.courses);
@@ -59,12 +66,11 @@ public class CourseManager{
 
 	// Prints the students registered in a course
     public void printStudentsRegisteredInCourse(String courseID) throws Exception {
-    	Course temp = getCourse(courseID); 
-    	for (String studentID : temp.getregisteredStudentIDs()) {
-    		StudentManager.getStudent(studentID).printInfo();
-    	}
+    	
     }
 	
+    
+    
 	// Adds new lesson to course 
 	// Updates ArrayList<Lesson> in Course 
 	 public void addLesson(Course course,int option, String lessonID, String lecturerID, int vacancy, String groupID) {
@@ -87,6 +93,8 @@ public class CourseManager{
 	    	temp.add(les);
 	    	updateCourseDatabase(temp);
 	    }
+	 
+	 
 	 
 	 //Check Vacancy
 	 private int getVacancy(String courseID) throws Exception{
@@ -128,6 +136,9 @@ public class CourseManager{
 		}
 		updateCourseDatabase(this.courses);
 	}
+	
+	
+	
 	
     // Lessons logic
   

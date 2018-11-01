@@ -1,5 +1,5 @@
 package functionalityClasses;
 
-public class functions {
-	
+public class GetStudentByID {
+
 }
