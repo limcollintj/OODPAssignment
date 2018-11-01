@@ -44,6 +44,7 @@ public class Course implements Serializable {
         this.cpWeightage = 100;
         this.lessons = new ArrayList<Lessons>();
         this.registeredStudentIDs = new ArrayList<String>();
+        this.profNames = new ArrayList<String>();
     }
     
     Course(String ID, int vacancy) {
@@ -58,7 +59,7 @@ public class Course implements Serializable {
         this.cpWeightage = 100;
         this.lessons = new ArrayList<Lessons>();
         this.registeredStudentIDs = new ArrayList<String>();
-        
+        this.profNames = new ArrayList<String>();
     }
     
     
@@ -167,9 +168,10 @@ public class Course implements Serializable {
     // printing course information 
     public void printCourseInfo() {
     	System.out.print("CourseID: "+ courseID + "," + "Vacancy: "+ vacancy + ", ProfNames: ");
-    	for(String name : profNames) {
-    		System.out.print(name + ",");
-    	}
+    		for(String name : profNames) {
+        		System.out.print(name + ",");
+        	}
+    
     	System.out.print("\n");
     }
     

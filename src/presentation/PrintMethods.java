@@ -12,7 +12,6 @@ public class PrintMethods {
 	public static void printCourseStatistics() throws Exception {
 		System.out.print("Enter course ID: ");
     	String courseID = Scan.readString();
-    	
     	new ResultManager().printCourseStatistics(courseID);
 	}
 	

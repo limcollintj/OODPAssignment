@@ -10,7 +10,7 @@ public class Student implements Serializable{
     private ArrayList<String> courseIDs;
     
     
-    Student(String name, String studentID){
+    public Student(String studentID){
         this.name = name;
         this.studentID = studentID;
         this.courseIDs = new ArrayList<String>();

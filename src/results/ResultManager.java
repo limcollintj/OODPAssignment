@@ -163,8 +163,6 @@ public class ResultManager {
 		this.results.get(index).setMark(mark);
 	}
 	
-	
-]
 
 	
 }

@@ -3,8 +3,11 @@ package lessons;
 import java.util.ArrayList;
 import util.DatabaseHandler;
 import courses.Course;
+import functionalityClasses.CRUDByID;
+import functionalityClasses.CourseCRUDByID;
 
 public class LessonManager {
+	
 	
 	
 	
@@ -31,4 +34,27 @@ public class LessonManager {
 			}
 		}
 	}
+	
+	//Prints lesson in a course
+	public void printLesson(String id) throws Exception {
+		CRUDByID cID = new CourseCRUDByID();
+		
+		 Course temp = (Course) cID.readByID(id);
+				 
+			for(Lessons lesson : temp.getLessons()) {
+	    		lesson.printInfo();
+	    	}
+	}
+	
+//	 public void removeLessons(String lessonID) {
+//		 CRUDByID cID = new CourseCRUDByID();
+//		 Course temp = (Course) cID.readByID(id);
+//		 
+//	    	for(Lessons temp : lessons) {
+//	    		if(temp.getLessonID() == lessonID) {
+//	    			lessons.remove(temp);
+//	    		}
+//	    	}
+//	    }
+	
 }

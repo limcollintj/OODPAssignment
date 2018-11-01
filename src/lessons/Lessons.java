@@ -33,6 +33,8 @@ public abstract class Lessons {
     int getVacancy() {
     	return this.vacancy;
     }
+    
+    abstract void printInfo();
 }
 
 

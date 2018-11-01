@@ -2,52 +2,51 @@ package students;
 import java.util.*;
 import courses.Course;
 import courses.CourseManager;
-import functionalityClasses.FindByID;
-import functionalityClasses.FindStudentByID;
+import functionalityClasses.CRUDByID;
+import functionalityClasses.PrintByID;
+import functionalityClasses.PrintStudentByID;
 import functionalityClasses.Reset;
 import functionalityClasses.ResetStudents;
+import functionalityClasses.StudentCRUDByID;
+import functionalityClasses.StudentUpdate;
 import util.DataBaseManager;
+import util.DatabaseHandler;
 
 public class StudentManager{
    
     private Reset reset;
-    private FindByID fbID;
+    private CRUDByID crudID;
+    private PrintByID pbID;
+    private StudentUpdate update;
 
     public StudentManager() {
     	this.reset = new ResetStudents();
-    	this.fbID = new FindStudentByID();
+    	this.crudID = new StudentCRUDByID();
+    	this.pbID = new PrintStudentByID();
+    	this.update = new StudentUpdate();
     	
     }
     
     // Adds a new student to the data base
-    public void addNewStudent(String name, String matricNum) {
-    	//Do check to see if student already exist
-        Student student = new Student(name, matricNum);
-        this.students.add(student);
-        updateStudentDatabase(this.students);
-        System.out.println("Student has been added.");
+    public void addNewStudent(String name, String id) throws Exception {
+    	crudID.createByID(id);
+    	update.addName(id, name);
     }
 
     
     
     // Registers a student to the course
     public void registerCourse(String studentId, Course course) throws Exception{
-    	//Do checks to see if student already registered
-    	for(Student stud : this.students) {
-    		if(stud.getStudentID().equals(studentId)) {
-    			stud.addCourse(course);	
-    		}
-    	}
-    	updateStudentDatabase(this.students);
-    	
+    	update.registerCourse(course, studentId);
     }
-
-
     
-  
+    public Student getStudent(String id) throws Exception {
+		return (Student) crudID.readByID(id);
+    }
+    
     // Prints out the courses a student has registered in 
     public void printCoursesRegistered(String studentID) throws Exception {
-    	fbID.printByID(studentID);
+    	pbID.printByID(studentID);
     }
     
     
@@ -61,4 +60,6 @@ public class StudentManager{
     public void resetStudents() throws Exception {
     	reset.reset();
     }
+    
+    
 }

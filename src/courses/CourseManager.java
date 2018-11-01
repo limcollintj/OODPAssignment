@@ -5,6 +5,7 @@ import java.util.*;
 
 import functionalityClasses.CRUDByID;
 import functionalityClasses.CourseCRUDByID;
+import functionalityClasses.CourseUpdate;
 import functionalityClasses.PrintByID;
 import functionalityClasses.PrintCourseByID;
 import functionalityClasses.Reset;
@@ -16,6 +17,7 @@ import functionalityClasses.SetWeightage;
 
 import lessons.Lab;
 import lessons.Lecture;
+import lessons.LessonManager;
 import lessons.Lessons;
 import lessons.Tutorial;
 import students.Student;
@@ -39,6 +41,8 @@ public class CourseManager{
 	private SetWeightage sCWW;
 	private SetWeightage sCPW;
 	private Reset reset;
+	private LessonManager lm;
+	private CourseUpdate update;
 	
 	
 	
@@ -49,6 +53,8 @@ public class CourseManager{
 		this.sCPW = new SetClassPartWeightage();
 		this.reset = new ResetCourses();
 		this.print = new PrintCourseByID();
+		this.lm = new LessonManager();
+		this.update = new CourseUpdate();
 		
 	}
 
@@ -56,6 +62,7 @@ public class CourseManager{
     public void addNewCourse(String courseID, ArrayList<String> profNames) throws Exception{
         CourseCRUDByID courseCRUD = new CourseCRUDByID();
         courseCRUD.createByID(courseID);
+        update.addProfNames(profNames, courseID);
     }
 
   
@@ -64,6 +71,7 @@ public class CourseManager{
 	// Updates ArrayList<Student> in Course
 	public void registerStudent(Student student, String courseID) throws Exception {
     	ArrayList<Course> courses= (ArrayList<Course>) DatabaseHandler.getCourseData();
+    	
 		for(Course course : courses) {
     		if(course.getCourseID().equals(courseID)) {
     			course.addStudent(student);
@@ -134,10 +142,7 @@ public class CourseManager{
     
     //Prints the lessons in the course 
 	 public void printLessons(String id) throws Exception {
-		 Course temp = getCourse(id); 
-			for(Lessons lesson : temp.getLessons()) {
-	    		lesson.printInfo();
-	    	}
+		lm.printLesson(id);
 	 }
     
     // Remove lessons
@@ -149,7 +154,12 @@ public class CourseManager{
     	}
     }
     
-
+    
+    // get Course 
+    public Course getCourse(String id) throws Exception {
+		return (Course) crudByID.readByID(id); 
+    	
+    }
     
     
     // Testing methods : Methods for testing database 

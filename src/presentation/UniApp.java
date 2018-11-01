@@ -39,12 +39,13 @@ public class UniApp {
         switch(a) {
             case 1:
                 //Add new student
-            	DatabaseHandler.updateCourseData(new ArrayList<Course>());
+            	
                AddMethods.addStudent();
                 break;
 
             case 2:
             	// Adds a new course
+//            	DatabaseHandler.updateCourseData(new ArrayList<Course>());
             	AddMethods.addCourse();
                 break;
 
@@ -89,24 +90,23 @@ public class UniApp {
             	break;
 
         
-            case 13:
-            	
+            case 12:
             	// Prints all students registered
             	PrintMethods.printAllStudents();
             	break;
               
                 
-            case 15: 
+            case 13: 
             	// Resets all courses
             	ResetMethods.resetCourses();
             	break;
             
-            case 16: 
+            case 14: 
             	// Resets all students
             	ResetMethods.resetStudents();
             	break;
             	
-            case 17: 
+            case 15: 
             	  System.out.println("Program terminating.");
                   break;
                   
@@ -132,16 +132,16 @@ public class UniApp {
                         "\t8. Enter exam mark\n" +
                         "\t9. Print course statistics\n" +
                         "\t10. Print student transcript\n" +
-                        "\t11. Print Courses\n"+
+                        "\t11. Print All Courses\n"+
                         "\t12. Print Courses a student has registered in \n"+
                         "\t13. Print All students \n" + 
                         "\t14. Print All students registered in a course\n"+
-                        "\t15. Reset Courses\n"+
-                        "\t16. Reset Students\n"+
+                        "\t13. Reset Courses\n"+
+                        "\t14. Reset Students\n"+
                         "\t17. Terminate Program.\n"+
                         "\t18. Run test function\n"+
-                        "\t19. Register a student for a lesson\n" + 
-                        "\t20. Print students by lesson\n"
+                        "\t19. Register a student for a lesson\n" 
+                        
         );
     }
     

@@ -13,14 +13,12 @@ public class PrintStudentByID implements PrintByID{
 	public void printByID(String id) throws Exception {
 		Student student;    	
 		
-			student = this.getByID(id);
+			student = new StudentCRUDByID().readByID(id);
 			for(String courseID : student.getCourseIDs()) {
-	    		new FindCourseByID().getByID(courseID).printCourseInfo();
+	    		new CourseCRUDByID().readByID(courseID).printCourseInfo();
 	        	System.out.println(id + " has registered in ");
 			}
 			
 	}
 
-
-	
 }

@@ -1,6 +1,7 @@
 package functionalityClasses;
 
 import courses.Course;
+import students.Student;
 import students.StudentManager;
 import util.DatabaseHandler;
 
@@ -11,12 +12,16 @@ public class PrintCourseByID implements PrintByID{
 	public void printByID(String id) throws Exception {
 		
 		Course temp = new CourseCRUDByID().readByID(id);
+		CRUDByID crudID = new StudentCRUDByID();
+		
     	for (String studentID : temp.getregisteredStudentIDs()) {
-    		StudentManager.getStudent(studentID).printInfo();
-    	}
+    		Student stud = (Student) crudID.readByID(studentID);
+    		stud.printInfo();
 		
 	}
 
 	
+
+}
 
 }

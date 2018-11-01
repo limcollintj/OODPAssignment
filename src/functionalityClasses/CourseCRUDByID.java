@@ -9,14 +9,11 @@ public class CourseCRUDByID implements CRUDByID{
 	@Override
 	public void createByID(String id) throws Exception{
 		
-		if(this.readByID(id) == null) {
 			Course newCourse = new Course(id); 
 			ArrayList<Course> courseList = (ArrayList<Course>)DatabaseHandler.getCourseData();
 			courseList.add(newCourse);
 			DatabaseHandler.updateCourseData(courseList);
-		}else {
-			throw new Exception("Already exists");
-		}
+	
 	}
 	
 	@Override

@@ -12,12 +12,12 @@ import util.Scan;
 public class AddMethods {
 	
 	
-	public static void addStudent(){
+	public static void addStudent() throws Exception{
 		 System.out.println("Enter student's name: ");
          String name = Scan.readString();
          System.out.println("Enter student's matric number: ");
-         String matric = Scan.readString();
-         new StudentManager().addNewStudent(name, matric);
+         String id = Scan.readString();
+         new StudentManager().addNewStudent(name, id);
 	}
 	
 	public static void addCourse() throws Exception{
