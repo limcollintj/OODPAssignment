@@ -5,7 +5,7 @@ import students.Student;
 import courses.Course;
 import results.Result;
 
-public class DatabaseHandler {
+public class DatabaseHandler{
 	
 	public static List<Student> getStudentData() throws Exception{
 		Database db = new StudentDatabase();

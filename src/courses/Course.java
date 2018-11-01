@@ -34,6 +34,17 @@ public class Course implements Serializable {
     private ArrayList<Lessons> lessons;
     private ArrayList<String> profNames;
     
+    public Course(String ID){
+    	this.courseID = ID;
+    	this.maxVacancy = this.vacancy = 0;
+    	this.courseName = "Unknown Course";
+        this.haveSubComponents = false;
+        this.exWeightage = 100;
+        this.cwWeightage = this.asWeightage = 0;
+        this.cpWeightage = 100;
+        this.lessons = new ArrayList<Lessons>();
+        this.registeredStudentIDs = new ArrayList<String>();
+    }
     
     Course(String ID, int vacancy) {
 
