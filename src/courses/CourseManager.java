@@ -67,28 +67,7 @@ public class CourseManager{
 	
     
     
-	// Adds new lesson to course 
-	// Updates ArrayList<Lesson> in Course 
-	 public void addLesson(Course course,int option, String lessonID, String lecturerID, int vacancy, String groupID) {
-	    	Lessons les = null;
-	    	
-	    	switch(option) {
-	    	case 1: 
-	    		les = new Tutorial(lecturerID, lessonID, vacancy, groupID); 
-	    		break; 
-	    	case 2: 
-	    		les = new Lab(lecturerID, lessonID, vacancy, groupID);
-	    		break; 
-	    	case 3: 
-	    		les = new Lecture(lecturerID, lessonID, vacancy); 
-	    		break;
-	    	
-	    	}
-	    	
-	    	ArrayList<Lessons> temp = course.getLessons(); 
-	    	temp.add(les);
-	    	updateCourseDatabase(temp);
-	    }
+	
 	 
 	 
 	 

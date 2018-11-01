@@ -1,14 +1,9 @@
 package lessons;
 
-import java.util.ArrayList;
-
 public class Lab extends Lessons{
 	private final String lessonID;
 	
-	public Lab(String profName, String lessonID, int vacancy, String groupID){
-		studentIDs = new ArrayList<String>(vacancy); 
-		this.vacancy = vacancy; 
-		this.profName = profName;
+	public Lab(String lessonID){
 		this.lessonID = lessonID;
 	}
 
