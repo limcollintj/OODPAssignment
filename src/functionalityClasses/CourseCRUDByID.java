@@ -20,8 +20,15 @@ public class CourseCRUDByID implements CRUDByID{
 	}
 	
 	@Override
-	public void readByID(String id) throws Exception{
-		
+	public Course readByID(String id) throws Exception{
+		 
+			for (Course temp : DatabaseHandler.getCourseData() ) {
+		            if(temp.getCourseID().equals(id)) {
+		                return temp;
+		            }
+		        }
+		        throw new Exception("This course cannot be found");
+			
 	}
 	
 	@Override

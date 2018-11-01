@@ -171,7 +171,6 @@ public class Course implements Serializable {
     		System.out.print(name + ",");
     	}
     	System.out.print("\n");
-    	
     }
     
     // Reduces Vacancy 

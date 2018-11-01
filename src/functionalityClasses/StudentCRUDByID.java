@@ -13,7 +13,7 @@ public class StudentCRUDByID implements CRUDByID{
 	@Override
 	public void createByID(String id) throws Exception{
 		FindStudentByID fs = new FindStudentByID();
-		if(fs.getByID(id) == null) {
+		if(this.readByID(id) == null) {
 			Course newCourse = new Course(id); 
 			ArrayList<Course> courseList = (ArrayList<Course>)DatabaseHandler.getCourseData();
 			courseList.add(newCourse);
@@ -24,8 +24,15 @@ public class StudentCRUDByID implements CRUDByID{
 	}
 	
 	@Override
-	public void readByID(String id) throws Exception{
-		FindStudentByID fs = new FindStudentByID();	
+	public Student readByID(String id) throws Exception{
+		
+		for (Student temp : DatabaseHandler.getStudentData() ) {
+            if(temp.getStudentID().equals(id)) {
+                return temp;
+            }
+        }
+	   
+        throw new Exception("This course cannot be found");
 		
 	}
 	

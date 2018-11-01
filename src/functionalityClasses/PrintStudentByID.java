@@ -5,19 +5,8 @@ import courses.CourseManager;
 import students.Student;
 import util.DatabaseHandler;
 
-public class FindStudentByID implements FindByID{
+public class PrintStudentByID implements PrintByID{
 
-	@Override
-	public Student getByID(String id) throws Exception {
-		
-		for (Student temp : DatabaseHandler.getStudentData() ) {
-            if(temp.getStudentID().equals(id)) {
-                return temp;
-            }
-        }
-	   
-        throw new Exception("This course cannot be found");
-	}
 
 	
 	@Override
