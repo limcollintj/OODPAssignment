@@ -66,7 +66,7 @@ public class CourseManager{
 
 	// Prints the students registered in a course
     public void printStudentsRegisteredInCourse(String courseID) throws Exception {
-    	
+    	fbID.printByID(courseID);
     }
 	
     
@@ -98,16 +98,18 @@ public class CourseManager{
 	 
 	 //Check Vacancy
 	 private int getVacancy(String courseID) throws Exception{
-		 return getCourse(courseID).getVacancy();
+		 return ((Course) fbID.getByID(courseID)).getVacancy();
 	 }
 	 
 	 private int getMaxVacancy(String courseID) throws Exception{
-		 return getCourse(courseID).getMaxVacancy();
+		 return ((Course) fbID.getByID(courseID)).getMaxVacancy();
 	 }
 	 
 	 public void printVacancy(String courseID) throws Exception{
 		 System.out.println(getVacancy(courseID) + "/" + getMaxVacancy(courseID));
 	 }
+	 
+	 
 	 
 	 //Prints the lessons in the course 
 	 public void printLessons(String id) throws Exception {
@@ -116,6 +118,8 @@ public class CourseManager{
 	    		lesson.printInfo();
 	    	}
 	 }
+	 
+	 
 	 
 	public void setCourseworkWeightage(String courseID, int weightage) throws Exception{
 		for(Course course : this.courses) {
@@ -196,17 +200,7 @@ public class CourseManager{
      * @throws Exception 
      * @see CourseInfo 
      */
-    public static Course getCourse(String courseID) throws Exception {
-        for (Course temp : retrieveCourses() ) {
-            if(temp.getCourseID().equals(courseID)) {
-                return temp;
-            }
-        }
-        
-        
-        throw new Exception("This course cannot be found");
-        
-    }
+
     
     
     // Database handlers

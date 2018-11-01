@@ -57,20 +57,10 @@ public class StudentManager{
     
     // Prints out the courses a student has registered in 
     public void printCoursesRegistered(String studentID) {
-    	Student student;    	
-		try {
-			student = getStudent(studentID);
-			for(String courseID : student.getCourseIDs()) {
-	    		CourseManager.getCourse(courseID).printCourseInfo();
-	        	System.out.println(studentID + " has registered in ");
-	    	}
-			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} 
-    	
-    	
+    
     }
+    
+    
     
     // Prints out all the students and its course information 
     public void printStudents() throws Exception{

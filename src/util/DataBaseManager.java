@@ -34,7 +34,7 @@ public class DataBaseManager {
 
     }
 
-
+    
 
     /**
      * Overwrites the current file with the new serialized Objects.
