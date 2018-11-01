@@ -19,19 +19,12 @@ public class UniApp {
         int choice,choice1;
 
         do {
-        	System.out.println("Make another action? 1=Yes 2=No");
-        	choice = Scan.readInteger();
-        	if(choice == 1) {
+        	
                 showMenu();
                 choice = Scan.readInteger();
                 switchCase(choice);
-                Thread.sleep(1000);
-        	}
-        	else {
-        		System.out.println("Program Terminated.");
-        		break;
-        	}
-        } while (choice != 17);
+             
+        } while (choice != 100);
     }
 
     public static void switchCase(int a) throws Exception {
@@ -109,8 +102,39 @@ public class UniApp {
             case 15: 
             	  System.out.println("Program terminating.");
                   break;
-                  
-          
+            case 16:
+            	System.out.print("----- Add lesson -----"
+            			+ "\nEnter course ID: ");
+            	String courseID = Scan.readString();
+            	AddMethods.addLesson(courseID);
+            	break;
+            case 17:
+            	System.out.print("----- Lesson Details -----"
+            			+ "\nEnter Course ID: ");
+            	courseID = Scan.readString();
+            	PrintMethods.printAllLessons(courseID);
+            	break;
+            	
+            case 18: 
+            	System.out.print("----- Lesson Details -----"
+            			+ "\nEnter Course ID: ");
+            	courseID = Scan.readString();
+            	
+            	System.out.println("Enter Lesson ID");
+            	String lessonID = Scan.readString();
+            	PrintMethods.printLesson(courseID, lessonID);
+            	break;
+            	
+            case 19: 
+            	System.out.print("Enter Student ID");
+            	String studentID = Scan.readString(); 
+            	System.out.println("Enter Course ID");
+            	courseID = Scan.readString();
+            	System.out.println("Enter lesson ID");
+            	lessonID = Scan.readString();
+            	
+            	AddMethods.addStudentToLesson(studentID, courseID, lessonID);
+            	break;
             	
             default:
                 System.out.println("Please enter valid integer choice.");
@@ -133,8 +157,7 @@ public class UniApp {
                         "\t9. Print course statistics\n" +
                         "\t10. Print student transcript\n" +
                         "\t11. Print All Courses\n"+
-                        "\t12. Print Courses a student has registered in \n"+
-                        "\t13. Print All students \n" + 
+                        "\t12. Print All students \n" + 
                         "\t14. Print All students registered in a course\n"+
                         "\t13. Reset Courses\n"+
                         "\t14. Reset Students\n"+

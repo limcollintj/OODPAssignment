@@ -14,7 +14,7 @@ public class ResultManager {
 	CRUDByID courseCRUD;
 	
 	
-	public ResultManager() {
+	public ResultManager() throws Exception {
 		this.results = (ArrayList<Result>) DatabaseHandler.getResultData();
 		courseCRUD = new CourseCRUDByID();
 	}
@@ -30,7 +30,7 @@ public class ResultManager {
 		
 	}
 	
-	public void addResult(String courseID, String studentID) {
+	public void addResult(String courseID, String studentID) throws Exception {
 		ResultManager rm = new ResultManager();
 		Result result = rm.buildResult(courseID, studentID); 
 		this.results.add(result);

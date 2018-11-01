@@ -1,10 +1,15 @@
 package lessons;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Lessons {
+public abstract class Lessons implements Serializable{
 	protected ArrayList<String> studentIDs;
 	protected String profName;
 	protected int vacancy;
+	
+	public Lessons() {
+		this.studentIDs= new ArrayList<String>();
+	}
 	
     void setprofName(String name) {
     	this.profName = name;
@@ -12,6 +17,8 @@ public abstract class Lessons {
     
     void addStudent(String id) {
     	this.studentIDs.add(id);
+    	this.vacancy--;
+    	
     }
     
     void setStudentIDs(ArrayList<String> studentIDs) {
@@ -21,6 +28,8 @@ public abstract class Lessons {
     void setVacancy(int vacancy) {
     	this.vacancy = vacancy;
     }
+    
+    abstract String getLessonID();
     
     String getProfName() {
     	return this.profName;

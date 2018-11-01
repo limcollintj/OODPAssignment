@@ -36,7 +36,7 @@ public class StudentCRUDByID implements CRUDByID{
             }
         }
 	   
-        throw new Exception("This course cannot be found");
+        throw new Exception("This student cannot be found");
 		
 	}
 	

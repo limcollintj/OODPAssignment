@@ -103,6 +103,12 @@ public class Course implements Serializable {
     	return this.vacancy;
     }
     
+    public void setMaxVacancy(int maxVacancy) {
+    	int increase = maxVacancy - this.maxVacancy;
+    	this.maxVacancy = maxVacancy;
+    	this.vacancy += increase;
+    }
+    
     public ArrayList<String> getregisteredStudentIDs(){
 		return this.registeredStudentIDs;
 	}
@@ -177,7 +183,7 @@ public class Course implements Serializable {
     
     // Reduces Vacancy 
     public void reduceVacancy() throws Exception {
-    	if(this.vacancy == 0) {
+    	if(this.vacancy <= 0) {
     		throw new Exception("No more Vacancies");
     	}
     	this.vacancy -= 1;

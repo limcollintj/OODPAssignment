@@ -43,13 +43,14 @@ public class Student implements Serializable{
 
     public void addCourse(Course course) throws Exception{
     	if(this.registeredCourse(course)) {
-    		throw new Exception(); //TODO: Create specfic exception
+    		throw new Exception("Student Already Registered For Course"); //TODO: Create specfic exception
     	}
         this.courseIDs.add(course.getCourseID());
     }
     
     //Check if student already registered for course
     private boolean registeredCourse(Course course) {
+    	
     	return courseIDs.contains(course.getCourseID());
     }
     

@@ -70,20 +70,14 @@ public class CourseManager{
     // Registers a student to the course
 	// Updates ArrayList<Student> in Course
 	public void registerStudent(Student student, String courseID) throws Exception {
-    	ArrayList<Course> courses= (ArrayList<Course>) DatabaseHandler.getCourseData();
+    	update.registerStudent(student, courseID);
     	
-		for(Course course : courses) {
-    		if(course.getCourseID().equals(courseID)) {
-    			course.addStudent(student);
-    			course.reduceVacancy();
-    		}
-    	}
-	
 	// Result entry
     	ResultManager rm = new ResultManager();
     	rm.addResult(courseID, student.getStudentID());
-    	DatabaseHandler.updateCourseData(courses);
+    	
 	}
+
 	
 	
 
@@ -92,7 +86,9 @@ public class CourseManager{
     	print.printByID(courseID);
     }
 	 
-	 
+    public void updateMaxVacancy(String courseID, int vacancy) throws Exception{
+    	update.updateMaxVacancy(courseID,vacancy);
+    }
 	 
 	 //Check Vacancy
 	 private int getVacancy(String courseID) throws Exception{
@@ -124,35 +120,28 @@ public class CourseManager{
 	
 	
 	
-    // Lessons logic
-  
-    // Add Lessons
-    // Adding lesson according to your choice
-    // Option: 1--> Lab, Option: 2--> Tutorial, Option: 3 --> Lecture
-    // Creates a new lesson and adds it into the course
-    
-    // Comments: 
-    // Max Vacancy cannot be changed
-    // groupID argument is set as 0 adding of lectures 
-    
-    
-    
     // Add lessons
-   
+   public void addLesson(String courseID, int option, String lessonID, int vacancy) throws Exception {
+	   lm.addLesson(courseID, option, lessonID, vacancy);
+   }
     
     //Prints the lessons in the course 
 	 public void printLessons(String id) throws Exception {
-		lm.printLesson(id);
+		lm.printAllLesson(id);
 	 }
+	 
+	 public void printLesson(String courseID, String lessonID) throws Exception {
+			lm.printLesson(courseID, lessonID);
+		}
     
-    // Remove lessons
-    public void removeLessons(String lessonID) {
-    	for(Lessons temp : lessons) {
-    		if(temp.getLessonID() == lessonID) {
-    			lessons.remove(temp);
-    		}
-    	}
-    }
+//    // Remove lessons
+//    public void removeLessons(String lessonID) {
+//    	for(Lessons temp : lessons) {
+//    		if(temp.getLessonID() == lessonID) {
+//    			lessons.remove(temp);
+//    		}
+//    	}
+//    }
     
     
     // get Course 
@@ -173,4 +162,11 @@ public class CourseManager{
     public void resetCourses() throws Exception {
     	reset.reset();
     }
+
+	public void addStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
+		lm.addStudentToLesson(studentID, courseID, lessonID);
+		
+	}
+
+	
 }
