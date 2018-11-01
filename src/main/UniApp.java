@@ -1,13 +1,15 @@
 package main;
 import java.util.ArrayList;
 
+
+
 import courses.Course;
 import courses.CourseManager;
 import students.Student;
 import students.StudentManager;
 import results.Result;
 import results.ResultManager;
-import util.Scan;
+import util.*;
 
 public class UniApp {
 
@@ -17,6 +19,15 @@ public class UniApp {
       
         int choice,choice1;
 
+        ResultDatabase rd = new ResultDatabase();
+        
+        if(rd.getData() == null) {
+        	System.out.println("Oh no");
+        }
+        
+        
+        
+        
         do {
         	System.out.println("Make another action? 1=Yes 2=No");
         	choice = Scan.readInteger();
