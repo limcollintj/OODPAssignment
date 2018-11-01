@@ -7,6 +7,7 @@ import students.Student;
 import students.StudentManager;
 import results.Result;
 import results.ResultManager;
+import util.DatabaseHandler;
 import util.Scan;
 
 public class UniApp {
@@ -38,6 +39,7 @@ public class UniApp {
         switch(a) {
             case 1:
                 //Add new student
+            	DatabaseHandler.updateCourseData(new ArrayList<Course>());
                AddMethods.addStudent();
                 break;
 

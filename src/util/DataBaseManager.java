@@ -23,9 +23,10 @@ public class DataBaseManager {
      * @return <code>Object</code> from .ser file, or null if an exception was raised
      */
 
-    public static Object retrieveData(String fileName) throws Exception{
-
-            FileInputStream fi = new FileInputStream(new File(fileName));
+    public static Object retrieveData(String filename) throws Exception{
+    		
+    		File f = new File(filename);
+            FileInputStream fi = new FileInputStream(new File(filename));
             ObjectInputStream oi = new ObjectInputStream(fi);
             Object temp = oi.readObject();
             fi.close();

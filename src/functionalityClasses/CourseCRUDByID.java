@@ -22,13 +22,13 @@ public class CourseCRUDByID implements CRUDByID{
 	@Override
 	public Course readByID(String id) throws Exception{
 		 
-			for (Course temp : DatabaseHandler.getCourseData() ) {
-		            if(temp.getCourseID().equals(id)) {
-		                return temp;
-		            }
-		        }
-		        throw new Exception("This course cannot be found");
-			
+		for (Course temp : DatabaseHandler.getCourseData() ) {
+			if(temp.getCourseID().equals(id)) {
+				return temp;
+			}
+		}
+		return null;
+
 	}
 	
 	@Override
