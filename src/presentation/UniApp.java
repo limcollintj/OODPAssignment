@@ -7,6 +7,7 @@ import students.Student;
 import students.StudentManager;
 import results.Result;
 import results.ResultManager;
+import util.DatabaseHandler;
 import util.Scan;
 
 public class UniApp {

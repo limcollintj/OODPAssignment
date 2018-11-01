@@ -12,6 +12,7 @@ public class RegisterMethods {
 	public static void registerCourse() throws Exception {
 		System.out.println("Enter Student ID");
 		String studentID = Scan.readString(); 
+		
 		Student student = StudentManager.getStudent(studentID);
 		
 		System.out.println("Enter Course ID you want to add student to");

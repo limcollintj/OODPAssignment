@@ -21,6 +21,7 @@ import lessons.Tutorial;
 import students.Student;
 import students.StudentManager;
 import util.DataBaseManager;
+import util.DatabaseHandler;
 import results.ResultManager;
 
 /**
@@ -62,18 +63,18 @@ public class CourseManager{
     // Registers a student to the course
 	// Updates ArrayList<Student> in Course
 	public void registerStudent(Student student, String courseID) throws Exception {
-    	for(Course course : this.courses) {
+    	ArrayList<Course> courses= (ArrayList<Course>) DatabaseHandler.getCourseData();
+		for(Course course : courses) {
     		if(course.getCourseID().equals(courseID)) {
     			course.addStudent(student);
     			course.reduceVacancy();
     		}
     	}
-    	
-    	
-    //Add Result entry
+	
+	// Result entry
     	ResultManager rm = new ResultManager();
     	rm.addResult(courseID, student.getStudentID());
-    	updateCourseDatabase(this.courses);
+    	DatabaseHandler.updateCourseData(courses);
 	}
 	
 	
@@ -149,6 +150,8 @@ public class CourseManager{
     }
     
 
+    
+    
     // Testing methods : Methods for testing database 
     
     // These methods are not to be used for actual app usage 

@@ -59,9 +59,8 @@ public class PrintMethods {
 	}
 	
 	// Print All Courses
-	public static void printAllCourses() {
+	public static void printAllCourses() throws Exception {
 		CourseManager cm = new CourseManager();
-		
 		cm.printCourses();
 	}
 	
