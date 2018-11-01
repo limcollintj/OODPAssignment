@@ -22,7 +22,8 @@ public class DataBaseManager {
      * @param fileName - name of .ser file to read from
      * @return <code>Object</code> from .ser file, or null if an exception was raised
      */
-    public static Object retrieveData(String fileName) throws Exception {
+
+    public static Object retrieveData(String fileName) throws Exception{
 
             FileInputStream fi = new FileInputStream(new File(fileName));
             ObjectInputStream oi = new ObjectInputStream(fi);
@@ -30,7 +31,7 @@ public class DataBaseManager {
             fi.close();
             oi.close();
             return temp;
-       
+
     }
 
 
@@ -41,19 +42,11 @@ public class DataBaseManager {
      * @param a - any object to be serialized
      * @param filename - name of .ser file to output to
      */
-    public static void updateData(Object a, String filename) {
-        try {
-            File f = new File(filename);
-            FileOutputStream fop=new FileOutputStream(filename);
-            ObjectOutputStream oos=new ObjectOutputStream(fop);
-
-            oos.writeObject(a);
-
-            fop.close();
-            oos.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void updateData(Object a, String filename) throws Exception{
+    	FileOutputStream fop=new FileOutputStream(filename);
+    	ObjectOutputStream oos=new ObjectOutputStream(fop);
+    	oos.writeObject(a);
+    	fop.close();
+    	oos.close();
     }
 }
