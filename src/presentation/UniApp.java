@@ -39,6 +39,7 @@ public class UniApp {
         switch(a) {
             case 1:
                 //Add new student
+            	DatabaseHandler.updateCourseData(new ArrayList<Course>());
                AddMethods.addStudent();
                 break;
 
