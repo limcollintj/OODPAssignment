@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  * <code>DataBaseManager</code> is the main IO class for UniApp. 
@@ -24,15 +25,18 @@ public class DataBaseManager {
      */
 
     public static Object retrieveData(String filename) throws Exception{
-    		
-    		File f = new File(filename);
-            FileInputStream fi = new FileInputStream(new File(filename));
-            ObjectInputStream oi = new ObjectInputStream(fi);
-            Object temp = oi.readObject();
-            fi.close();
-            oi.close();
-            return temp;
-
+    	File f = new File(filename);
+    	if(f.exists()) {
+    		FileInputStream fi = new FileInputStream(new File(filename));
+    		ObjectInputStream oi = new ObjectInputStream(fi);
+    		Object temp = oi.readObject();
+    		fi.close();
+    		oi.close();
+    		return temp;
+    	} else {
+    		updateData(new ArrayList<Object>(), filename);
+    		return new ArrayList<Object>();
+    	}
     }
 
     
