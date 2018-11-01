@@ -1,18 +1,38 @@
 package lessons;
 import java.util.ArrayList;
 
-public interface Lessons {
+public abstract class Lessons {
+	protected ArrayList<String> studentIDs;
+	protected String profName;
+	protected int vacancy;
 	
-	void setLessonID(String id);
-    void setlecturerID(String id);
-    void setStudentIDs(String[] studentIDs);
-    void setVacancy(int vacancy);
-    void printInfo();
+    void setprofName(String name) {
+    	this.profName = name;
+    }
     
-    String getLessonID(); 
-    String getLecturerID(); 
-    String getstudentID(); 
-    int getVacancy(); 
+    void addStudent(String id) {
+    	this.studentIDs.add(id);
+    }
+    
+    void setStudentIDs(ArrayList<String> studentIDs) {
+    	this.studentIDs = studentIDs;
+    }
+    
+    void setVacancy(int vacancy) {
+    	this.vacancy = vacancy;
+    }
+    
+    String getProfName() {
+    	return this.profName;
+    } 
+    
+    ArrayList<String> getstudentIDs() {
+    	return this.studentIDs;
+    }
+    
+    int getVacancy() {
+    	return this.vacancy;
+    }
 }
 
 

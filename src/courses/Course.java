@@ -120,7 +120,7 @@ public class Course implements Serializable {
     	return this.lessons;
     }
     
-    public void addLessons(Lessons lesson) {
+    public void addLesson(Lessons lesson) {
     	this.lessons.add(lesson);
     }
     

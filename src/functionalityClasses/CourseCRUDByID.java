@@ -9,7 +9,7 @@ public class CourseCRUDByID implements CRUDByID{
 	@Override
 	public void createByID(String id) throws Exception{
 		FindCourseByID fc = new FindCourseByID();
-		if(fc.getCourse(id) == null) {
+		if(fc.getByID(id) == null) {
 			Course newCourse = new Course(id); 
 			ArrayList<Course> courseList = (ArrayList<Course>)DatabaseHandler.getCourseData();
 			courseList.add(newCourse);
@@ -27,8 +27,8 @@ public class CourseCRUDByID implements CRUDByID{
 	@Override
 	public void updateByID(String id) throws Exception{
 		FindCourseByID fc = new FindCourseByID();
-		fc.getCourse(id);
-		if(fc.getCourse(id) instanceof Course) {
+		fc.getByID(id);
+		if(fc.getByID(id) instanceof Course) {
 			//TODO: Find all possible updates
 		} else {
 			throw new Exception("Cannot find");
@@ -38,8 +38,7 @@ public class CourseCRUDByID implements CRUDByID{
 	@Override
 	public void deleteByID(String id) throws Exception{
 		FindCourseByID fc = new FindCourseByID();
-		fc.getCourse(id);
-		if(fc.getCourse(id) instanceof Course) {
+		if(fc.getByID(id) instanceof Course) {
 			ArrayList<Course> courseList = (ArrayList<Course>)DatabaseHandler.getCourseData();
 			for(Course course : courseList) {
 				if(course.getCourseID().equals(id)) {

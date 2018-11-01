@@ -4,6 +4,7 @@ import java.util.*;
 
 import functionalityClasses.FindByID;
 import functionalityClasses.FindCoursesByID;
+import functionalityClasses.CourseCRUDByID;
 import lessons.Lab;
 import lessons.Lecture;
 import lessons.Lessons;
@@ -35,14 +36,9 @@ public class CourseManager{
 	}
 
     // Adds a new course to the data base
-    public void addNewCourse(String courseID, int maxVacancy, ArrayList<String> profNames) {
-        Course course = new Course(courseID, maxVacancy);
-        for(String name : profNames) {
-        	course.addProfName(name);
-        }
-        this.courses.add(course);
-        updateCourseDatabase(this.courses);
-        System.out.println("Course has been added to database.");
+    public void addNewCourse(String courseID, ArrayList<String> profNames) throws Exception{
+        CourseCRUDByID courseCRUD = new CourseCRUDByID();
+        courseCRUD.createByID(courseID);
     }
 
   

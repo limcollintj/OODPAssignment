@@ -1,106 +1,22 @@
 package lessons;
 
-import courses.Group;
+import java.util.ArrayList;
 
-public class Tutorial extends Group{
-
-	private String[] studentIDs;
-	private String lecturerID,lessonID,groupID;
-	private int vacancy;
+public class Tutorial extends Lessons{
+	private final String lessonID;
 	
-	public Tutorial(String lecturerID, String lessonID, int vacancy, String groupID){
-		studentIDs = new String[vacancy]; 
-		this.groupID = groupID; 
+	public Tutorial(String profName, String lessonID, int vacancy, String groupID){
+		studentIDs = new ArrayList<String>(vacancy); 
 		this.vacancy = vacancy; 
-		this.lecturerID = lecturerID; 
+		this.profName = profName;
 		this.lessonID = lessonID;
 	}
-	
-	
-	@Override
-	public void setlecturerID(String id) {
-		this.lecturerID = id;
-		
-	}
 
-	@Override
-	public void setStudentIDs(String[] studentIDs) {
-		this.studentIDs = studentIDs;
-		
-	}
-
-	@Override
-	public void setVacancy(int vacancy) {
-		this.vacancy = vacancy;
-	}
-
-	@Override
-	public void setLessonID(String id) {
-		this.lessonID = id;
-	}
-
-	@Override
-	public void setGroupID(String id) {
-		this.groupID = id;
-		
-	}
-
-
-	/**
-	 * @return the studentIDs
-	 */
-	public String[] getStudentIDs() {
-		return studentIDs;
-	}
-
-
-	/**
-	 * @return the lecturerID
-	 */
-	public String getLecturerID() {
-		return lecturerID;
-	}
-
-
-	/**
-	 * @return the lessonID
-	 */
 	public String getLessonID() {
-		return lessonID;
+		return this.lessonID;
 	}
-
-
-	/**
-	 * @return the groupID
-	 */
-	public String getGroupID() {
-		return groupID;
-	}
-
-
-	/**
-	 * @return the vacancy
-	 */
-	public int getVacancy() {
-		return vacancy;
-	}
-
-
-	@Override
-	public String getstudentID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
+	
 	public void printInfo() {
-		System.out.println("(Tutorial), GroupID: " + groupID + ", LessonID: " + lessonID + ", Vacancy:" + vacancy);
+		System.out.println("(Tutorial) LessonID: " + lessonID + ", Vacancy:" + vacancy);
 	}
-
-	
-	
-
-  
-
 }

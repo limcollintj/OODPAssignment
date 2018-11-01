@@ -26,7 +26,7 @@ public class AddMethods {
         int maxVacancy = Scan.readInteger();
         
         // addProfs() returns an arraylist of profs
-        new CourseManager().addNewCourse(courseID, maxVacancy, addProfs());
+        new CourseManager().addNewCourse(courseID, addProfs());
 	}
 	
 	
