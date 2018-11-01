@@ -2,14 +2,21 @@ package students;
 import java.util.*;
 import courses.Course;
 import courses.CourseManager;
+import functionalityClasses.FindByID;
+import functionalityClasses.FindStudentByID;
+import functionalityClasses.Reset;
+import functionalityClasses.ResetStudents;
 import util.DataBaseManager;
 
 public class StudentManager{
-    private static final String STUDENT_FILENAME = "Students.txt";
-    private ArrayList<Student> students;
+   
+    private Reset reset;
+    private FindByID fbID;
 
     public StudentManager() {
-    	this.students = retrieveStudents();
+    	this.reset = new ResetStudents();
+    	this.fbID = new FindStudentByID();
+    	
     }
     
     // Adds a new student to the data base
@@ -22,17 +29,6 @@ public class StudentManager{
     }
 
     
-    // Finds a student according to his studentID
-    public static Student getStudent(String studentID) throws Exception {
-    		 for (Student temp : retrieveStudents() ) {
-    	            if(temp.getStudentID().equals(studentID)) {
-    	                return temp;
-    	            }
-    	        }
-        throw new Exception("This student cannot be found");
-       
-    }
-
     
     // Registers a student to the course
     public void registerCourse(String studentId, Course course) throws Exception{
@@ -48,54 +44,21 @@ public class StudentManager{
 
 
     
-    
-    // Prints out information about students
-    
-    // Prints out the whole list of students in the school
-   
-
-    
+  
     // Prints out the courses a student has registered in 
-    public void printCoursesRegistered(String studentID) {
-    
+    public void printCoursesRegistered(String studentID) throws Exception {
+    	fbID.printByID(studentID);
     }
-    
     
     
     // Prints out all the students and its course information 
     public void printStudents() throws Exception{
-        for(Student student : this.students) {
-            System.out.println("Name: " + student.getName()+ "\nStudentID: "+ student.getStudentID() + "\n");
-            for(String courseID : student.getCourseIDs()) {
-            	CourseManager.getCourse(courseID).printCourseInfo();
-            }
-        }
+        reset.printAll();
     }
-    
-    // Writes the arraylist to the student database
-    // Database managers
-
-    // Writes the object into the database
-    public void updateStudentDatabase(Object obj){
-        DataBaseManager.updateData(obj,STUDENT_FILENAME);
-    }
-
-
-    // Retrieves data from database
-    public static ArrayList<Student> retrieveStudents() {
-
-        if((ArrayList<Student>) DataBaseManager.retrieveData(STUDENT_FILENAME) == null) {
-            ArrayList<Student> students = new ArrayList<Student>();
-            DataBaseManager.updateData(students, STUDENT_FILENAME);
-            return students;
-        }
-        else {
-            return (ArrayList<Student>) DataBaseManager.retrieveData(STUDENT_FILENAME);
-        }
-    }
+  
     
     // Resets the students database
-    public void resetStudents() {
-    	updateStudentDatabase(new ArrayList<Student>());
+    public void resetStudents() throws Exception {
+    	reset.reset();
     }
 }

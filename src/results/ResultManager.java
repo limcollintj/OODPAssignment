@@ -7,8 +7,7 @@ import util.DataBaseManager;
 import courses.*;
 
 public class ResultManager {
-	private static final String RESULT_FILENAME = "Results.txt";
-	private ArrayList<Result> results;
+	
 	
 	public ResultManager() {
 		this.results = retrieveResults();
@@ -155,22 +154,7 @@ public class ResultManager {
 	}
 	
 	
-	
-	
-	// Database Handlers 
-	private void updateResultDatabase(Object obj){
-    	DataBaseManager.updateData(obj, RESULT_FILENAME);
-    }
-	
-	private static ArrayList<Result> retrieveResults() {
-        if((ArrayList<Result>) DataBaseManager.retrieveData(RESULT_FILENAME) == null) {
-            ArrayList<Result> results = new ArrayList<Result>();
-            DataBaseManager.updateData(results, RESULT_FILENAME);
-            return results;
-        }
-        else {
-            return (ArrayList<Result>) DataBaseManager.retrieveData(RESULT_FILENAME);
-        }
-	}
+]
+
 	
 }

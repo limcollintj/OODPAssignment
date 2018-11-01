@@ -4,7 +4,7 @@ import courses.Course;
 import students.StudentManager;
 import util.DatabaseHandler;
 
-public class FindCoursesByID implements FindByID{
+public class FindCourseByID implements FindByID{
 
 	@Override
 	public Course getByID(String id) throws Exception {
@@ -14,7 +14,6 @@ public class FindCoursesByID implements FindByID{
 	                return temp;
 	            }
 	        }
-		   
 	        throw new Exception("This course cannot be found");
 		
 	}
