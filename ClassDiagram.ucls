@@ -149,63 +149,39 @@
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <association id="18">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="19" name="students"/>      
-      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="22" name="results"/>      
-      <multiplicity id="23" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="25" name="courses"/>      
-      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="27">    
+  <generalization id="18">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <realization id="28">    
+  <realization id="19">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="14"/>  
   </realization>  
-  <realization id="29">    
+  <realization id="20">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="14"/>  
   </realization>  
-  <association id="30">    
+  <association id="21">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="31" name="subComponent"/>      
-      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
+      <attribute id="22" name="subComponent"/>      
+      <multiplicity id="23" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="33">    
+  <association id="24">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="34" name="lessons"/>      
-      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
+      <attribute id="25" name="lessons"/>      
+      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="36">    
+  <generalization id="27">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="37">    
+  <generalization id="28">    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  

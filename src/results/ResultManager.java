@@ -2,19 +2,25 @@ package results;
 
 import java.util.ArrayList;
 
-import courses.CourseManager;
+import functionalityClasses.CRUDByID;
+import functionalityClasses.CourseCRUDByID;
 import util.DataBaseManager;
+import util.DatabaseHandler;
 import courses.*;
 
 public class ResultManager {
 	
+	ArrayList<Result> results; 
+	CRUDByID courseCRUD;
+	
 	
 	public ResultManager() {
-		this.results = retrieveResults();
+		this.results = (ArrayList<Result>) DatabaseHandler.getResultData();
+		courseCRUD = new CourseCRUDByID();
 	}
 	
 	private Result buildResult(String courseID, String studentID) {
-		
+		courseCRUD = new CourseCRUDByID();
 		Result results = new Result(courseID, studentID, "overall");
 		results.addSubComponent(new ResultComponent("exam"));
 		results.addSubComponent(new ResultComponent("coursework"));
@@ -28,7 +34,8 @@ public class ResultManager {
 		ResultManager rm = new ResultManager();
 		Result result = rm.buildResult(courseID, studentID); 
 		this.results.add(result);
-		updateResultDatabase(this.results);
+		
+		DatabaseHandler.updateResultData(this.results);
 	}
 	
 	//Option: 1:exam, 2:assignment, 3: class part
@@ -49,7 +56,8 @@ public class ResultManager {
 			break;
 		}
 		updateAllResult(courseID, studentID);
-		updateResultDatabase(this.results);
+		
+		DatabaseHandler.updateResultData(this.results);
 		System.out.println("Result updated");
 	}
 	
@@ -70,7 +78,8 @@ public class ResultManager {
 	}
 	
 	public void printCourseStatistics(String courseID) throws Exception{
-		Course course = CourseManager.getCourse(courseID);
+		
+		Course course = (Course) courseCRUD.readByID(courseID);
 		double sum = 0;
 		int count = 0;
 		for(Result result : this.results) {
@@ -88,7 +97,7 @@ public class ResultManager {
 	}
 	
 	private void updateAllResult(String courseID, String studentID) throws Exception{
-		Course course = CourseManager.getCourse(courseID);
+		Course course = (Course) courseCRUD.readByID(courseID);
 		int index = getResultIndex(courseID, studentID);
 		if(index != -1) {
 			Result result = this.results.get(index);
@@ -98,7 +107,8 @@ public class ResultManager {
 					+ course.getCWWeightage()*getCWResult(result)/100;
 			setCWResult(index, cwComponent);
 			setOverallResult(index, overall);
-			updateResultDatabase(this.results);
+			
+			DatabaseHandler.updateResultData(this.results);
 		}
 	}
 	
