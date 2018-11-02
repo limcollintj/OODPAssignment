@@ -20,6 +20,8 @@ public class MarksMethods {
 	    cm.setCourseworkWeightage(courseID, cwWeightage);
 	    System.out.print("Enter class participation weightage: ");
 	    
+	    
+	    // TODO: Add a check here for whether course work has sub components
 	    int cpWeightage = Scan.readInteger();
 	    cm.setClassParticipationWeightage(courseID, cpWeightage);
 	    System.out.println("Course Assesment components updated.");

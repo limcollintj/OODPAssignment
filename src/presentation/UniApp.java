@@ -128,7 +128,10 @@ public class UniApp {
             case 18: 
             	AddMethods.addStudentToLesson();
             	break;
-            	
+            
+            case 19: 
+            	DatabaseHandler.updateResultData(new ArrayList<Result>());
+            	break;
             default:
                 System.out.println("Please enter valid integer choice.");
         }

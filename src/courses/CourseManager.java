@@ -151,18 +151,19 @@ public class CourseManager{
     }
     
     
-    // Testing methods : Methods for testing database 
     
-    // These methods are not to be used for actual app usage 
+    
+   // Prints all courses in the Database
     public void printCourses() throws Exception {
     	reset.printAll();
     }
     
-
+    // Puts a new arraylise of courses in courses 
     public void resetCourses() throws Exception {
     	reset.reset();
     }
 
+    
 	public void addStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
 		lm.addStudentToLesson(studentID, courseID, lessonID);
 		

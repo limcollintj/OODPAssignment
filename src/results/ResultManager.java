@@ -67,12 +67,7 @@ public class ResultManager {
 		for(Result result : this.results) {
 			if(result.getStudentID().equals(studentID)) {
 				updateAllResult(result.getCourseID(), studentID);
-				System.out.println("Course ID: " + result.getCourseID() + 
-						"\nOverall score: " + getOverallResult(result) + 
-						"\nExam score: " + getEXResult(result) + 
-						"\nCoursework score: " + getCWResult(result) + 
-						"\nAssignment score: " + getASResult(result) + 
-						"\nClass Participation score: " + getCPResult(result));
+				result.printInfo();
 			}
 		}
 	}
@@ -105,6 +100,8 @@ public class ResultManager {
 					+ course.getCPWeightage()*getCPResult(result)/100;
 			double overall = course.getEXWeightage()*getEXResult(result)/100
 					+ course.getCWWeightage()*getCWResult(result)/100;
+			
+			// TODO: check whether student is registered in course
 			setCWResult(index, cwComponent);
 			setOverallResult(index, overall);
 			
