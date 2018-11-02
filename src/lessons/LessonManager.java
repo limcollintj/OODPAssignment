@@ -15,25 +15,48 @@ public class LessonManager {
 	// Updates ArrayList<Lesson> in Course 
 	public void addLesson(String courseID, int option, String lessonID, int vacancy) throws Exception{
 		ArrayList<Course> courses = (ArrayList<Course>)DatabaseHandler.getCourseData();
+	
 		for(Course course : courses) {
 			if(course.getCourseID().equals(courseID)) {
-				switch(option) {
-				case 1:
-					Lessons lecture = new Lecture(lessonID, vacancy);
-					course.addLesson(lecture);
-					break;
-				case 2:
-					Lessons lab = new Lab(lessonID, vacancy);
-					course.addLesson(lab);
-					break;
-				case 3:
-					Lessons tutorial = new Tutorial(lessonID, vacancy);
-					course.addLesson(tutorial);
-					break;
+				if(!this.checkIdLessonAdded(courseID, lessonID)) {
+					switch(option) {
+					case 1:
+						Lessons lecture = new Lecture(lessonID, vacancy);
+						course.addLesson(lecture);
+						break;
+					case 2:
+						Lessons lab = new Lab(lessonID, vacancy);
+						course.addLesson(lab);
+						break;
+					case 3:
+						Lessons tutorial = new Tutorial(lessonID, vacancy);
+						course.addLesson(tutorial);
+						break;
+					}
 				}
+				else {
+					throw new Exception("Lesson has already been added\n");
+				}
+				
 			}
 		}
 		DatabaseHandler.updateCourseData(courses);
+	}
+	
+	private boolean checkIdLessonAdded(String courseID, String lessonID) throws Exception {
+		ArrayList<Course> courses = (ArrayList<Course>)DatabaseHandler.getCourseData();
+		
+		for(Course course : courses) {
+			if(course.getCourseID().equals(courseID)) {
+				for(Lessons lesson : course.getLessons()) {
+					if(lesson.getLessonID().equals(lessonID)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+			
 	}
 	
 	

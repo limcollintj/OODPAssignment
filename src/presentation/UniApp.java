@@ -98,24 +98,24 @@ public class UniApp {
             	// Resets all students
             	ResetMethods.resetStudents();
             	break;
-            	
-            case 15: 
-            	  System.out.println("Program terminating.");
-                  break;
-            case 16:
+        
+            case 15:
+            	// Add Lesson
             	System.out.print("----- Add lesson -----"
             			+ "\nEnter course ID: ");
             	String courseID = Scan.readString();
             	AddMethods.addLesson(courseID);
             	break;
-            case 17:
+            case 16:
+            	// Print all lessons
             	System.out.print("----- Lesson Details -----"
             			+ "\nEnter Course ID: ");
             	courseID = Scan.readString();
             	PrintMethods.printAllLessons(courseID);
             	break;
             	
-            case 18: 
+            case 17: 
+            	// Lessons Details 
             	System.out.print("----- Lesson Details -----"
             			+ "\nEnter Course ID: ");
             	courseID = Scan.readString();
@@ -125,15 +125,8 @@ public class UniApp {
             	PrintMethods.printLesson(courseID, lessonID);
             	break;
             	
-            case 19: 
-            	System.out.print("Enter Student ID");
-            	String studentID = Scan.readString(); 
-            	System.out.println("Enter Course ID");
-            	courseID = Scan.readString();
-            	System.out.println("Enter lesson ID");
-            	lessonID = Scan.readString();
-            	
-            	AddMethods.addStudentToLesson(studentID, courseID, lessonID);
+            case 18: 
+            	AddMethods.addStudentToLesson();
             	break;
             	
             default:
@@ -158,12 +151,12 @@ public class UniApp {
                         "\t10. Print student transcript\n" +
                         "\t11. Print All Courses\n"+
                         "\t12. Print All students \n" + 
-                        "\t14. Print All students registered in a course\n"+
                         "\t13. Reset Courses\n"+
                         "\t14. Reset Students\n"+
-                        "\t17. Terminate Program.\n"+
-                        "\t18. Run test function\n"+
-                        "\t19. Register a student for a lesson\n" 
+                        "\t15. Add Lesson\n"+
+                        "\t16. Print All Lessons \n"+
+                        "\t17. Lesson Details\n"+
+                        "\t18. Add Student to Lesson\n" 
                         
         );
     }

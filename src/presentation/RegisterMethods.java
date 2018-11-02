@@ -25,6 +25,10 @@ public class RegisterMethods {
 		
 		// Results will be automatically added in registerStudent
 		new CourseManager().registerStudent(student, courseID);
+		
+		// Register for lecture
+		// Call function which prints out ID and vacancies for tutorial and lab 
+		// addlesson 
 	
 		
 	}

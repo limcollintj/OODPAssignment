@@ -56,6 +56,7 @@ public class AddMethods {
 	}
 
 	public static void addLesson(String courseID) throws Exception{
+		
 		try {
 			int choice;
 			do {
@@ -91,10 +92,19 @@ public class AddMethods {
 		}catch(Exception e) {
 			System.out.print(e);
 		}
+		return null;
 
 	}
 
-	public static void addStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
+	public static void addStudentToLesson() throws Exception {
+		System.out.print("Enter Student ID");
+    	String studentID = Scan.readString(); 
+    	System.out.println("Enter Course ID");
+    	String courseID = Scan.readString();
+    	System.out.println("Enter lesson ID");
+    	String lessonID = Scan.readString();
+    	
+		
 		try {
 			new CourseManager().addStudentToLesson(studentID, courseID, lessonID);
 		}catch(Exception e) {
