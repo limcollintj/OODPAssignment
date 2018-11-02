@@ -8,9 +8,6 @@ import functionalityClasses.CourseCRUDByID;
 
 public class LessonManager {
 	
-	
-	
-	
 	// Adds new lesson to course 
 	// Updates ArrayList<Lesson> in Course 
 	public void addLesson(String courseID, int option, String lessonID, int vacancy) throws Exception{
