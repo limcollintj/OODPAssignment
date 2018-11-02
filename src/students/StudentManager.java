@@ -1,7 +1,8 @@
 package students;
 import java.util.*;
+
 import courses.Course;
-import courses.CourseManager;
+import lessons.LessonManager;
 import functionalityClasses.CRUDByID;
 import functionalityClasses.PrintByID;
 import functionalityClasses.PrintStudentByID;
@@ -9,8 +10,6 @@ import functionalityClasses.Reset;
 import functionalityClasses.ResetStudents;
 import functionalityClasses.StudentCRUDByID;
 import functionalityClasses.StudentUpdate;
-import util.DataBaseManager;
-import util.DatabaseHandler;
 
 public class StudentManager{
    
@@ -39,6 +38,11 @@ public class StudentManager{
     public void registerCourse(String studentId, Course course) throws Exception{
     	update.registerCourse(course, studentId);
     }
+    
+    //Registers a student to lesson
+	public void registerStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
+		new LessonManager().addStudentToLesson(studentID, courseID, lessonID);
+	}
     
     public Student getStudent(String id) throws Exception {
 		return (Student) crudID.readByID(id);

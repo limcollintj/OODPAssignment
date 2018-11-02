@@ -13,12 +13,8 @@ public class StudentCRUDByID implements CRUDByID{
 	@Override
 	public void createByID(String id) throws Exception{
 	ArrayList<Student> students = (ArrayList<Student>) DatabaseHandler.getStudentData();
-		if(this.readByID(id) == null) {
-			//Do check to see if student already exist
-			
-			
+		if(this.readByID(id) == null) { //Check to see if student already exist
 	        Student student = new Student(id);
-	        
 	        students.add(student);
 	        DatabaseHandler.updateStudentData(students);
 	        System.out.println("Student has been added.\n");

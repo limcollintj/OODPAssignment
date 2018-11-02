@@ -18,7 +18,9 @@ public class AddMethods {
 			String name = Scan.readString();
 			System.out.println("Enter student's matric number: ");
 			String id = Scan.readString();
-			new StudentManager().addNewStudent(name, id);
+			StudentManager sm = new StudentManager();
+			sm.addNewStudent(name, id);
+			sm.printStudents();
 		} catch(Exception e) {
 			System.out.print(e);
 		}
@@ -31,12 +33,16 @@ public class AddMethods {
 			// Add course
 			System.out.println("Enter course ID: ");
 			String courseID = Scan.readString();
+			//TODO: Do check here
+			System.out.print("Enter course name: ");
+			String courseName = Scan.readString();
 			System.out.println("Enter Maximum Vacancy for the course");
 			int maxVacancy = Scan.readInteger();
 
 			// addProfs() returns an arraylist of profs
 			cm.addNewCourse(courseID, addProfs());
 			cm.updateMaxVacancy(courseID, maxVacancy);
+			cm.updateCourseName(courseID, courseName);
 
 
 			System.out.print("Enter Lecture ID: ");
@@ -75,9 +81,10 @@ public class AddMethods {
 
 	private static ArrayList<String> addProfs() {
 		try {
-			System.out.println("Enter Prof Names for the course, enter -1 after the last entry");
-
 			ArrayList<String> profNames = new ArrayList<String>(); 
+			System.out.print("ENter the name of main professor: ");
+			profNames.add(Scan.readString());
+			System.out.println("Enter Prof Names for the course, enter -1 after the last entry");
 			String profName;
 			do {
 				System.out.println("Enter Prof Name");
@@ -97,16 +104,15 @@ public class AddMethods {
 	}
 
 	public static void addStudentToLesson() throws Exception {
-		System.out.print("Enter Student ID");
+		System.out.print("Enter Student ID: ");
     	String studentID = Scan.readString(); 
-    	System.out.println("Enter Course ID");
+    	System.out.print("Enter Course ID: ");
     	String courseID = Scan.readString();
-    	System.out.println("Enter lesson ID");
+    	System.out.print("Enter lesson ID: ");
     	String lessonID = Scan.readString();
-    	
 		
 		try {
-			new CourseManager().addStudentToLesson(studentID, courseID, lessonID);
+			new StudentManager().registerStudentToLesson(studentID, courseID, lessonID);
 		}catch(Exception e) {
 			System.out.print(e);
 		}

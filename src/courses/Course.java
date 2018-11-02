@@ -32,7 +32,7 @@ public class Course implements Serializable {
     private int exWeightage, cwWeightage, asWeightage, cpWeightage;
     private ArrayList<String> registeredStudentIDs;
     private ArrayList<Lessons> lessons;
-    private ArrayList<String> profNames;
+    private ArrayList<String> profNames;	// first prof is main prof
     
     public Course(String ID){
     	this.courseID = ID;
@@ -173,11 +173,16 @@ public class Course implements Serializable {
     
     // printing course information 
     public void printCourseInfo() {
-    	System.out.print("CourseID: "+ courseID + "," + "Vacancy: "+ vacancy + ", ProfNames: ");
-    		for(String name : profNames) {
-        		System.out.print(name + ",");
+    	System.out.print("Course ID: "+ courseID + "," + "\nVacancy: "+ vacancy + ", "
+    			+ "\nMain Professor: " + this.profNames.get(0)
+    			+ "\nProfessor names: ");
+    	
+    		for(int i = 1; i < this.profNames.size(); i++) {
+        		System.out.print(this.profNames.get(i) + ",");
         	}
-    
+    		if(!(this.profNames.size() < 2)) {
+    			System.out.print("None");
+    		}
     	System.out.print("\n");
     }
     

@@ -117,7 +117,10 @@ public class CourseManager{
 		sCPW.setWeightage(courseID, weightage);
 	}
 	
-	
+	//Set course name
+	public void updateCourseName(String courseID, String name) throws Exception{
+		update.updateCourseName(courseID, name);
+	}
 	
 	
     // Add lessons
@@ -163,11 +166,4 @@ public class CourseManager{
     	reset.reset();
     }
 
-    
-	public void addStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
-		lm.addStudentToLesson(studentID, courseID, lessonID);
-		
-	}
-
-	
 }
