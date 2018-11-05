@@ -10,13 +10,13 @@ import results.ResultManager;
 import util.DatabaseHandler;
 import util.Scan;
 
+
 public class UniApp {
 
 	// TODO: Handle All Exceptions
 	
-    public static void main(String[] args) throws Exception {
-      
-        int choice,choice1;
+    public static void main(String[] args) throws Exception {    	
+        int choice;
 
         do {
         	

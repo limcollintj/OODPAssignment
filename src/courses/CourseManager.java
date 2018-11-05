@@ -31,9 +31,6 @@ import results.ResultManager;
  * 
  * @author LFM
  */
-// Problems: When you add Students into a course, only the course copy gets updated(Vacancy Reduces). The student copy remains the same. : Work around is to Store a reference in the student copy. 
-//TODO: Decide whether we are using id or the object itself
-
 
 public class CourseManager{
 	private CRUDByID crudByID;
@@ -78,9 +75,6 @@ public class CourseManager{
     	
 	}
 
-	
-	
-
 	// Prints the students registered in a course
     public void printStudentsRegisteredInCourse(String courseID) throws Exception {
     	print.printByID(courseID);
@@ -104,10 +98,6 @@ public class CourseManager{
 	 }
 	 
 	 
-	 
-	
-	 
-	 
 	 // Set Course Work Weightage
 	public void setCourseworkWeightage(String courseID, int weightage) throws Exception{
 		sCWW.setWeightage(courseID, weightage);
@@ -122,6 +112,21 @@ public class CourseManager{
 		update.updateCourseName(courseID, name);
 	}
 	
+	// get Course 
+    public Course getCourse(String id) throws Exception {
+		return (Course) crudByID.readByID(id); 	
+    }
+    
+   // Prints all courses in the Database
+    public void printCourses() throws Exception {
+    	reset.printAll();
+    }
+    
+    // Puts a new arraylise of courses in courses 
+    public void resetCourses() throws Exception {
+    	reset.reset();
+    }
+
 	
     // Add lessons
    public void addLesson(String courseID, int option, String lessonID, int vacancy) throws Exception {
@@ -136,34 +141,35 @@ public class CourseManager{
 	 public void printLesson(String courseID, String lessonID) throws Exception {
 			lm.printLesson(courseID, lessonID);
 		}
+	 
+	 public boolean hasTutorial(Course course) {
+		 return lm.getTutorials(course) != null;
+	 }
+	 
+	 public ArrayList<Tutorial> getTutorials(Course course){
+		 return lm.getTutorials(course);
+	 }
+	 
+	 public void printTutorials(Course course) {
+		 ArrayList<Tutorial> tutorials = getTutorials(course);
+		 for(Tutorial tutorial : tutorials) {
+			 tutorial.printInfo();
+		 }
+	 }
+	 
+	 public boolean hasLab(Course course) {
+		 return lm.getLabs(course) != null;
+	 }
+	 
+	 public ArrayList<Lab> getLabs(Course course){
+		 return lm.getLabs(course);
+	 }
+	 
+	 public void printLabs(Course course) {
+		 ArrayList<Lab> labs = getLabs(course);
+		 for(Lab lab : labs) {
+			 lab.printInfo();
+		 }
+	 }
     
-//    // Remove lessons
-//    public void removeLessons(String lessonID) {
-//    	for(Lessons temp : lessons) {
-//    		if(temp.getLessonID() == lessonID) {
-//    			lessons.remove(temp);
-//    		}
-//    	}
-//    }
-    
-    
-    // get Course 
-    public Course getCourse(String id) throws Exception {
-		return (Course) crudByID.readByID(id); 
-    	
-    }
-    
-    
-    
-    
-   // Prints all courses in the Database
-    public void printCourses() throws Exception {
-    	reset.printAll();
-    }
-    
-    // Puts a new arraylise of courses in courses 
-    public void resetCourses() throws Exception {
-    	reset.reset();
-    }
-
 }

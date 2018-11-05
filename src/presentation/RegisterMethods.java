@@ -21,9 +21,31 @@ public class RegisterMethods {
 		String courseID = Scan.readString(); 
 		Course course = new CourseManager().getCourse(courseID);
 		
-		new StudentManager().registerCourse(studentID, course);
+		StudentManager sm = new StudentManager();
+		sm.registerCourse(studentID, course);
 		// Results will be automatically added in registerStudent
-		new CourseManager().registerStudent(student, courseID);
+		CourseManager cm = new CourseManager();
+		cm.registerStudent(student, courseID);
+		
+		String labID;
+		if(cm.hasLab(course)) {
+			do {
+			System.out.println("Please register student for lab. ");
+			cm.printLabs(course);
+			System.out.print("Enter lab ID: ");
+			labID = Scan.readString();
+			}while(!sm.registerStudentToLesson(studentID, courseID, labID));
+		}
+		
+		String tutorialID;
+		if(cm.hasTutorial(course)) {
+			do {
+			System.out.println("Please register student for tutorial. ");
+			cm.printTutorials(course);
+			System.out.print("Enter tutorial ID: ");
+			tutorialID = Scan.readString();
+			}while(sm.registerStudentToLesson(studentID, courseID, tutorialID));
+		}
 		// Register for lecture
 		// Call function which prints out ID and vacancies for tutorial and lab 
 		// addlesson 

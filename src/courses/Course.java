@@ -41,7 +41,7 @@ public class Course implements Serializable {
         this.haveSubComponents = false;
         this.exWeightage = 100;
         this.cwWeightage = this.asWeightage = 0;
-        this.cpWeightage = 100;
+        this.cpWeightage = 0;
         this.lessons = new ArrayList<Lessons>();
         this.registeredStudentIDs = new ArrayList<String>();
         this.profNames = new ArrayList<String>();

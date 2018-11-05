@@ -1,6 +1,8 @@
 package results;
 
 import util.Grades;
+import courses.Course;
+import functionalityClasses.CourseCRUDByID;
 
 public class Result extends Score{
     private final String COURSE_ID;
@@ -20,14 +22,20 @@ public class Result extends Score{
     	return this.STUDENT_ID;
     }
     
-    public void printInfo() {
+    public void printInfo() throws Exception{
+    	Course course = new CourseCRUDByID().readByID(COURSE_ID);
+    	
     	System.out.println("Course ID: " + this.getCourseID() + 
-				"\nOverall score: " + this.getMark() + "%"+
-				"\n\tExam score:        " + this.getSubComponent().get(0).getMark()+ "%"+
-				"\n\tCoursework score: " + this.getSubComponent().get(1).getMark()+ "%"+
-				"\n\t\tAssignment score:          " + this.getSubComponent().get(1).getSubComponent().get(0).getMark()+ "%"+
-				"\n\t\tClass Participation score: " + this.getSubComponent().get(1).getSubComponent().get(1).getMark() + "%"+
-				"\n Overall grade:" + Grades.calGrades(this.getMark())
+				"\nOverall score: " + (this.getMark() == 0 ? "Score unavailable.":(this.getMark() + "%")) + 
+				(course.getEXWeightage() != 0 ? 
+				("\n\tExam score:        " + (this.getSubComponent().get(0).getMark() == 0 ? "Score unavailable.":(this.getSubComponent().get(0).getMark() + "%"))) : "")+
+				(course.getCWWeightage() != 0 ?
+				("\n\tCoursework score: " + (this.getSubComponent().get(1).getMark() == 0 ? "Score unavailable.":(this.getSubComponent().get(1).getMark()+ "%"))): "")+
+				(course.getASWeightage() != 0 ?
+				("\n\t\tAssignment score:          " + (this.getSubComponent().get(1).getSubComponent().get(0).getMark() == 0 ? "Score unavailable":(this.getSubComponent().get(1).getSubComponent().get(0).getMark() + "%"))):"")+
+				(course.getCPWeightage() != 0 ?
+				("\n\t\tClass Participation score: " + (this.getSubComponent().get(1).getSubComponent().get(1).getMark() == 0 ? "Score unavailable":(this.getSubComponent().get(1).getSubComponent().get(1).getMark() + "%"))):"")+
+				"\n Overall grade:" + (this.getMark() == 0 ? "Grade unavailable.":Grades.calGrades(this.getMark()))
     			);
     	
     }

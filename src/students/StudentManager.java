@@ -40,10 +40,12 @@ public class StudentManager{
     }
     
     //Registers a student to lesson
-	public void registerStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
-		new LessonManager().addStudentToLesson(studentID, courseID, lessonID);
+	public boolean registerStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
+		return new LessonManager().addStudentToLesson(studentID, courseID, lessonID);
 	}
     
+	
+	
     public Student getStudent(String id) throws Exception {
 		return (Student) crudID.readByID(id);
     }

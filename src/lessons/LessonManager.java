@@ -80,7 +80,7 @@ public class LessonManager {
 	}
 
 
-	public void addStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
+	public boolean addStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
 		ArrayList<Course> courses = (ArrayList<Course>) DatabaseHandler.getCourseData(); 
 		
 		for(Course course : courses) {
@@ -91,12 +91,51 @@ public class LessonManager {
 							throw new Exception("Student not in course");
 						}
 						lesson.addStudent(studentID);
+						return true;
 					}
 				}
 			}}
 		
 		DatabaseHandler.updateCourseData(courses);
 		
+	}
+	
+	
+	public boolean studentRegisteredInLesson(String studentID, Lessons lesson) {
+		for(String student : lesson.getstudentIDs()) {
+			if(student.equals(studentID)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public ArrayList<Tutorial> getTutorials(Course course){
+		ArrayList<Tutorial> tutorials = new ArrayList<Tutorial>();
+		for(Lessons lesson : course.getLessons()) {
+			if(lesson instanceof Tutorial) {
+				tutorials.add((Tutorial)lesson);
+			}
+		}
+		if(!tutorials.isEmpty()) {
+			return tutorials;
+		}else {
+			return null;
+		}
+	}
+	
+	public ArrayList<Lab> getLabs(Course course){
+		ArrayList<Lab> labs = new ArrayList<Lab>();
+		for(Lessons lesson : course.getLessons()) {
+			if(lesson instanceof Lab) {
+				labs.add((Lab)lesson);
+			}
+		}
+		if(!labs.isEmpty()) {
+			return labs;
+		}else {
+			return null;
+		}
 	}
 	
 	private boolean studentInCourse(Course course, String studentID) {

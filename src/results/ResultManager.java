@@ -98,11 +98,11 @@ public class ResultManager {
 			Result result = this.results.get(index);
 			double cwComponent = course.getASWeightage()*getASResult(result)/100 
 					+ course.getCPWeightage()*getCPResult(result)/100;
+			setCWResult(index, cwComponent);
 			double overall = course.getEXWeightage()*getEXResult(result)/100
 					+ course.getCWWeightage()*getCWResult(result)/100;
 			
 			// TODO: check whether student is registered in course
-			setCWResult(index, cwComponent);
 			setOverallResult(index, overall);
 			
 			DatabaseHandler.updateResultData(this.results);
@@ -158,8 +158,5 @@ public class ResultManager {
 	
 	private void setOverallResult(int index, double mark) {
 		this.results.get(index).setMark(mark);
-	}
-	
-
-	
+	}	
 }

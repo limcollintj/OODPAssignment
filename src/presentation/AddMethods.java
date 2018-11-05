@@ -46,16 +46,98 @@ public class AddMethods {
 
 
 			System.out.print("Enter Lecture ID: ");
-			String lessonID = Scan.readString();
-			System.out.print("Enter lecture vacancy: ");
-			int vacancy = Scan.readInteger();
-			new CourseManager().addLesson(courseID, 1, lessonID, vacancy);
+			String lectureID = Scan.readString();
+			new CourseManager().addLesson(courseID, 1, lectureID, maxVacancy);
 
-			System.out.println("Any other Lessons? Y/N");
-			while(Scan.readString().toLowerCase().charAt(0) == 'y') {
-				addLesson(courseID);
-				System.out.println("Any other Lessons? Y/N");
+			int sum;
+			ArrayList<String> tutorialIDs = new ArrayList<String>();
+			System.out.println("Do you want to add tutorials? Y/N");
+			if(Scan.readString().toLowerCase().charAt(0) == 'y') {
+				do {
+					sum = 0;
+					ArrayList<Integer> tutorialVacancies = new ArrayList<Integer>();
+					tutorialIDs = new ArrayList<String>();
+					String tutorialID; int tutorialVacancy; 
+					do {
+						boolean validLesson = true;
+						System.out.print("Enter tutorial ID: ");
+						tutorialID = Scan.readString();
+						for(String id : tutorialIDs) {
+							if(id.equals(tutorialID)) {
+								validLesson = false;
+								break;
+							}
+						}
+						if(tutorialID.equals(lectureID)) {
+							validLesson = false;
+						}
+						if(validLesson) {
+							System.out.print("Enter tutorial vacancy: ");
+							tutorialVacancy = Scan.readInteger();
+							tutorialIDs.add(tutorialID);
+							tutorialVacancies.add(tutorialVacancy);
+							sum += tutorialVacancy;
+							System.out.println("Total Lab Vacancies: " + sum
+									+ "\nCourse Vacancy: " + maxVacancy);
+						} else {
+							System.out.println("ID already exists.");
+						}
+						System.out.println("Any other tutorials? Y/N");
+					} while(Scan.readString().toLowerCase().charAt(0) == 'y');
+					if(sum != maxVacancy) {
+						System.out.println("Total tutorial vacancy must be equals to course vacancy!"
+								+ "\nPlease try again.");
+					}
+				} while(sum != maxVacancy);
 			}
+			
+			System.out.println("Do you want to add lab? Y/N");
+			if(Scan.readString().toLowerCase().charAt(0) == 'y') {
+				do {
+					sum = 0;
+					ArrayList<Integer> labVacancies = new ArrayList<Integer>();
+					ArrayList<String> labIDs = new ArrayList<String>();
+					String labID; int labVacancy; 
+					do {
+						boolean validLesson = true;
+						System.out.print("Enter lab ID: ");
+						labID = Scan.readString();
+						for(String id : labIDs) {
+							if(id.equals(labID)) {
+								validLesson = false;
+								break;
+							}
+						}
+						for(String id : tutorialIDs) {
+							if(id.equals(labID)) {
+								validLesson = false;
+								break;
+							}
+						}
+						if(labID.equals(lectureID)) {
+							validLesson = false;
+						}
+						if(validLesson) {
+							System.out.print("Enter lab vacancy: ");
+							labVacancy = Scan.readInteger();
+							labIDs.add(labID);
+							labVacancies.add(labVacancy);
+							sum += labVacancy;
+							System.out.println("Total Lab Vacancies: " + sum
+									+ "\nCourse Vacancy: " + maxVacancy);
+						}
+						else {
+							System.out.println("ID already exists. ");
+						}
+						System.out.println("Any other Lessons? Y/N");
+					} while(Scan.readString().toLowerCase().charAt(0) == 'y');
+					if(sum != maxVacancy) {
+						System.out.println("Total lab vacancy must be equals to course vacancy!"
+								+ "\nPlease try again.");
+					}
+				} while(sum != maxVacancy);
+			}
+			
 		}catch(Exception e) {
 			System.out.print(e);
 		}
