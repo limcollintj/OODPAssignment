@@ -1,8 +1,10 @@
 package presentation;
 
 import courses.CourseManager;
+import courses.Course;
 import results.ResultManager;
 import util.Scan;
+import functionalityClasses.CourseCRUDByID;
 
 public class MarksMethods {
 
@@ -43,15 +45,30 @@ public class MarksMethods {
 			String courseID = Scan.readString();
 			System.out.print("Enter Student ID: ");
 			String studentID = Scan.readString();
+			Course course = new CourseCRUDByID().readByID(courseID);
 
-			System.out.print("Enter assignment marks: ");
-			double assignmentMarks = Scan.readDouble();
-
-			rm.updateResult(courseID, studentID, assignmentMarks, 2);
-			System.out.print("\nEnter class participation marks: ");
-
-			double classPartMarks = Scan.readDouble();
-			rm.updateResult(courseID, studentID, classPartMarks, 3);
+			if(course.getEXWeightage() != 0) {
+				System.out.print("Enter examination marks: ");
+				double examinationMarks = Scan.readDouble();
+				rm.updateResult(courseID, studentID, examinationMarks, 1);
+			}
+			
+			if(course.getCWWeightage() != 0) {
+				System.out.print("Enter coursework marks: ");
+				double courseworkMarks = Scan.readDouble();
+				rm.updateResult(courseID, studentID, courseworkMarks, 2);
+			}
+			
+			if(course.getASWeightage() != 0) {
+				System.out.print("Enter assignment marks: ");
+				double assignmentMarks = Scan.readDouble();
+				rm.updateResult(courseID, studentID, assignmentMarks, 3);
+			}
+			if(course.getCPWeightage() != 0) {
+				System.out.print("\nEnter class participation marks: ");
+				double classPartMarks = Scan.readDouble();
+				rm.updateResult(courseID, studentID, classPartMarks, 4);
+			}
 		}catch(Exception e) {
 			System.out.println(e);
 		}
