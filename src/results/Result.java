@@ -1,6 +1,7 @@
 package results;
 
-import util.Grades;
+import util.GradeCalculator;
+
 
 public class Result extends Score{
     private final String COURSE_ID;
@@ -27,7 +28,7 @@ public class Result extends Score{
 				"\n\tCoursework score: " + this.getSubComponent().get(1).getMark()+ "%"+
 				"\n\t\tAssignment score:          " + this.getSubComponent().get(1).getSubComponent().get(0).getMark()+ "%"+
 				"\n\t\tClass Participation score: " + this.getSubComponent().get(1).getSubComponent().get(1).getMark() + "%"+
-				"\n Overall grade:" + Grades.calGrades(this.getMark())
+				"\n Overall grade:" + GradeCalculator.calGrades(this.getMark()) + "\n"
     			);
     	
     }

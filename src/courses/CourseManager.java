@@ -154,8 +154,6 @@ public class CourseManager{
     }
     
     
-    
-    
    // Prints all courses in the Database
     public void printCourses() throws Exception {
     	reset.printAll();

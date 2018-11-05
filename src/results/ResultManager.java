@@ -6,6 +6,7 @@ import functionalityClasses.CRUDByID;
 import functionalityClasses.CourseCRUDByID;
 import util.DataBaseManager;
 import util.DatabaseHandler;
+import util.GradeCalculator;
 import courses.*;
 
 public class ResultManager {
@@ -64,12 +65,16 @@ public class ResultManager {
 	public void printTranscript(String studentID) throws Exception{
 		System.out.println("----- Student Transcript ------"
 				+ "\nStudent ID: " + studentID);
+		ArrayList<String> gradeList = new ArrayList<String>();
 		for(Result result : this.results) {
 			if(result.getStudentID().equals(studentID)) {
 				updateAllResult(result.getCourseID(), studentID);
 				result.printInfo();
+				gradeList.add(GradeCalculator.calGrades(result.getMark()));
 			}
 		}
+		
+		System.out.println("Your Overall GPA is "+ GradeCalculator.calGPA(gradeList));
 	}
 	
 	public void printCourseStatistics(String courseID) throws Exception{
