@@ -1,13 +1,8 @@
 package results;
 
-<<<<<<< HEAD
-import util.Grades;
 import courses.Course;
 import functionalityClasses.CourseCRUDByID;
-=======
 import util.GradeCalculator;
-
->>>>>>> 57be7595cd88aa8aca8c249d49019bfc58fc671b
 
 public class Result extends Score{
     private final String COURSE_ID;
@@ -40,7 +35,7 @@ public class Result extends Score{
 				("\n\t\tAssignment score:          " + (this.getSubComponent().get(1).getSubComponent().get(0).getMark() == 0 ? "Score unavailable":(this.getSubComponent().get(1).getSubComponent().get(0).getMark() + "%"))):"")+
 				(course.getCPWeightage() != 0 ?
 				("\n\t\tClass Participation score: " + (this.getSubComponent().get(1).getSubComponent().get(1).getMark() == 0 ? "Score unavailable":(this.getSubComponent().get(1).getSubComponent().get(1).getMark() + "%"))):"")+
-				"\n Overall grade:" + (this.getMark() == 0 ? "Grade unavailable.":Grades.calGrades(this.getMark()))
+				"\n Overall grade:" + (this.getMark() == 0 ? "Grade unavailable.":GradeCalculator.calGrades(this.getMark()))
     			);
     	
     }

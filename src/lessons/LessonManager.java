@@ -91,12 +91,13 @@ public class LessonManager {
 							throw new Exception("Student not in course");
 						}
 						lesson.addStudent(studentID);
+						DatabaseHandler.updateCourseData(courses);
 						return true;
 					}
 				}
-			}}
-		
-		DatabaseHandler.updateCourseData(courses);
+			}
+		}
+		return false;
 		
 	}
 	
