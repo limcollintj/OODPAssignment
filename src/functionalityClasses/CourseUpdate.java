@@ -8,6 +8,7 @@ import util.DatabaseHandler;
 
 public class CourseUpdate {
 	
+	
 	public void addProfNames(ArrayList<String> profNames, String courseID) throws Exception {
 		ArrayList<Course> courses = (ArrayList<Course>) DatabaseHandler.getCourseData(); 
 		for (Course course : courses) {

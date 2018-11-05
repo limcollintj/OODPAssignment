@@ -1,8 +1,13 @@
 package results;
 
+<<<<<<< HEAD
 import util.Grades;
 import courses.Course;
 import functionalityClasses.CourseCRUDByID;
+=======
+import util.GradeCalculator;
+
+>>>>>>> 57be7595cd88aa8aca8c249d49019bfc58fc671b
 
 public class Result extends Score{
     private final String COURSE_ID;

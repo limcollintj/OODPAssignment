@@ -2,12 +2,12 @@ package util;
 
 import java.util.ArrayList;
 
-public class Grades {
-    public static double calGPA(ArrayList[] gradeList){
+public class GradeCalculator {
+    public static double calGPA(ArrayList<String> gradeList){
         double totalGPA=0;
         double GPA=0;
-        for(int i = 0; i < gradeList.length ; i++){
-            switch (gradeList[i].toString()){
+        for(int i = 0; i < gradeList.size() ; i++){
+            switch (gradeList.get(i).toString()){
                 case "A+":
                 case "A":
                     GPA = 5;
@@ -36,7 +36,7 @@ public class Grades {
             }
             totalGPA += GPA;
         }
-        GPA = totalGPA/(3*gradeList.length);
+        GPA = totalGPA/(gradeList.size());
         return GPA;
     }
     

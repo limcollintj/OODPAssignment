@@ -48,6 +48,8 @@ public class PrintMethods {
 			System.out.print(e);
 		}
 	}
+	
+	
 
 
 	// Prints vacancy in a course
