@@ -2,7 +2,7 @@ package lessons;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Lessons implements Serializable{
+public abstract class Lessons implements Serializable {
 	protected ArrayList<String> studentIDs;
 	protected String profName;
 	protected int vacancy;
