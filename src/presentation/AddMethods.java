@@ -53,9 +53,9 @@ public class AddMethods {
 			ArrayList<String> tutorialIDs = new ArrayList<String>();
 			System.out.println("Do you want to add tutorials? Y/N");
 			if(Scan.readString().toLowerCase().charAt(0) == 'y') {
+				ArrayList<Integer> tutorialVacancies = new ArrayList<Integer>();
 				do {
 					sum = 0;
-					ArrayList<Integer> tutorialVacancies = new ArrayList<Integer>();
 					tutorialIDs = new ArrayList<String>();
 					String tutorialID; int tutorialVacancy; 
 					do {
@@ -89,14 +89,18 @@ public class AddMethods {
 								+ "\nPlease try again.");
 					}
 				} while(sum != maxVacancy);
+				//Adding tutorials
+				for(int i = 0; i < tutorialIDs.size(); i++) {
+					cm.addLesson(courseID, 3, tutorialIDs.get(i), tutorialVacancies.get(i));
+				}
 			}
 			
 			System.out.println("Do you want to add lab? Y/N");
 			if(Scan.readString().toLowerCase().charAt(0) == 'y') {
+				ArrayList<Integer> labVacancies = new ArrayList<Integer>();
+				ArrayList<String> labIDs = new ArrayList<String>();
 				do {
 					sum = 0;
-					ArrayList<Integer> labVacancies = new ArrayList<Integer>();
-					ArrayList<String> labIDs = new ArrayList<String>();
 					String labID; int labVacancy; 
 					do {
 						boolean validLesson = true;
@@ -129,15 +133,17 @@ public class AddMethods {
 						else {
 							System.out.println("ID already exists. ");
 						}
-						System.out.println("Any other Lessons? Y/N");
+						System.out.println("Any other labs? Y/N");
 					} while(Scan.readString().toLowerCase().charAt(0) == 'y');
 					if(sum != maxVacancy) {
 						System.out.println("Total lab vacancy must be equals to course vacancy!"
 								+ "\nPlease try again.");
 					}
 				} while(sum != maxVacancy);
-			}
-			
+				for(int j = 0; j < labIDs.size(); j++) {
+					cm.addLesson(courseID, 2, labIDs.get(j), labVacancies.get(j));
+				}
+			}	
 		}catch(Exception e) {
 			System.out.print(e);
 		}

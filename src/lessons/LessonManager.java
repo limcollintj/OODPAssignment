@@ -10,6 +10,7 @@ public class LessonManager {
 	
 	// Adds new lesson to course 
 	// Updates ArrayList<Lesson> in Course 
+	//Option 1: lecture, 2: lab, 3:tutorial
 	public void addLesson(String courseID, int option, String lessonID, int vacancy) throws Exception{
 		ArrayList<Course> courses = (ArrayList<Course>)DatabaseHandler.getCourseData();
 	

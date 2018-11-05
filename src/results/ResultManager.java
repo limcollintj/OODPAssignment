@@ -39,7 +39,7 @@ public class ResultManager {
 		DatabaseHandler.updateResultData(this.results);
 	}
 	
-	//Option: 1:exam, 2:assignment, 3: class part
+	//Option: 1:exam, 2:coursework,3:assignment, 4: class part
 	public void updateResult(String courseID, String studentID, double mark, int option) throws Exception{
 		int index = getResultIndex(courseID, studentID);
 		if(option >3 | option < 1) {
@@ -49,10 +49,12 @@ public class ResultManager {
 		case 1:
 			setEXResult(index, mark);
 			break;
-		case 2:	//first .get(1) returns coursework arraylist
+		case 2:
+			setCWResult(index, mark);
+		case 3:	//first .get(1) returns coursework arraylist
 			setASResult(index, mark);
 			break;
-		case 3:
+		case 4:
 			setCPResult(index, mark);
 			break;
 		}

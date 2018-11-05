@@ -44,7 +44,7 @@ public class RegisterMethods {
 			cm.printTutorials(course);
 			System.out.print("Enter tutorial ID: ");
 			tutorialID = Scan.readString();
-			}while(sm.registerStudentToLesson(studentID, courseID, tutorialID));
+			}while(!sm.registerStudentToLesson(studentID, courseID, tutorialID));
 		}
 		// Register for lecture
 		// Call function which prints out ID and vacancies for tutorial and lab 
