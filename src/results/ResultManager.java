@@ -81,10 +81,17 @@ public class ResultManager {
 		
 		Course course = (Course) courseCRUD.readByID(courseID);
 		double sum = 0;
+		double highest =0; 
+		double lowest = 100; 
 		int count = 0;
 		for(Result result : this.results) {
 			if(result.getCourseID().equals(courseID)) {
 				sum += result.getMark();
+				if(result.getMark()>highest)
+					highest = result.getMark(); 
+				if(result.getMark()< lowest ) {
+					lowest = result.getMark();
+				}
 				count++;
 			}
 		}
@@ -93,7 +100,9 @@ public class ResultManager {
 				+ "\nCourse Name " + course.getCourseName() 
 				+ "\nCourse ID: " + courseID
 				+ "\nNumber of students: " + count
-				+ "\nAverage Score: " + sum/count);
+				+ "\nAverage Score: " + sum/count
+				+ "\n Highest Score: "+  highest
+				+ "\n Lowest Score:"+ lowest);
 	}
 	
 	private void updateAllResult(String courseID, String studentID) throws Exception{
