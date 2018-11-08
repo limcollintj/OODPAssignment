@@ -6,6 +6,7 @@ import functionalityClasses.CRUDByID;
 import functionalityClasses.CourseCRUDByID;
 import util.DataBaseManager;
 import util.DatabaseHandler;
+import util.GradeCalculator;
 import courses.*;
 
 public class ResultManager {
@@ -38,7 +39,7 @@ public class ResultManager {
 		DatabaseHandler.updateResultData(this.results);
 	}
 	
-	//Option: 1:exam, 2:assignment, 3: class part
+	//Option: 1:exam, 2:coursework,3:assignment, 4: class part
 	public void updateResult(String courseID, String studentID, double mark, int option) throws Exception{
 		int index = getResultIndex(courseID, studentID);
 		if(option >3 | option < 1) {
@@ -48,10 +49,12 @@ public class ResultManager {
 		case 1:
 			setEXResult(index, mark);
 			break;
-		case 2:	//first .get(1) returns coursework arraylist
+		case 2:
+			setCWResult(index, mark);
+		case 3:	//first .get(1) returns coursework arraylist
 			setASResult(index, mark);
 			break;
-		case 3:
+		case 4:
 			setCPResult(index, mark);
 			break;
 		}
@@ -64,17 +67,16 @@ public class ResultManager {
 	public void printTranscript(String studentID) throws Exception{
 		System.out.println("----- Student Transcript ------"
 				+ "\nStudent ID: " + studentID);
+		ArrayList<String> gradeList = new ArrayList<String>();
 		for(Result result : this.results) {
 			if(result.getStudentID().equals(studentID)) {
 				updateAllResult(result.getCourseID(), studentID);
-				System.out.println("Course ID: " + result.getCourseID() + 
-						"\nOverall score: " + getOverallResult(result) + 
-						"\nExam score: " + getEXResult(result) + 
-						"\nCoursework score: " + getCWResult(result) + 
-						"\nAssignment score: " + getASResult(result) + 
-						"\nClass Participation score: " + getCPResult(result));
+				result.printInfo();
+				gradeList.add(GradeCalculator.calGrades(result.getMark()));
 			}
 		}
+		
+		System.out.println("Your Overall GPA is "+ GradeCalculator.calGPA(gradeList));
 	}
 	
 	public void printCourseStatistics(String courseID) throws Exception{
@@ -103,9 +105,11 @@ public class ResultManager {
 			Result result = this.results.get(index);
 			double cwComponent = course.getASWeightage()*getASResult(result)/100 
 					+ course.getCPWeightage()*getCPResult(result)/100;
+			setCWResult(index, cwComponent);
 			double overall = course.getEXWeightage()*getEXResult(result)/100
 					+ course.getCWWeightage()*getCWResult(result)/100;
-			setCWResult(index, cwComponent);
+			
+			// TODO: check whether student is registered in course
 			setOverallResult(index, overall);
 			
 			DatabaseHandler.updateResultData(this.results);
@@ -161,8 +165,5 @@ public class ResultManager {
 	
 	private void setOverallResult(int index, double mark) {
 		this.results.get(index).setMark(mark);
-	}
-	
-
-	
+	}	
 }

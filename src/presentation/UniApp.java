@@ -1,6 +1,7 @@
 package presentation;
 import util.Scan;
 
+
 public class UniApp {
 
 	// TODO: Handle All Exceptions
@@ -8,11 +9,12 @@ public class UniApp {
     public static void main(String[] args) throws Exception {
         int choice;
         boolean run;
+
         do {
                 showMenu();
                 choice = Scan.readInteger();
-                run = mainSwitch(choice);
-        } while (choice != 3 && run);
+                mainSwitch(choice);
+        } while (choice != 3);
     }
 /*
     public static void switchCase(int a) throws Exception {
@@ -123,9 +125,9 @@ public class UniApp {
 
     }
 */
-    public static boolean mainSwitch(int a) throws Exception{
+    public static void mainSwitch(int a) throws Exception{
         int choice;
-//        boolean run = true;
+
 
         switch(a) {
             case 1:
@@ -134,7 +136,7 @@ public class UniApp {
                     choice = Scan.readInteger();
                     studentSwitch(choice);
                     if (choice == 10) {
-                        return false;
+                        break;
                     }
                 } while (choice != 9);
                 break;
@@ -145,19 +147,19 @@ public class UniApp {
                     choice = Scan.readInteger();
                     courseSwitch(choice);
                     if (choice == 11) {
-                        return false;
+                       break;
                     }
                 } while (choice != 10);
                 break;
 
             case 3:
                 System.out.println("Program is terminating...");
-                return false;
+                break;
 
             default:
                 System.out.println("Please enter a valid integer from 1 - 3.");
         }
-        return true;
+       
     }
 
     public static void studentSwitch(int a) throws Exception {
@@ -244,12 +246,27 @@ public class UniApp {
             case 9:
                 ResetMethods.resetCourses();
                 break;
-
+            
             case 10:
+            	int choice;
+            	do {
+                showLessonsMenu(); 
+                choice = Scan.readInteger();
+                
+                lessonSwitch(choice);
+                if (choice == 6) {
+                    break; 
+                }
+            	} while (choice != 10);
+            	showLessonsMenu(); 
+            	break;
+            	
+            	
+            case 11:
                 System.out.println("Returning to main menu...");
                 break;
 
-            case 11:
+            case 12:
                 System.out.println("Program is terminating...");
                 break;
 
@@ -257,8 +274,53 @@ public class UniApp {
                 System.out.println("Enter a valid integer from 1-11.");
         }
     }
+    
+    private static void lessonSwitch(int choice) throws Exception {
+    	 switch(choice) {
+         case 1:
+        	// Add Lesson
+         	System.out.print("----- Add lesson -----"
+         			+ "\nEnter course ID: ");
+         	String courseID = Scan.readString();
+         	AddMethods.addLesson(courseID);
+         	break;
+           
 
-    public static void showMenu() {
+         case 2:
+             // Register Student to lesson 
+        	 AddMethods.addStudentToLesson();
+             break;
+
+         case 3:
+        	 
+         
+        	// Print all lessons
+         	System.out.print("----- Lesson Details -----"
+         			+ "\nEnter Course ID: ");
+         	courseID = Scan.readString();
+         	PrintMethods.printAllLessons(courseID);
+         	break;
+         
+             
+         case 4:
+             //Print Student Registered in a lesson 
+        	// Lessons Details 
+         	System.out.print("----- Lesson Details -----"
+         			+ "\nEnter Course ID: ");
+         	courseID = Scan.readString();
+         	
+         	System.out.println("Enter Lesson ID");
+         	String lessonID = Scan.readString();
+         	PrintMethods.printLesson(courseID, lessonID);
+         	
+         	break;
+         case 5:
+            
+             break;
+    	 }
+    }
+    
+    private static void showMenu() {
         System.out.print(
                 "State your Category:\n"+
                         "\t1. Student\n" +
@@ -267,7 +329,7 @@ public class UniApp {
         );
     }
     
-   public static void showStudentMenu() {
+   private static void showStudentMenu() {
         System.out.print(
                 "State your Action:\n" +
                         "\t1. Add Student\n" +
@@ -283,7 +345,7 @@ public class UniApp {
         );
    }
 
-    public static void showCourseMenu() {
+    private static void showCourseMenu() {
         System.out.print(
                 "State your Action:\n" +
                         "\t1. Add Course\n" +
@@ -295,9 +357,22 @@ public class UniApp {
                         "\t7. Print Course Statistics\n" +
                         "\t8. Print all courses\n" +
                         "\t9. Reset all courses\n" +
-                        "\t10. Back\n" +
-                        "\t11. Exit\n"
+                        "\t10. Show Lessons Menu\n"+
+                        "\t11. Back\n" +
+                        "\t12. Exit\n"
         );
+    }
+    
+    private static void showLessonsMenu() {
+    	System.out.print(
+                "State your Action:\n" +
+                        "\t1. Add Lesson to course\n"+
+                        "\t2. Register Student to lesson\n"+
+                        "\t3. Print all Lessons for a course\n"+
+                        "\t4. Print students registered in a lesson\n"+
+                        "\t5. Back\n"+
+                        "\t6. Exit\n"
+        );	
     }
 
 }

@@ -51,4 +51,6 @@ public abstract class Score  implements Serializable{
 	public ArrayList<Score> getSubComponent() {
 		return this.subComponent;
 	}
+	
+	
 }

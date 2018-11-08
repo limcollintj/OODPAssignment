@@ -11,39 +11,37 @@ public abstract class Lessons implements Serializable {
 		this.studentIDs= new ArrayList<String>();
 	}
 	
-    void setprofName(String name) {
+    public void setprofName(String name) {
     	this.profName = name;
     }
     
-    void addStudent(String id) {
+    public void addStudent(String id) {
     	this.studentIDs.add(id);
     	this.vacancy--;
     	
     }
     
-    void setStudentIDs(ArrayList<String> studentIDs) {
+    public void setStudentIDs(ArrayList<String> studentIDs) {
     	this.studentIDs = studentIDs;
     }
     
-    void setVacancy(int vacancy) {
+    public void setVacancy(int vacancy) {
     	this.vacancy = vacancy;
     }
     
     abstract String getLessonID();
     
-    String getProfName() {
+    public String getProfName() {
     	return this.profName;
     } 
     
-    ArrayList<String> getstudentIDs() {
+    public ArrayList<String> getstudentIDs() {
     	return this.studentIDs;
     }
     
-    int getVacancy() {
+    public int getVacancy() {
     	return this.vacancy;
     }
     
     abstract void printInfo();
 }
-
-
