@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c3fc7f94-dca6-4469-ab47-cd8f568cccc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/AddMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/AddMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/MarksMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/MarksMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/PrintMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/PrintMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/RegisterMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/RegisterMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/ResetMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/ResetMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/UniApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/UniApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/students/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/students/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/students/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/students/StudentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/CourseDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/CourseDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/DataBaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DataBaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DatabaseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/GradeCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/GradeCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/ResultDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/ResultDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Scan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Scan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/StudentDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/StudentDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/inParse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/inParse.java" afterDir="false" />
-    </list>
+    <list default="true" id="c3fc7f94-dca6-4469-ab47-cd8f568cccc9" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,8 +137,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/util/StudentDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="165">
+              <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -259,7 +241,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541744485660" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541745583566" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -307,12 +289,12 @@
       <workItem from="1541431424453" duration="4053000" />
       <workItem from="1541521390507" duration="1249000" />
       <workItem from="1541669991016" duration="2432000" />
-      <workItem from="1541744332617" duration="945000" />
+      <workItem from="1541744332617" duration="1066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8679000" />
+    <option name="totallyTimeSpent" value="8800000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="24" width="1394" height="809" extended-state="0" />
@@ -522,8 +504,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/util/StudentDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        <state relative-caret-position="165">
+          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
         </state>
       </provider>
     </entry>

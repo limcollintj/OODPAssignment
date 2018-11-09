@@ -4,8 +4,19 @@ import courses.Course;
 import util.DatabaseHandler;
 import java.util.ArrayList;
 
+/**
+ Class for creating, reading, updating and deleting of courses by ID.
+ @author LFM
+ @version 1.0
+ @since 2018-11-05
+ */
 public class CourseCRUDByID implements CRUDByID{
 
+	/**
+	 * Create course by ID
+	 * @param id
+	 * @throws Exception
+	 */
 	@Override
 	public void createByID(String id) throws Exception{
 
@@ -20,6 +31,12 @@ public class CourseCRUDByID implements CRUDByID{
 		DatabaseHandler.updateCourseData(courseList);
 	}
 
+	/**
+	 * Read course by ID
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	@Override
 	public Course readByID(String id) throws Exception{
 
@@ -32,6 +49,11 @@ public class CourseCRUDByID implements CRUDByID{
 
 	}
 
+	/**
+	 * Update course by ID
+	 * @param id
+	 * @throws Exception
+	 */
 	@Override
 	public void updateByID(String id) throws Exception{
 
@@ -42,6 +64,11 @@ public class CourseCRUDByID implements CRUDByID{
 		}
 	}
 
+	/**
+	 * Delete course by ID
+	 * @param id
+	 * @throws Exception
+	 */
 	@Override
 	public void deleteByID(String id) throws Exception{
 
