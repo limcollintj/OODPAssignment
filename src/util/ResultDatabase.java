@@ -5,7 +5,12 @@ import java.util.List;
 
 public class ResultDatabase implements Database {
 	private final String RESULT_FILENAME = "Results.txt";
-	
+
+	/**
+	 * Get Data
+	 * @return data
+	 * @throws Exception
+	 */
 	@Override
 	public List<Result> getData() throws Exception{
 		Object temp = DataBaseManager.retrieveData(this.RESULT_FILENAME);
@@ -18,7 +23,12 @@ public class ResultDatabase implements Database {
         }
         return (List<Result>) temp;
 	}
-	
+
+	/**
+	 * Update data
+	 * @param object Object
+	 * @throws Exception
+	 */
 	@Override
 	public void updateData(Object object) throws Exception{
 		if(!(object instanceof List)) {

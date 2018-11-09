@@ -6,7 +6,12 @@ import students.Student;
 
 public class StudentDatabase implements Database {
 private final String STUDENT_FILENAME = "Students.txt";
-	
+
+	/**
+	 * Gets data
+	 * @return data
+	 * @throws Exception
+	 */
 	@Override
 	public List<Student> getData() throws Exception{
 		Object temp = DataBaseManager.retrieveData(this.STUDENT_FILENAME);
@@ -19,7 +24,12 @@ private final String STUDENT_FILENAME = "Students.txt";
         }
         return (List<Student>)temp;
 	}
-	
+
+	/**
+	 * Updates data
+	 * @param object Object
+	 * @throws Exception
+	 */
 	@Override
 	public void updateData(Object object) throws Exception{
 		if(!(object instanceof List)) {

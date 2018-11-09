@@ -11,7 +11,9 @@ import util.Scan;
 
 public class AddMethods {
 
-
+	/**
+	 * Adds student to a course
+	 */
 	public static void addStudent(){
 		try {
 			System.out.println("Enter student's name: ");
@@ -26,6 +28,10 @@ public class AddMethods {
 		}
 	}
 
+	/**
+	 * Add a new course
+	 * @throws Exception
+	 */
 	public static void addCourse() throws Exception{
 		try {
 			CourseManager cm = new CourseManager();
@@ -149,6 +155,12 @@ public class AddMethods {
 		}
 	}
 
+	/**
+	 * Add a new lesson (Tutorial/Lab) to a course
+	 * @param courseID Course ID
+	 * @throws Exception
+	 */
+
 	public static void addLesson(String courseID) throws Exception{
 		
 		try {
@@ -166,6 +178,11 @@ public class AddMethods {
 			System.out.print(e);
 		}
 	}
+
+	/**
+	 * Add professors in charge of a course
+	 * @return A list of professors in charge of a course
+	 */
 
 	private static ArrayList<String> addProfs() {
 		try {
@@ -190,6 +207,11 @@ public class AddMethods {
 		return null;
 
 	}
+
+	/**
+	 * Adds student to a particular Tutorial/Lab group in a course
+	 * @throws Exception
+	 */
 
 	public static void addStudentToLesson() throws Exception {
 		System.out.print("Enter Student ID: ");

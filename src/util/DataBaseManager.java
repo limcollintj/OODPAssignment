@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * <code>DataBaseManager</code> is the main IO class for UniApp. 
  * <p>
- * <code>DataBaseManager</code> permanently stores and reads {@link Serializable} objects to/from
+ * <code>DataBaseManager</code> permanently stores and reads serializable objects to/from
  * a .ser file. The current implementation handles all the exceptions within the 
  * methods and prints the entire stack trace onto the console. 
  * 
