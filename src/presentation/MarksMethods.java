@@ -9,6 +9,11 @@ import functionalityClasses.CourseCRUDByID;
 public class MarksMethods {
 
 	// Edit course weightages
+
+	/**
+	 * Edits course weightage
+	 * @throws Exception
+	 */
 	public static void editCourseWeightage() throws Exception {
 
 		try {
@@ -36,7 +41,12 @@ public class MarksMethods {
 
 	}
 
-	// Enter Exam Marks 
+	// Enter Exam Marks
+
+	/**
+	 * Enter course marks
+	 * @throws Exception
+	 */
 	public static void enterExamMarks() throws Exception {
 		try {
 			ResultManager rm = new ResultManager();

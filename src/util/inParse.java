@@ -3,6 +3,7 @@ package util;
 import java.util.regex.*;
 
 public class inParse {
+
 	public static void main(String[] args) {
 		String input = "Usd2v";
 		System.out.println(beginsUGE(input));

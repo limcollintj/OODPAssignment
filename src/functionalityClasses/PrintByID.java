@@ -6,7 +6,6 @@ package functionalityClasses;
  @version 1.0
  @since 2018-11-05
  */
-
 public interface PrintByID {
 
 	/**
