@@ -6,9 +6,21 @@ import courses.Course;
 import students.Student;
 import util.DatabaseHandler;
 
+/**
+ Class for updating courses.
+ @author LFM
+ @version 1.0
+ @since 2018-11-05
+ */
+
 public class CourseUpdate {
-	
-	
+
+	/**
+	 * Add course professor names to courses.
+	 * @param profNames
+	 * @param courseID
+	 * @throws Exception
+	 */
 	public void addProfNames(ArrayList<String> profNames, String courseID) throws Exception {
 		ArrayList<Course> courses = (ArrayList<Course>) DatabaseHandler.getCourseData(); 
 		for (Course course : courses) {
@@ -21,6 +33,13 @@ public class CourseUpdate {
 		}
 		DatabaseHandler.updateCourseData(courses);
 	}
+
+	/**
+	 * Register student for courses.
+	 * @param student
+	 * @param courseID
+	 * @throws Exception
+	 */
 	
 	public void registerStudent(Student student, String courseID) throws Exception {
 		ArrayList<Course> courses= (ArrayList<Course>) DatabaseHandler.getCourseData();
@@ -34,7 +53,13 @@ public class CourseUpdate {
 		}
 		DatabaseHandler.updateCourseData(courses);
 	}
-	
+
+	/**
+	 * Update courses' max vacancy.
+	 * @param courseID
+	 * @param vacancy
+	 * @throws Exception
+	 */
 	public void updateMaxVacancy(String courseID, int vacancy) throws Exception {
 		ArrayList<Course> courses= (ArrayList<Course>) DatabaseHandler.getCourseData();
     	
@@ -46,7 +71,13 @@ public class CourseUpdate {
 		}
 		DatabaseHandler.updateCourseData(courses);
 	}
-	
+
+	/**
+	 * Update name of courses.
+	 * @param courseID
+	 * @param name
+	 * @throws Exception
+	 */
 	public void updateCourseName(String courseID, String name) throws Exception{
 		ArrayList<Course> courses= (ArrayList<Course>) DatabaseHandler.getCourseData();
 		for(Course course : courses) {

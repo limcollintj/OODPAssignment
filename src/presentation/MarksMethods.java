@@ -20,10 +20,11 @@ public class MarksMethods {
 
 			System.out.print("Enter coursework weightage: ");
 			int cwWeightage = Scan.readInteger();
-
 			cm.setCourseworkWeightage(courseID, cwWeightage);
-			System.out.print("Enter class participation weightage: ");
 			
+			if(cwWeightage!=0) {
+			System.out.print("Enter class participation weightage: ");
+			}
 			
 		    // TODO: Add a check here for whether course work has sub components
 			int cpWeightage = Scan.readInteger();

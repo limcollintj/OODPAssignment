@@ -15,6 +15,7 @@ public class Lab extends Lessons{
 	
 	public void printInfo() {
 		System.out.println("(Lab) LessonID: " + lessonID + ", Vacancy:" + vacancy);
+		super.printInfo();
 	}
 
 }

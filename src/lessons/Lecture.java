@@ -17,5 +17,6 @@ public class Lecture extends Lessons implements Serializable{
 	
 	public void printInfo() {
 		System.out.println("(Lecture) LessonID: " + lessonID + ", Vacancy:" + vacancy);
+		super.printInfo();
 	}
 }

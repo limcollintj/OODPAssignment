@@ -43,5 +43,13 @@ public abstract class Lessons implements Serializable{
     	return this.vacancy;
     }
     
-    abstract void printInfo();
+    public void printInfo() {
+    	if(!studentIDs.isEmpty()) {
+    		System.out.println("Students Registered in Course:");
+	    	for(String id : studentIDs) {
+				System.out.println(id);
+			}
+    	}
+    }
+    
 }

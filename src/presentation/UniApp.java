@@ -72,7 +72,7 @@ public class UniApp {
                 break;
 
             case 3:
-                //remove student
+            	
                 break;
 
             case 4:
@@ -115,7 +115,7 @@ public class UniApp {
                 break;
 
             case 2:
-                //edit course
+                PrintMethods.printVacancy();
                 break;
 
             case 3:
@@ -235,7 +235,8 @@ public class UniApp {
                         "\t2. Edit Student Details\n" +
                         "\t3. Remove Student\n" +
                         "\t4. Register Student for Course\n" +
-                        "\t5. Enter Course Results\n" +
+                        "\t5. Enter CourseWork Results\n" +
+                        "\t6. Enter Exam Results"+
                         "\t6. Print Student Transcript\n" +
                         "\t7. Print all students\n" +
                         "\t8. Reset all students\n" +
@@ -248,8 +249,8 @@ public class UniApp {
         System.out.print(
                 "State your Action:\n" +
                         "\t1. Add Course\n" +
-                        "\t2. Edit Course Details\n" +
-                        "\t3. Remove Course\n" +
+                        "\t2. Print Vacancy\n" +
+                        "\t3. \n" +
                         "\t4. Register Student for Course\n" +
                         "\t5. Print Student List for Course\n" +
                         "\t6. Edit Course Weightage\n" +

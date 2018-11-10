@@ -15,6 +15,8 @@ public class Tutorial extends Lessons{
 	
 	public void printInfo() {
 		System.out.println("(Tutorial) LessonID: " + lessonID + ", Vacancy:" + vacancy );
+				super.printInfo();
+
 	}
 	
 	
