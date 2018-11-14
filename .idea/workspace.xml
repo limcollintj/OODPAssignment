@@ -2,53 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74fcaa0b-adf1-4acd-9872-c4bc33ccee53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OODPAssignment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/courses/Course.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/courses/CourseManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/CRUDByID.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/CourseCRUDByID.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/CourseUpdate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/PrintByID.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/PrintCourseByID.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/PrintStudentByID.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/Reset.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/ResetCourses.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/ResetStudents.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/SetClassPartWeightage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/SetCourseWorkWeightage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/SetWeightage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/StudentCRUDByID.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/functionalityClasses/StudentUpdate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/lessons/Lab.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/lessons/Lecture.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/lessons/LessonManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/lessons/Lessons.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/lessons/Tutorial.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/presentation/AddMethods.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/presentation/MarksMethods.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/presentation/PrintMethods.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/presentation/RegisterMethods.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/presentation/ResetMethods.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/presentation/UniApp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/results/Result.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/results/ResultComponent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/results/ResultManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/results/Score.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/students/Student.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/students/StudentManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/CourseDatabase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/DataBaseManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/Database.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/DatabaseHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/GradeCalculator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/ResultDatabase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/Scan.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/StudentDatabase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/OODPAssignment/util/inParse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OODPAssignment" beforeDir="false" afterPath="$PROJECT_DIR$/OODPAssignment" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OODPAssignment/src/functionalityClasses/CourseCRUDByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/OODPAssignment/src/functionalityClasses/CourseCRUDByID.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OODPAssignment/src/functionalityClasses/Reset.java" beforeDir="false" afterPath="$PROJECT_DIR$/OODPAssignment/src/functionalityClasses/Reset.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OODPAssignment/src/functionalityClasses/ResetCourses.java" beforeDir="false" afterPath="$PROJECT_DIR$/OODPAssignment/src/functionalityClasses/ResetCourses.java" afterDir="false" />
@@ -74,8 +28,9 @@
           <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -110,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/OODPAssignment/src/presentation/UniApp.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="233">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -152,7 +107,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="945" />
     <option name="width" value="985" />
     <option name="height" value="1035" />
@@ -247,16 +202,18 @@
       <workItem from="1541432728573" duration="1159000" />
       <workItem from="1541666913298" duration="7000" />
       <workItem from="1542035155779" duration="1644000" />
+      <workItem from="1542158951674" duration="380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2810000" />
+    <option name="totallyTimeSpent" value="3190000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="702" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2574899" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26153848" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -275,7 +232,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info active="true" anchor="bottom" id="Sequence" order="12" visible="true" weight="0.98248684" />
+      <window_info anchor="bottom" id="Sequence" order="12" weight="0.98248684" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -395,7 +352,7 @@
     <entry file="file://$PROJECT_DIR$/OODPAssignment/src/presentation/UniApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
