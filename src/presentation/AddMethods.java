@@ -115,7 +115,7 @@ public class AddMethods {
 		      tutorialIDs.add(tutorialID);
 		      tutorialVacancies.add(tutorialVacancy);
 		      sum += tutorialVacancy;
-		      System.out.println("Total Lab Vacancies: " + sum
+		      System.out.println("Total tutorial Vacancies: " + sum
 		        + "\nCourse Vacancy: " + maxVacancy);
 		     } else {
 		      System.out.println("ID already exists.");
@@ -134,7 +134,7 @@ public class AddMethods {
 		    cm.addLesson(courseID, 3, tutorialIDs.get(i), tutorialVacancies.get(i));
 		   }
 		  }
-		  
+		
 		  
 		  // Retrieves user input to add lab to the course 
 		  System.out.println("Do you want to add lab? Y/N");

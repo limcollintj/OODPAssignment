@@ -2,6 +2,7 @@ package presentation;
 
 import java.util.Scanner;
 
+import Exceptions.EntityNotFoundException;
 import courses.CourseManager;
 import results.ResultManager;
 import students.StudentManager;
@@ -93,14 +94,25 @@ public class PrintMethods {
 	 * Prints the student transcript
 	 * @throws Exception
 	 */
-	public static void printStudentTranscript() throws Exception {
+	public static void printStudentTranscript() {
 		try {
 			ResultManager rm = new ResultManager();
 
 			System.out.print("Enter student ID: ");
 			String studentID = Scan.readString();
+			
+			// Check if student is valid
+			if(new StudentManager().getStudent(studentID) == null) {
+				throw new EntityNotFoundException();
+			}
+				
+			
 			rm.printTranscript(studentID);
-		}catch(Exception e) {
+		}
+		catch (EntityNotFoundException e) {
+			System.out.println("Student not found");
+		}
+		catch(Exception e) {
 			System.out.print(e);
 		}
 	}

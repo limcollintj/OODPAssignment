@@ -19,6 +19,7 @@ public class Tutorial extends Lessons{
      * @param vacancy the number of students who can register for this Tutorial
      */
 	public Tutorial(String lessonID, int vacancy){
+		super(vacancy);
 		this.lessonID = lessonID;
 		this.vacancy = vacancy;
 	}
@@ -37,7 +38,7 @@ public class Tutorial extends Lessons{
      * This includes the Lab ID and vacancy of this Tutorial.
      */
 	public void printInfo() {
-		System.out.println("(Tutorial) LessonID: " + lessonID + ", Vacancy:" + vacancy);
+		System.out.println("(Tutorial) LessonID: " + lessonID + ", Vacancy:" + vacancy+ "/" + this.maxVacancy);
 		super.printInfo();
 
 	}

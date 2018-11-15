@@ -30,10 +30,13 @@ public abstract class Lessons implements Serializable {
      * Creates a new Lesson object.
      * The object starts with no Students registered for this Lesson.
      */
-	public Lessons() {
+	public Lessons(int maxVacancy) {
 		this.studentIDs= new ArrayList<String>();
+		this.maxVacancy = maxVacancy;
 	}
 
+	
+	protected int maxVacancy;
     /**
      * Sets the name of the Professor teaching this Lesson.
      * @param name new name of Professor.
@@ -98,7 +101,7 @@ public abstract class Lessons implements Serializable {
     public int getVacancy() {
     	return this.vacancy;
     }
-
+    
 
     /**
      * Prints the Lesson Information of this Lesson, Including the students who are registered in the course.

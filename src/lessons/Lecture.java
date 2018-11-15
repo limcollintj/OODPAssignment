@@ -21,8 +21,10 @@ public class Lecture extends Lessons implements Serializable{
      * @param vacancy the number of Students who can register for this Lecture
      */
 	public Lecture(String lessonID, int vacancy){
+		super(vacancy);
 		this.lessonID = lessonID;
 		this.vacancy = vacancy;
+
 	}
 
     /**
@@ -39,7 +41,7 @@ public class Lecture extends Lessons implements Serializable{
      * This includes the Lecture ID and vacancy of this Lecture.
      */
 	public void printInfo() {
-		System.out.println("(Lecture) LessonID: " + lessonID + ", Vacancy:" + vacancy);
+		System.out.println("(Lecture) LessonID: " + lessonID + ", Vacancy:" + vacancy + "/" + this.maxVacancy);
 		super.printInfo();
 	}
 }

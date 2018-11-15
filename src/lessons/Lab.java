@@ -19,6 +19,7 @@ public class Lab extends Lessons{
      * @param vacancy the number of students who can register for this Lab
      */
 	public Lab(String lessonID, int vacancy){
+		super(vacancy);
 		this.lessonID = lessonID;
 		this.vacancy = vacancy;
 	}
@@ -37,7 +38,7 @@ public class Lab extends Lessons{
      * This includes the Lab ID and vacancy of this Lab.
      */
 	public void printInfo() {
-		System.out.println("(Lab) LessonID: " + lessonID + ", Vacancy:" + vacancy);
+		System.out.println("(Lab) LessonID: " + lessonID + ", Vacancy:" + vacancy + "/" + this.maxVacancy);
 		super.printInfo();
 	}
 
