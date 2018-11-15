@@ -73,7 +73,7 @@ public class UniApp {
                 PrintMethods.printStudentTranscript();
                 break;
             case 6:
-                AddMethods.addCourse();	//studentContainer
+                AddMethods.addCourse();	
                 break;
 
             case 7:
