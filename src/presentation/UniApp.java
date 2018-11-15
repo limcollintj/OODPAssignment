@@ -7,22 +7,22 @@ import util.Scan;
 
 public class UniApp {
 	final static String studentDB = "Students.txt";
+	final static String courseDB = "Courses.txt";
     // TODO: Handle All Exceptions
 
     public static void main(String[] args) throws Exception {
         int choice;
 
         
-        DataBaseManager db = new DataBaseManager();
-        
-        Container studentContainer = (Container)db.retrieveData(studentDB) == null ? new StudentContainer():(Container)db.retrieveData(studentDB);
+        Container studentContainer = (Container)DataBaseManager.retrieveData(studentDB);
+        Container courseContainer = (Container)DataBaseManager.retrieveData(courseDB);
 
 
         do {
             showMenu();
             System.out.println("Enter your choice: ");
             choice = Scan.readInteger();
-            mainSwitch(choice, studentContainer);
+            mainSwitch(choice, studentContainer, courseContainer);
         } while (choice != 11);
     }
 
@@ -43,7 +43,7 @@ public class UniApp {
         System.out.println("-------------------------------");
     }
 
-    public static void mainSwitch(int a, Container studentContainer) throws Exception {
+    public static void mainSwitch(int a, Container studentContainer, Container courseContainer) throws Exception {
         int choice;
 
         switch (a) {
@@ -64,7 +64,8 @@ public class UniApp {
                 PrintMethods.printStudentTranscript();
                 break;
             case 6:
-                AddMethods.addCourse(studentContainer);	//studentContainer
+                AddMethods.addCourse(courseContainer);	//studentContainer
+                
                 break;
 
             case 7:

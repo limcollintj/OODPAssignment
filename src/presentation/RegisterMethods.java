@@ -4,6 +4,7 @@ import courses.Course;
 import courses.CourseManager;
 import students.Student;
 import students.StudentManager;
+import util.Container;
 import util.Scan;
 
 public class RegisterMethods {
@@ -16,15 +17,16 @@ public class RegisterMethods {
 	 * Registers a student for a course
 	 * @throws Exception
 	 */
-	public static void registerCourse() throws Exception {
+	public static void registerCourse(Container studentContainer, Container courseContainer) throws Exception {
 		System.out.println("Enter Student ID");
 		String studentID = Scan.readString(); 
 		
-		Student student = new StudentManager().getStudent(studentID);
-		
+		Student student = (Student)studentContainer.findObjectByID(studentID);
 		System.out.println("Enter Course ID you want to add student to");
 		String courseID = Scan.readString(); 
-		Course course = new CourseManager().getCourse(courseID);
+		Course course = (Course)courseContainer.findObjectByID(courseID);
+		course.addStudent(student);
+		Course course2
 		
 		StudentManager sm = new StudentManager();
 		sm.registerCourse(studentID, course);
@@ -51,9 +53,6 @@ public class RegisterMethods {
 			tutorialID = Scan.readString();
 			}while(!sm.registerStudentToLesson(studentID, courseID, tutorialID));
 		}
-		// Register for lecture
-		// Call function which prints out ID and vacancies for tutorial and lab 
-		// addlesson 
 	
 		
 	}
