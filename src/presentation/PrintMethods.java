@@ -9,6 +9,11 @@ public class PrintMethods {
 
 
 	// Prints Course Statistics
+
+	/**
+	 * Prints course statistics
+	 * @throws Exception
+	 */
 	public static void printCourseStatistics() throws Exception {
 		try {
 			System.out.print("Enter course ID: ");
@@ -19,7 +24,12 @@ public class PrintMethods {
 		}
 	}
 
-	// Prints Exam marks 
+	// Prints Exam marks
+
+	/**
+	 * Prints exam marks by students
+	 * @throws Exception
+	 */
 	public static void printExamMark() throws Exception {
 		try {
 			System.out.print("----- Exam Result ------"
@@ -38,6 +48,11 @@ public class PrintMethods {
 
 
 	// Prints Students registered in a course
+
+	/**
+	 * Prints a list of students registered in a course
+	 * @throws Exception
+	 */
 	public static void printStudentList() throws Exception {
 		try {
 			System.out.print("----- Registered Students ------\n"
@@ -53,6 +68,11 @@ public class PrintMethods {
 
 
 	// Prints vacancy in a course
+
+	/**
+	 * Prints the vacancy in a course
+	 * @throws Exception
+	 */
 	public static void printVacancy() throws Exception {
 		try {
 			System.out.print("----- Course Vacancy -----\n"
@@ -66,6 +86,11 @@ public class PrintMethods {
 	}
 
 	// Prints Student Transcripts
+
+	/**
+	 * Prints the student transcript
+	 * @throws Exception
+	 */
 	public static void printStudentTranscript() throws Exception {
 		try {
 			ResultManager rm = new ResultManager();
@@ -79,6 +104,11 @@ public class PrintMethods {
 	}
 
 	// Print All Courses
+
+	/**
+	 * Prints a list of all courses
+	 * @throws Exception
+	 */
 	public static void printAllCourses() throws Exception {
 		try {
 			CourseManager cm = new CourseManager();
@@ -88,7 +118,12 @@ public class PrintMethods {
 		}
 	}
 
-	// Print all students 
+	// Print all students
+
+	/**
+	 * Prints a list of all students
+	 * @throws Exception
+	 */
 	public static void printAllStudents() throws Exception {
 		try {
 			StudentManager sm = new StudentManager(); 
@@ -100,6 +135,12 @@ public class PrintMethods {
 	}
 
 	//Prints All Lessons
+
+	/**
+	 * Prints a list of all Tutorial/Laboratory sessions in a course
+	 * @param courseID Course ID
+	 * @throws Exception
+	 */
 	public static void printAllLessons(String courseID) throws Exception{
 		try {
 			new CourseManager().printLessons(courseID);
@@ -110,7 +151,14 @@ public class PrintMethods {
 
 
 
-	// Prints specific Lesson 
+	// Prints specific Lesson
+
+	/**
+	 * Prints lessons
+	 * @param courseID Course ID
+	 * @param lessonID Tutorial/Laboratory ID
+	 * @throws Exception
+	 */
 	public static void printLesson(String courseID, String lessonID) throws Exception{
 		try {
 			new CourseManager().printLesson(courseID, lessonID);

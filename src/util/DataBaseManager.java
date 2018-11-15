@@ -6,10 +6,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import courses.CourseContainer;
+import students.StudentContainer;
+
 /**
  * <code>DataBaseManager</code> is the main IO class for UniApp. 
  * <p>
- * <code>DataBaseManager</code> permanently stores and reads {@link Serializable} objects to/from
+ * <code>DataBaseManager</code> permanently stores and reads serializable objects to/from
  * a .ser file. The current implementation handles all the exceptions within the 
  * methods and prints the entire stack trace onto the console. 
  * 
@@ -26,6 +29,7 @@ public class DataBaseManager {
 
     public static Object retrieveData(String filename) throws Exception{
     	File f = new File(filename);
+    	Object o;
     	if(f.exists()) {
     		FileInputStream fi = new FileInputStream(new File(filename));
     		ObjectInputStream oi = new ObjectInputStream(fi);
@@ -34,7 +38,16 @@ public class DataBaseManager {
     		oi.close();
     		return temp;
     	} else {
-    		updateData(new ArrayList<Object>(), filename);
+    		if(filename == "Students.txt") {
+    			updateData(o = new StudentContainer(), filename);
+    			return o;
+    		}else if(filename == "Courses.txt"){
+    			updateData(o = new CourseContainer(), filename);
+    			return o;
+    		}
+//    		} else if(filename == 'Results.txt'){
+//    			updateData(o = new ResultContain);
+//    		}
     		return new ArrayList<Object>();
     	}
     }

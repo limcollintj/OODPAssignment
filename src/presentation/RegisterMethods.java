@@ -11,6 +11,11 @@ public class RegisterMethods {
 	
 	// Registers student for a course 
 	// Register Student for a course
+
+	/**
+	 * Registers a student for a course
+	 * @throws Exception
+	 */
 	public static void registerCourse() throws Exception {
 		System.out.println("Enter Student ID");
 		String studentID = Scan.readString(); 

@@ -3,6 +3,10 @@ package util;
 import java.util.Scanner;
 
 public class Scan {
+	/**
+	 * Reads input integer
+	 * @return read integer
+	 */
 	public static int readInteger() {
 		Scanner sc = new Scanner(System.in);
 		while(!sc.hasNextInt()) {
@@ -11,6 +15,11 @@ public class Scan {
 		}
 		return sc.nextInt();
 	}
+
+	/**
+	 * Reads input double
+	 * @return read double
+	 */
 	
 	public static double readDouble() {
 		Scanner sc = new Scanner(System.in);
@@ -20,6 +29,11 @@ public class Scan {
 		}
 		return sc.nextDouble();
 	}
+
+	/**
+	 * Reads input string
+	 * @return read string
+	 */
 	
 	public static String readString() {
 		Scanner sc = new Scanner(System.in);
