@@ -21,13 +21,18 @@ public class StudentUpdate {
 	}
 	
 	public void registerCourse(Course course, String studentId) throws Exception {
-		//Do checks to see if student already registered
+		
     	ArrayList<Student> students = (ArrayList<Student>) DatabaseHandler.getStudentData();
+    	
+    	
     	for(Student stud : students) {
     		if(stud.getStudentID().equals(studentId)) {
     			stud.addCourse(course);	
     		}
     	}
+    	
+    	
+    	
     	DatabaseHandler.updateStudentData(students);
 	}
 } 

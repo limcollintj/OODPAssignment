@@ -4,6 +4,8 @@ import students.Student;
 
 import java.util.ArrayList;
 
+import Exceptions.AlreadyExistsException;
+import Exceptions.EntityNotFoundException;
 import courses.Course;
 import util.DatabaseHandler;
 
@@ -17,7 +19,7 @@ public class StudentCRUDByID implements CRUDByID{
 	        Student student = new Student(id);
 	        students.add(student);
 	        DatabaseHandler.updateStudentData(students);
-	        System.out.println("Student has been added.\n");
+	        throw new AlreadyExistsException("Student");
 		}else {
 			throw new Exception("Already exists\n");
 		}
@@ -29,6 +31,9 @@ public class StudentCRUDByID implements CRUDByID{
 		for (Student temp : DatabaseHandler.getStudentData() ) {
             if(temp.getStudentID().equals(id)) {
                 return temp;
+            }
+            else {
+            	throw new EntityNotFoundException(); 
             }
         }
 	   

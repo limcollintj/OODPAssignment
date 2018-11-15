@@ -4,6 +4,8 @@ import courses.Course;
 import util.DatabaseHandler;
 import java.util.ArrayList;
 
+import Exceptions.EntityNotFoundException;
+
 /**
  Class for creating, reading, updating and deleting of courses by ID.
  @author LFM
@@ -45,8 +47,8 @@ public class CourseCRUDByID implements CRUDByID{
 				return temp;
 			}
 		}
-		throw new Exception("Course not found.");
-
+		
+		return null; 
 	}
 
 	/**

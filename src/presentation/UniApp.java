@@ -22,25 +22,36 @@ public class UniApp {
             showMenu();
             System.out.println("Enter your choice: ");
             choice = Scan.readInteger();
+<<<<<<< HEAD
             mainSwitch(choice, studentContainer, courseContainer);
         } while (choice != 11);
+=======
+            mainSwitch(choice);
+        } while (choice != 12);
+>>>>>>> fa021f3
     }
 
     public static void showMenu() {
-        System.out.println("-------------------------------");
+        System.out.println("----------- Students ------------");
         System.out.println("1) Add New Student");
         System.out.println("2) Register Student For Course");
         System.out.println("3) Print Student List");
         System.out.println("4) Enter Student Result");
-        System.out.println("5) Print Student Transcript");
+        System.out.println("5) Print Student Transcript\n");
+        
+        System.out.println("----------- Courses --------------");
         System.out.println("6) Add New Course");
         System.out.println("7) Edit Course Weightage");
-        System.out.println("8) View Course Vacancy");
+        System.out.println("8) View Course Information");
         System.out.println("9) Print Course Statistics");
-        System.out.println("10) Others");
-        System.out.println("-------------------------------");
-        System.out.println("11) Exit Programme");
-        System.out.println("-------------------------------");
+        System.out.println("10) Print All Courses\n");
+        
+        System.out.println("----------- Others ---------------");
+        System.out.println("11) Others");
+        
+        System.out.println("----------------------------------");
+        System.out.println("12) Exit Programme");
+        System.out.println("----------------------------------");
     }
 
     public static void mainSwitch(int a, Container studentContainer, Container courseContainer) throws Exception {
@@ -55,8 +66,16 @@ public class UniApp {
                 RegisterMethods.registerCourse();
                 break;
             case 3:
-                PrintMethods.printAllStudents();
-                break;
+            	 do{
+                     showStudentListMenu();
+                     choice = Scan.readInteger();
+                     switchStudentList(choice);
+                     if (choice == 4){
+                         break;
+                     }
+                 }while (choice !=5);
+                 break;
+               
             case 4:
                 MarksMethods.enterExamMarks();
                 break;
@@ -80,7 +99,11 @@ public class UniApp {
             case 9:
                 PrintMethods.printCourseStatistics();
                 break;
-            case 10:
+            
+            case 10: 
+            	PrintMethods.printAllCourses();
+            	break;
+            case 11:
                 do{
                     showOthersMenu();
                     choice = Scan.readInteger();
@@ -90,11 +113,59 @@ public class UniApp {
                     }
                 }while (choice !=6);
                 break;
-            case 11:
+            case 12:
                 System.out.println("Programme Terminating...");
                 break;
         }
     }
+    
+    private static void showCourseInformationMenu() {
+    	System.out.print(
+                "Print Course Information:\n" +
+                        "\t1) Print Course Statistics\n" +
+                        "\t2) Print Course Information\n" +
+                        "\t3) Back\n" +
+                        "\t4) Terminate Program"
+        );
+    }
+    
+    
+    
+    private static void showStudentListMenu() {
+    	System.out.print(
+                "Print Students list:\n" +
+                        "\t1) Print All Students\n" +
+                        "\t2) Print Students Registered in Course\n" +
+                        "\t3) Prints Students Registered in a Lesson\n" +
+                        "\t4) Back\n" +
+                        "\t5) Terminate Program"
+        );
+    }
+    
+    private static void switchStudentList(int a) {
+    	
+    	switch(a) {
+	    	case 1: 
+	    		 PrintMethods.printAllStudents();
+	             break;
+	             
+	    	case 2: 
+	    		 PrintMethods.printStudentList();  
+	    		 break;
+	    		 
+	    	case 3: 
+	    		 PrintMethods.printLesson();
+	    		 break;
+	    	case 4:
+	             System.out.println("Returning to main menu...");
+	             break;
+	        case 5:
+	            System.out.println("Programme Terminating...");
+	            break;
+    	}
+    }
+    
+    
 
    
 	private static void showOthersMenu() {

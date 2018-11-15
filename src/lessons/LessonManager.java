@@ -2,6 +2,9 @@ package lessons;
 
 import java.awt.Container;
 import java.util.ArrayList;
+
+import Exceptions.StudentNotInCourseException;
+import Exceptions.VacancyFullException;
 import util.DatabaseHandler;
 import courses.Course;
 import functionalityClasses.CRUDByID;
@@ -132,9 +135,12 @@ public class LessonManager {
 				for (Lessons lesson : course.getLessons()) {
 					if(lesson.getLessonID().equals(lessonID)) {
 						if(!studentInCourse(course, studentID)) {
-							throw new Exception("Student not in course");
+							throw new StudentNotInCourseException();
 						}
-						lesson.addStudent(studentID);
+						if(lesson.getVacancy()>0) {
+							lesson.addStudent(studentID);
+						}
+						
 						DatabaseHandler.updateCourseData(courses);
 						return true;
 					}

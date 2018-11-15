@@ -37,8 +37,13 @@ public class Tutorial extends Lessons{
      * This includes the Lab ID and vacancy of this Tutorial.
      */
 	public void printInfo() {
+<<<<<<< HEAD
 		System.out.println("(Tutorial) LessonID: " + lessonID + ", Vacancy:" + vacancy );
 				super.printInfo();
 
+=======
+		System.out.println("(Tutorial) LessonID: " + lessonID + ", Vacancy:" + vacancy);
+		super.printInfo();
+>>>>>>> fa021f3
 	}
 }
