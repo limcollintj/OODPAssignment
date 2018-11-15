@@ -6,6 +6,7 @@ import results.ResultManager;
 import util.Scan;
 import functionalityClasses.CourseCRUDByID;
 
+
 public class MarksMethods {
 
 	// Edit course weightages
@@ -17,14 +18,13 @@ public class MarksMethods {
 			// Enter course assessment weightage.
 			System.out.print("Enter course ID: ");
 			String courseID = Scan.readString();
-
-			System.out.print("Enter coursework weightage: ");
-			int cwWeightage = Scan.readInteger();
-
-			cm.setCourseworkWeightage(courseID, cwWeightage);
+			
+			System.out.print("Enter exam weightage: ");
+			int exWeightage = Scan.readInteger();
+			cm.setExamWeightage(courseID, exWeightage);
+			System.out.print("");
+			
 			System.out.print("Enter class participation weightage: ");
-			
-			
 		    // TODO: Add a check here for whether course work has sub components
 			int cpWeightage = Scan.readInteger();
 			cm.setClassParticipationWeightage(courseID, cpWeightage);
