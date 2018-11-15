@@ -13,22 +13,15 @@ public class UniApp {
     public static void main(String[] args) throws Exception {
         int choice;
 
-        
-        Container studentContainer = (Container)DataBaseManager.retrieveData(studentDB);
-        Container courseContainer = (Container)DataBaseManager.retrieveData(courseDB);
-
 
         do {
             showMenu();
             System.out.println("Enter your choice: ");
             choice = Scan.readInteger();
-<<<<<<< HEAD
-            mainSwitch(choice, studentContainer, courseContainer);
-        } while (choice != 11);
-=======
+
             mainSwitch(choice);
         } while (choice != 12);
->>>>>>> fa021f3
+
     }
 
     public static void showMenu() {
@@ -54,13 +47,12 @@ public class UniApp {
         System.out.println("----------------------------------");
     }
 
-    public static void mainSwitch(int a, Container studentContainer, Container courseContainer) throws Exception {
+    public static void mainSwitch(int a) throws Exception {
         int choice;
 
         switch (a) {
             case 1:
-                AddMethods.addStudent(studentContainer);
-                DataBaseManager.updateData(studentContainer, studentDB);
+                AddMethods.addStudent();
                 break;
             case 2:
                 RegisterMethods.registerCourse();
@@ -83,8 +75,7 @@ public class UniApp {
                 PrintMethods.printStudentTranscript();
                 break;
             case 6:
-                AddMethods.addCourse(courseContainer);	//studentContainer
-                
+                AddMethods.addCourse();	//studentContainer
                 break;
 
             case 7:

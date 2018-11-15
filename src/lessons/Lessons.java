@@ -99,20 +99,7 @@ public abstract class Lessons implements Serializable {
     	return this.vacancy;
     }
 
-<<<<<<< HEAD
-/**
- * Prints the Lesson Information of this Lesson.
- */
-    public void printInfo() {
-    	if(!studentIDs.isEmpty()) {
-    		System.out.println("Students Registered in Course:");
-	    	for(String id : studentIDs) {
-				System.out.println(id);
-			}
-    	}
-    }
 
-=======
     /**
      * Prints the Lesson Information of this Lesson, Including the students who are registered in the course.
      */
@@ -122,5 +109,5 @@ public abstract class Lessons implements Serializable {
     		System.out.println(studentID);
     	}
     };
->>>>>>> fa021f3
+
 }

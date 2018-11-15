@@ -20,18 +20,7 @@ public class RegisterMethods {
 	 * Registers a student for a course
 	 * @throws Exception
 	 */
-<<<<<<< HEAD
-	public static void registerCourse(Container studentContainer, Container courseContainer) throws Exception {
-		System.out.println("Enter Student ID");
-		String studentID = Scan.readString(); 
-		
-		Student student = (Student)studentContainer.findObjectByID(studentID);
-		System.out.println("Enter Course ID you want to add student to");
-		String courseID = Scan.readString(); 
-		Course course = (Course)courseContainer.findObjectByID(courseID);
-		course.addStudent(student);
 
-=======
 	public static void registerCourse() {
 		
 		
@@ -55,7 +44,7 @@ public class RegisterMethods {
 		
 		
 		// Registers the student to the course
->>>>>>> fa021f3
+
 		StudentManager sm = new StudentManager();
 		CourseManager cm = new CourseManager();
 		
