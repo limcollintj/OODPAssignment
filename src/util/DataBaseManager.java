@@ -27,44 +27,5 @@ public class DataBaseManager {
      * @return <code>Object</code> from .ser file, or null if an exception was raised
      */
 
-    public static Object retrieveData(String filename) throws Exception{
-    	File f = new File(filename);
-    	Object o;
-    	if(f.exists()) {
-    		FileInputStream fi = new FileInputStream(new File(filename));
-    		ObjectInputStream oi = new ObjectInputStream(fi);
-    		Object temp = oi.readObject();
-    		fi.close();
-    		oi.close();
-    		return temp;
-    	} else {
-    		if(filename == "Students.txt") {
-    			updateData(o = new StudentContainer(), filename);
-    			return o;
-    		}else if(filename == "Courses.txt"){
-    			updateData(o = new CourseContainer(), filename);
-    			return o;
-    		}
-//    		} else if(filename == 'Results.txt'){
-//    			updateData(o = new ResultContain);
-//    		}
-    		return new ArrayList<Object>();
-    	}
-    }
-
-    
-
-    /**
-     * Overwrites the current file with the new serialized Objects.
-     * 
-     * @param a - any object to be serialized
-     * @param filename - name of .ser file to output to
-     */
-    public static void updateData(Object a, String filename) throws Exception{
-    	FileOutputStream fop=new FileOutputStream(filename);
-    	ObjectOutputStream oos=new ObjectOutputStream(fop);
-    	oos.writeObject(a);
-    	fop.close();
-    	oos.close();
-    }
+   
 }

@@ -26,8 +26,7 @@ public class RegisterMethods {
 		String courseID = Scan.readString(); 
 		Course course = (Course)courseContainer.findObjectByID(courseID);
 		course.addStudent(student);
-		Course course2
-		
+
 		StudentManager sm = new StudentManager();
 		sm.registerCourse(studentID, course);
 		// Results will be automatically added in registerStudent
