@@ -185,9 +185,11 @@ public class ResultManager {
 		int index = getResultIndex(courseID, studentID);
 		if(index != -1) {
 			Result result = this.results.get(index);
-			double cwComponent = course.getASWeightage()*getASResult(result)/100 
-					+ course.getCPWeightage()*getCPResult(result)/100;
-			setCWResult(index, cwComponent);
+			if(course.haveSubComponent()) {
+				double cwComponent = course.getASWeightage()*getASResult(result)/100 
+						+ course.getCPWeightage()*getCPResult(result)/100;
+				setCWResult(index, cwComponent);
+			}
 			double overall = course.getEXWeightage()*getEXResult(result)/100
 					+ course.getCWWeightage()*getCWResult(result)/100;
 			

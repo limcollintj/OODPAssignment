@@ -5,6 +5,7 @@ import courses.Course;
 import results.ResultManager;
 import util.Scan;
 import functionalityClasses.CourseCRUDByID;
+import functionalityClasses.CourseUpdate;
 
 
 public class MarksMethods {
@@ -23,20 +24,40 @@ public class MarksMethods {
 			// Enter course assessment weightage.
 			System.out.print("Enter course ID: ");
 			String courseID = Scan.readString();
-
-			System.out.print("Enter coursework weightage: ");
-			int cwWeightage = Scan.readInteger();
+			int cwWeightage;
+			int cpWeightage;
+			do {
+				System.out.print("Enter coursework weightage: ");
+				cwWeightage = Scan.readInteger();
+				if(cwWeightage > 100 || cwWeightage < 0) {
+					System.out.println("Coursework weightage must be between 0 and 100.");
+				}
+			}while(cwWeightage > 100 || cwWeightage < 0);
 			cm.setCourseworkWeightage(courseID, cwWeightage);
+			System.out.println("Coursework weightage is set to " + cwWeightage);
+			System.out.println("Exam weightage is set to " + (100-cwWeightage));
 			
 			if(cwWeightage!=0) {
-			System.out.print("Enter class participation weightage: ");
+				System.out.print("Do you want to add subcomponents under coursework? (Y/N)");
+				Course course = new CourseManager().getCourse(courseID);
+				char choice = Scan.readString().toLowerCase().charAt(0);
+				if(choice == 'y') {
+					new CourseUpdate().updateHaveSubComponent(courseID, true);
+					do {
+						System.out.print("Enter class participation weightage: ");
+						cpWeightage = Scan.readInteger();
+						if(cpWeightage > 100 || cpWeightage < 0) {
+							System.out.println("Class participation weightage must be between 0 and 100.");
+						}
+					}while(cpWeightage > 100 || cpWeightage < 0);
+					cm.setClassParticipationWeightage(courseID, cpWeightage);
+					System.out.println("Coursework weightage is set to " + cwWeightage);
+					System.out.println("Class participation weightage is set to " + (100-cwWeightage));
+				} else {
+					new CourseUpdate().updateHaveSubComponent(courseID, false);
+				}
+				
 			}
-
-			
-			System.out.print("Enter class participation weightage: ");
-		    // TODO: Add a check here for whether course work has sub components
-			int cpWeightage = Scan.readInteger();
-			cm.setClassParticipationWeightage(courseID, cpWeightage);
 			System.out.println("Course Assesment components updated.");
 		}catch(Exception e) {
 			System.out.println(e);
