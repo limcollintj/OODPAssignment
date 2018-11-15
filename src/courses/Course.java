@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 import java.util.*;
 
+import Exceptions.VacancyFullException;
 import lessons.Lessons;
 import students.Student;
 
@@ -313,7 +314,7 @@ public class Course implements Serializable {
      */
     public void reduceVacancy() throws Exception {
     	if(this.vacancy <= 0) {
-    		throw new Exception("No more Vacancies");
+    		throw new VacancyFullException();
     	}
     	this.vacancy -= 1;
     }

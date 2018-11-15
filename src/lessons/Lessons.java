@@ -100,7 +100,12 @@ public abstract class Lessons implements Serializable {
     }
 
     /**
-     * Prints the Lesson Information of this Lesson.
+     * Prints the Lesson Information of this Lesson, Including the students who are registered in the course.
      */
-    abstract void printInfo();
+    public void printInfo() {
+    	System.out.println("<----Students Registered In Course--->");
+    	for(String studentID : studentIDs) {
+    		System.out.println(studentID);
+    	}
+    };
 }

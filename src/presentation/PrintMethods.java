@@ -1,5 +1,7 @@
 package presentation;
 
+import java.util.Scanner;
+
 import courses.CourseManager;
 import results.ResultManager;
 import students.StudentManager;
@@ -30,7 +32,7 @@ public class PrintMethods {
 	 * Prints exam marks by students
 	 * @throws Exception
 	 */
-	public static void printExamMark() throws Exception {
+	public static void printExamMark(){
 		try {
 			System.out.print("----- Exam Result ------"
 					+ "\nEnter student ID: ");
@@ -53,7 +55,7 @@ public class PrintMethods {
 	 * Prints a list of students registered in a course
 	 * @throws Exception
 	 */
-	public static void printStudentList() throws Exception {
+	public static void printStudentList(){
 		try {
 			System.out.print("----- Registered Students ------\n"
 					+ "Enter Course ID: ");
@@ -124,7 +126,7 @@ public class PrintMethods {
 	 * Prints a list of all students
 	 * @throws Exception
 	 */
-	public static void printAllStudents() throws Exception {
+	public static void printAllStudents(){
 		try {
 			StudentManager sm = new StudentManager(); 
 
@@ -159,12 +161,29 @@ public class PrintMethods {
 	 * @param lessonID Tutorial/Laboratory ID
 	 * @throws Exception
 	 */
-	public static void printLesson(String courseID, String lessonID) throws Exception{
+	public static void printLesson() {
+		
 		try {
+			Scanner sc = new Scanner(System.in);
+			String courseID,lessonID;
+			
+			System.out.println("Please enter course ID");
+			courseID = sc.nextLine(); 
+			
+			System.out.println("Please enter course ID");
+			lessonID = sc.nextLine();
+			
+			sc.close();
+			
+			
 			new CourseManager().printLesson(courseID, lessonID);
-		} catch(Exception e) {
-			System.out.print(e);
 		}
+		
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
 	}
 
 }
