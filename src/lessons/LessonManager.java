@@ -1,5 +1,6 @@
 package lessons;
 
+import java.awt.Container;
 import java.util.ArrayList;
 import util.DatabaseHandler;
 import courses.Course;
@@ -119,7 +120,12 @@ public class LessonManager {
      * @throws Exception
      */
 	public boolean addStudentToLesson(String studentID, String courseID, String lessonID) throws Exception {
+	
+		
+		
 		ArrayList<Course> courses = (ArrayList<Course>) DatabaseHandler.getCourseData(); 
+		
+		
 		
 		for(Course course : courses) {
 			if(course.getCourseID().equals(courseID) ) {

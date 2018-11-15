@@ -7,6 +7,7 @@ import students.Student;
 import util.DatabaseHandler;
 
 public class StudentUpdate {
+	
 	public void addName(String id, String name) throws Exception {
 		ArrayList<Student> studentList = (ArrayList<Student>)DatabaseHandler.getStudentData();
 		for(Student student : studentList) {

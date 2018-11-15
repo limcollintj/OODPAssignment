@@ -1,5 +1,7 @@
 package results;
 
+import java.text.DecimalFormat;
+
 import courses.Course;
 import functionalityClasses.CourseCRUDByID;
 import util.GradeCalculator;
@@ -59,8 +61,18 @@ public class Result extends Score{
     public void printInfo() throws Exception{
     	Course course = new CourseCRUDByID().readByID(COURSE_ID);
     	
+//    	DecimalFormat df = new DecimalFormat("#.##");
+//		String leftAlignFormat = "| %-21s | %-10s |%n";
+//		System.out.format(leftAlignFormat,"Overall Score",(this.getMark() == 0 ? "Score unavailable.":(this.getMark() + "%"))); 
+//		course.getEXWeightage() != 0 ? 
+//		System.out.format(leftAlignFormat,"Exam Score","Score Unavaible")
+//		: System.out.format(leftAlignFormat,"Exam Score","Score Unavaible")
+//	
+		
+		
     	System.out.println("Course ID: " + this.getCourseID() + 
 				"\nOverall score: " + (this.getMark() == 0 ? "Score unavailable.":(this.getMark() + "%")) + 
+				
 				(course.getEXWeightage() != 0 ? 
 				("\n\tExam score:        " + (this.getSubComponent().get(0).getMark() == 0 ? "Score unavailable.":(this.getSubComponent().get(0).getMark() + "%"))) : "")+
 				(course.getCWWeightage() != 0 ?

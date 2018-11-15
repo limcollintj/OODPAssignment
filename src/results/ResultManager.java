@@ -1,5 +1,6 @@
 package results;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import functionalityClasses.CRUDByID;
@@ -107,9 +108,16 @@ public class ResultManager {
      * @param studentID ID of the <code>Student</code>
      * @throws Exception
      */
+	
+	// prints out the student transcript with table format
+			
+			
+			
 	public void printTranscript(String studentID) throws Exception{
-		System.out.println("----- Student Transcript ------"
-				+ "\nStudent ID: " + studentID);
+		System.out.format("+------------------------------------+%n");
+		System.out.format("| Student Transcript     | "+studentID+"        |%n");
+		System.out.format("+------------------------------------+%n");
+		
 		ArrayList<String> gradeList = new ArrayList<String>();
 		for(Result result : this.results) {
 			if(result.getStudentID().equals(studentID)) {
@@ -118,6 +126,7 @@ public class ResultManager {
 				gradeList.add(GradeCalculator.calGrades(result.getMark()));
 			}
 		}
+		System.out.format("+-----------------------+------------+%n");
 		
 		System.out.println("Your Overall GPA is "+ GradeCalculator.calGPA(gradeList));
 	}
@@ -147,13 +156,22 @@ public class ResultManager {
 			}
 		}
 		
-		System.out.println("----- Course Statistics ------"
-				+ "\nCourse Name " + course.getCourseName() 
-				+ "\nCourse ID: " + courseID
-				+ "\nNumber of students: " + count
-				+ "\nAverage Score: " + sum/count
-				+ "\n Highest Score: "+  highest
-				+ "\n Lowest Score:"+ lowest);
+		
+		// prints out the course statistics with table format
+		DecimalFormat df = new DecimalFormat("#.##");
+		String leftAlignFormat = "| %-21s | %-10s |%n";
+		System.out.format("+------------------------------------+%n");
+		System.out.format("| Course statistics     | ID         |%n");
+		System.out.format("+------------------------------------+%n");
+		System.out.format(leftAlignFormat,"Course Name",course.getCourseName()); 
+		System.out.format(leftAlignFormat,"Course ID",courseID); 
+		System.out.format(leftAlignFormat,"Number of students",count); 
+		System.out.format(leftAlignFormat,"Average Score",df.format(sum/count)); 
+		System.out.format(leftAlignFormat,"Highest Score",highest); 
+		System.out.format(leftAlignFormat,"Lowest Score",lowest); 
+		System.out.format("+-----------------------+------------+%n");
+		
+		
 	}
 
     /**

@@ -160,7 +160,6 @@ public class AddMethods {
 	 * @param courseID Course ID
 	 * @throws Exception
 	 */
-
 	public static void addLesson(String courseID) throws Exception{
 		
 		try {
@@ -182,8 +181,7 @@ public class AddMethods {
 	/**
 	 * Add professors in charge of a course
 	 * @return A list of professors in charge of a course
-	 */
-
+	 */	
 	private static ArrayList<String> addProfs() {
 		try {
 			ArrayList<String> profNames = new ArrayList<String>(); 
@@ -212,7 +210,6 @@ public class AddMethods {
 	 * Adds student to a particular Tutorial/Lab group in a course
 	 * @throws Exception
 	 */
-
 	public static void addStudentToLesson() throws Exception {
 		System.out.print("Enter Student ID: ");
     	String studentID = Scan.readString(); 
