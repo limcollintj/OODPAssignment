@@ -101,11 +101,7 @@ public class Course implements Serializable {
         this.registeredStudentIDs = new ArrayList<String>();
         this.profNames = new ArrayList<String>();
     }
-    
-    Course(String name, String ID, ){
-    	
-    }
-
+  
     /**
      * Gets the ID of this Course
      * @return This Course's ID

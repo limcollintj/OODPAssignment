@@ -29,6 +29,7 @@ public class AddMethods {
 		
 		catch(AlreadyExistsException e) {
 			System.out.println("This student ID already exists, please enter another student ID");
+			addStudent();
 		}
 		
 		catch(Exception e) {

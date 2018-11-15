@@ -30,8 +30,8 @@ public class Student implements Serializable{
      * Creates a new student with the given name and ID
      * @param studentID This student's ID
      */
-    public Student(String name, String studentID){
-        this.name = name;
+    public Student(String studentID) {
+    	
         this.studentID = studentID;
         this.courseIDs = new ArrayList<String>();
     }

@@ -183,14 +183,11 @@ public class CourseManager{
 	public void setClassParticipationWeightage(String courseID, int weightage) throws Exception{
 		sCPW.setWeightage(courseID, weightage);
 	}
-<<<<<<< HEAD
+
 	
 	public void setExamWeightage(String courseID, int weightage) throws Exception{
 		sEXW.setWeightage(courseID, weightage);
 	}
-	
-	//Set course name
-=======
 
     /**
      * Sets the name of a given Course.
@@ -198,7 +195,7 @@ public class CourseManager{
      * @param name new name of the Course
      * @throws Exception
      */
->>>>>>> efdbc74980c72f48d7e90c9b53ebe5f81b44e8e7
+
 	public void updateCourseName(String courseID, String name) throws Exception{
 		update.updateCourseName(courseID, name);
 	}

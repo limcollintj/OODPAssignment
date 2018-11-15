@@ -19,9 +19,9 @@ public class StudentCRUDByID implements CRUDByID{
 	        Student student = new Student(id);
 	        students.add(student);
 	        DatabaseHandler.updateStudentData(students);
-	        throw new AlreadyExistsException("Student");
+	       
 		}else {
-			throw new Exception("Already exists\n");
+			 throw new AlreadyExistsException("Student");
 		}
 	}
 	
@@ -31,9 +31,6 @@ public class StudentCRUDByID implements CRUDByID{
 		for (Student temp : DatabaseHandler.getStudentData() ) {
             if(temp.getStudentID().equals(id)) {
                 return temp;
-            }
-            else {
-            	throw new EntityNotFoundException(); 
             }
         }
 	   

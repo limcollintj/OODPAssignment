@@ -7,7 +7,6 @@ import courses.Course;
 import courses.CourseManager;
 import students.Student;
 import students.StudentManager;
-import util.Container;
 import util.Scan;
 
 public class RegisterMethods {
