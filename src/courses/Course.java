@@ -6,8 +6,6 @@ import java.util.*;
 import lessons.Lessons;
 import students.Student;
 
-import java.io.Serializable;
-
 /**
  * <code>Course</code> is a serializable entity class representing each course in a school.
  * @author  LFM
@@ -76,8 +74,7 @@ public class Course implements Serializable {
     	this.courseName = "Unknown Course";
         this.haveSubComponents = false;
         this.exWeightage = 100;
-        this.cwWeightage = this.asWeightage = 0;
-        this.cpWeightage = 0;
+        this.cwWeightage = this.asWeightage = this.cpWeightage = 0;
         this.lessons = new ArrayList<Lessons>();
         this.registeredStudentIDs = new ArrayList<String>();
         this.profNames = new ArrayList<String>();
@@ -102,6 +99,10 @@ public class Course implements Serializable {
         this.lessons = new ArrayList<Lessons>();
         this.registeredStudentIDs = new ArrayList<String>();
         this.profNames = new ArrayList<String>();
+    }
+    
+    Course(String name, String ID, ){
+    	
     }
 
     /**

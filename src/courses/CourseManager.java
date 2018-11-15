@@ -12,6 +12,7 @@ import functionalityClasses.Reset;
 import functionalityClasses.ResetCourses;
 import functionalityClasses.SetClassPartWeightage;
 import functionalityClasses.SetCourseWorkWeightage;
+import functionalityClasses.SetExamWeightage;
 import functionalityClasses.SetWeightage;
 
 
@@ -53,6 +54,7 @@ public class CourseManager{
      * TODO: why is it again?
      */
 	private SetWeightage sCPW;
+	private SetExamWeightage sEXW;
 
     /**
      * This Course Manager's <code>Reset</code> object.
@@ -79,6 +81,7 @@ public class CourseManager{
 		this.crudByID = new CourseCRUDByID();
 		this.sCWW = new SetCourseWorkWeightage();
 		this.sCPW = new SetClassPartWeightage();
+		this.sEXW = new SetExamWeightage();
 		this.reset = new ResetCourses();
 		this.print = new PrintCourseByID();
 		this.lm = new LessonManager();
@@ -180,6 +183,14 @@ public class CourseManager{
 	public void setClassParticipationWeightage(String courseID, int weightage) throws Exception{
 		sCPW.setWeightage(courseID, weightage);
 	}
+<<<<<<< HEAD
+	
+	public void setExamWeightage(String courseID, int weightage) throws Exception{
+		sEXW.setWeightage(courseID, weightage);
+	}
+	
+	//Set course name
+=======
 
     /**
      * Sets the name of a given Course.
@@ -187,6 +198,7 @@ public class CourseManager{
      * @param name new name of the Course
      * @throws Exception
      */
+>>>>>>> efdbc74980c72f48d7e90c9b53ebe5f81b44e8e7
 	public void updateCourseName(String courseID, String name) throws Exception{
 		update.updateCourseName(courseID, name);
 	}

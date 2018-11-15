@@ -1,19 +1,28 @@
 package presentation;
+import students.StudentContainer;
+import util.Container;
+import util.DataBaseManager;
 import util.Scan;
 
 
 public class UniApp {
-
+	final static String studentDB = "Students.txt";
     // TODO: Handle All Exceptions
 
     public static void main(String[] args) throws Exception {
         int choice;
 
+        
+        DataBaseManager db = new DataBaseManager();
+        
+        Container studentContainer = (Container)db.retrieveData(studentDB) == null ? new StudentContainer():(Container)db.retrieveData(studentDB);
+
+
         do {
             showMenu();
             System.out.println("Enter your choice: ");
             choice = Scan.readInteger();
-            mainSwitch(choice);
+            mainSwitch(choice, studentContainer);
         } while (choice != 11);
     }
 
@@ -34,12 +43,13 @@ public class UniApp {
         System.out.println("-------------------------------");
     }
 
-    public static void mainSwitch(int a) throws Exception {
+    public static void mainSwitch(int a, Container studentContainer) throws Exception {
         int choice;
 
         switch (a) {
             case 1:
-                AddMethods.addStudent();
+                AddMethods.addStudent(studentContainer);
+                DataBaseManager.updateData(studentContainer, studentDB);
                 break;
             case 2:
                 RegisterMethods.registerCourse();
@@ -54,9 +64,9 @@ public class UniApp {
                 PrintMethods.printStudentTranscript();
                 break;
             case 6:
-            	MarksMethods.enterExamMarks();
-                 break;
-              
+                AddMethods.addCourse(studentContainer);	//studentContainer
+                break;
+
             case 7:
                 MarksMethods.editCourseWeightage();
                 break;
