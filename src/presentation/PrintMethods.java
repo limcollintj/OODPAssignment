@@ -24,8 +24,10 @@ public class PrintMethods {
 			System.out.print("Enter course ID: ");
 			String courseID = Scan.readString();
 			new ResultManager().printCourseStatistics(courseID);
-		}catch(Exception e) {
-			System.out.print(e);
+		} catch(EntityNotFoundException e){
+			System.out.println("The course is not found");
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -168,7 +170,7 @@ public class PrintMethods {
 			new CourseManager().printLesson(courseID, lessonID);
 		}
 		catch (EntityNotFoundException e) {
-			System.out.println(e.getMessage());
+			System.out.println("Lesson not found");
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());

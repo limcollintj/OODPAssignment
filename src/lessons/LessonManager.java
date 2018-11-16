@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Exceptions.AlreadyExistsException;
 import Exceptions.EntityNotFoundException;
+import Exceptions.StudentNotInCourseException;
 import util.DatabaseHandler;
 import courses.Course;
 import functionalityClasses.CRUDByID;

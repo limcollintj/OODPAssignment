@@ -287,7 +287,7 @@ public class Course implements Serializable {
     	System.out.println("");
     	System.out.print("Course ID: "+ courseID + "," + "\nVacancy: "+ vacancy + ", "
     			+ "\nMain Professor: " + this.profNames.get(0)
-    			+ "\nProfessor names: ");
+    			+ ((this.profNames.size() > 1 )? "\nProfessor names: " : ""));
     	
     		for(int i = 1; i < this.profNames.size(); i++) {
         		System.out.print(this.profNames.get(i) + ",");

@@ -146,6 +146,9 @@ public class ResultManager {
 	public void printCourseStatistics(String courseID) throws Exception{
 		
 		Course course = (Course) courseCRUD.readByID(courseID);
+		if(course == null) {
+			throw new EntityNotFoundException();
+		}
 		double sum = 0;
 		double highest =0; 
 		double lowest = 100; 
