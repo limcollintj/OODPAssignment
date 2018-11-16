@@ -39,10 +39,7 @@ public class Lab extends Lessons{
      * @throws Exception 
      */
 	public void printInfo() throws Exception {
-
 		System.out.println("(Lab) LessonID: " + lessonID + ", Vacancy:" + vacancy + "/" + this.maxVacancy);
-		super.printInfo();
-
+		super.printInfo();	//Prints list of students within the lesson
 	}
-
 }

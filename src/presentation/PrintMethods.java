@@ -1,17 +1,18 @@
 package presentation;
 
-import java.util.Scanner;
-
 import Exceptions.EntityNotFoundException;
 import courses.CourseManager;
 import results.ResultManager;
 import students.StudentManager;
 import util.Scan;
 
+/**
+ * 
+ * @author LFM
+ * @version 1.0
+ * @since 2018-11-05
+ */
 public class PrintMethods {
-
-
-	// Prints Course Statistics
 
 	/**
 	 * Prints course statistics

@@ -72,7 +72,9 @@ public class CourseCRUDByID implements CRUDByID{
 
 	/**
 	 * Delete course by ID
+	 * 
 	 * @param id
+	 * @throws EntityNotFoundException thrown when the <code>Course</code> object is not found in the Course container
 	 * @throws Exception
 	 */
 	@Override

@@ -42,9 +42,8 @@ public class Lecture extends Lessons implements Serializable{
      * @throws Exception 
      */
 	public void printInfo() throws Exception {
-
 		System.out.println("(Lecture) LessonID: " + lessonID + ", Vacancy:" + vacancy + "/" + this.maxVacancy);
-		super.printInfo();
+		super.printInfo();	//Prints list of student registered in this Lecture
 
 	}
 }

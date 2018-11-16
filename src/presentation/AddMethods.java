@@ -3,14 +3,17 @@ package presentation;
 import java.util.ArrayList;
 
 import Exceptions.AlreadyExistsException;
-import Exceptions.EntityNotFoundException;
 import courses.*;
 import students.StudentManager;
-import lessons.*;
-
 import util.Scan;
 
-
+/**
+ * Boundary layer holding all add methods
+ * 
+ * @author LFM
+ * @version 1.0
+ * @since 2018-11-05
+ */
 public class AddMethods {
 
 	/**

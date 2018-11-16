@@ -115,6 +115,5 @@ public abstract class Lessons implements Serializable {
     		System.out.println("Name:" + new StudentManager().getStudent(studentID).getName()+ ", ID:" + studentID );
     		
     	}
-    };
-
+    }
 }

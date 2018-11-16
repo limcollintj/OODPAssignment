@@ -42,7 +42,5 @@ public class Tutorial extends Lessons{
 
 		System.out.println("(Tutorial) LessonID: " + lessonID + ", Vacancy:" + vacancy+ "/" + this.maxVacancy);
 		super.printInfo();
-
-
 	}
 }

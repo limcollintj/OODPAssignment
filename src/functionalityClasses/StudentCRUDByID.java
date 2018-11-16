@@ -78,14 +78,14 @@ public class StudentCRUDByID implements CRUDByID{
 	 * Delete <code>Student</code> by ID
 	 * 
 	 * @param id ID of desired <code>Student</code> object
-	 * @throws EntityNotFoundException
+	 * @throws EntityNotFoundException when <code>Student</code> is not found in the <code>Student</code> container
 	 * @throws Exception
 	 */
 	@Override
 	public void deleteByID(String id) throws Exception {
 		if(this.readByID(id) instanceof Student) {
 			ArrayList<Student> studentList = (ArrayList<Student>)DatabaseHandler.getStudentData();
-			for(Student student : studentList) {
+			for(Student student : studentList) {	//Iterates through the studentList to find the specific student
 				if(student.getStudentID().equals(id)) {
 					studentList.remove(student);
 					DatabaseHandler.updateStudentData(studentList);
