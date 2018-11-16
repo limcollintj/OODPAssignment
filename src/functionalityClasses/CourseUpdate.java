@@ -7,10 +7,11 @@ import students.Student;
 import util.DatabaseHandler;
 
 /**
- Class for updating courses.
- @author LFM
- @version 1.0
- @since 2018-11-05
+ * Class for updating courses.
+ *
+ * @author LFM
+ * @version 1.0
+ * @since 2018-11-05
  */
 public class CourseUpdate {
 
@@ -18,7 +19,7 @@ public class CourseUpdate {
 	 * Add course professor names to courses.
 	 * @param profNames
 	 * @param courseID
-	 * @throws Exception
+	 * @throws Exception 
 	 */
 	public void addProfNames(ArrayList<String> profNames, String courseID) throws Exception {
 		ArrayList<Course> courses = (ArrayList<Course>) DatabaseHandler.getCourseData(); 
@@ -88,6 +89,12 @@ public class CourseUpdate {
 		DatabaseHandler.updateCourseData(courses);
 	}
 	
+	/**
+	 * Updates whether the <code>Course</code> has <code>Result</code> with subcomponent
+	 * @param courseID
+	 * @param haveSubComponent
+	 * @throws Exception
+	 */
 	public void updateHaveSubComponent(String courseID, boolean haveSubComponent) throws Exception {
 		ArrayList<Course> courses= (ArrayList<Course>) DatabaseHandler.getCourseData();
 		for(Course course : courses) {

@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 import java.util.*;
 
+import Exceptions.AlreadyRegisteredException;
 import Exceptions.VacancyFullException;
 import lessons.Lessons;
 import students.Student;
@@ -180,11 +181,11 @@ public class Course implements Serializable {
     /**
      * Adds a registered student's ID to the ArrayList of registered student ID's of this Course.
      * @param student Registered Student object
-     * @throws Exception
+     * @throws AlreadyRegisteredException when student ID already exists in this Course 
      */
     public void addStudent(Student student) throws Exception{
-		if(this.studentRegistered(student)) {
-			throw new Exception();	//TODO:Create new specific exception class
+		if(this.studentRegistered(student)) {	//Checks if student has already registered
+			throw new AlreadyRegisteredException("course. ");	
 		}
 		registeredStudentIDs.add(student.getStudentID());
 	}
@@ -203,15 +204,6 @@ public class Course implements Serializable {
      */
     public void addLesson(Lessons lesson) {
     	this.lessons.add(lesson);
-    }
-
-    /**
-     * Checks if the sum of this Course's exam weightage and coursework weightage adds up to 100.
-     * Checks if the sum of this Course's assesment weightage and coursework weightage adds up to 100
-     * @return true if both sum adds up and false if either one/both sums dont add up
-     */
-    private boolean validWeightage(){
-    	return (this.exWeightage + this.cwWeightage == 100) && (this.asWeightage + this.cpWeightage == 100);
     }
 
     /**
@@ -317,10 +309,18 @@ public class Course implements Serializable {
     	this.vacancy -= 1;
     }
     
+    /**
+     * Returns a boolean which specifies whether this Course has results with subcomponents
+     * @return haveSubComponents 
+     */
     public boolean haveSubComponent() {
     	return this.haveSubComponents;
     }
     
+    /**
+     * Set whether this Course has <code>Result</code> with subcomponents
+     * @param haveSubComponent
+     */
     public void setSubComponent(boolean haveSubComponent) {
     	this.haveSubComponents = haveSubComponent;
     }
