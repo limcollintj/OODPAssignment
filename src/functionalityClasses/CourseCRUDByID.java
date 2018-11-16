@@ -82,7 +82,7 @@ public class CourseCRUDByID implements CRUDByID{
 			for(Course course : courseList) {	//Iterates through the ArrayList to find and remove the entity class
 				if(course.getCourseID().equals(id)) {
 					courseList.remove(course);
-					break;
+					break;	//Breaks when the course is found
 				}
 			}
 			DatabaseHandler.updateCourseData(courseList);
