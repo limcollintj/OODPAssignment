@@ -2,6 +2,8 @@ package lessons;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import students.StudentManager;
+
 /**
  * <code>Lessons</code> is a serializable entity class representing the lessons each course has.
  * Lessons include labs, lectures and tutorials.
@@ -105,11 +107,13 @@ public abstract class Lessons implements Serializable {
 
     /**
      * Prints the Lesson Information of this Lesson, Including the students who are registered in the course.
+     * @throws Exception 
      */
-    public void printInfo() {
+    public void printInfo() throws Exception {
     	System.out.println("<----Students Registered In Course--->");
     	for(String studentID : studentIDs) {
-    		System.out.println(studentID);
+    		System.out.println("Name:" + new StudentManager().getStudent(studentID).getName()+ ", ID:" + studentID );
+    		
     	}
     };
 

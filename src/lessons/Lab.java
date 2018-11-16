@@ -36,10 +36,13 @@ public class Lab extends Lessons{
     /**
      * Prints the Lab information.
      * This includes the Lab ID and vacancy of this Lab.
+     * @throws Exception 
      */
-	public void printInfo() {
+	public void printInfo() throws Exception {
+
 		System.out.println("(Lab) LessonID: " + lessonID + ", Vacancy:" + vacancy + "/" + this.maxVacancy);
 		super.printInfo();
+
 	}
 
 }

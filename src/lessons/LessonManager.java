@@ -3,6 +3,7 @@ package lessons;
 import java.awt.Container;
 import java.util.ArrayList;
 
+import Exceptions.EntityNotFoundException;
 import Exceptions.StudentNotInCourseException;
 import Exceptions.VacancyFullException;
 import util.DatabaseHandler;
@@ -88,6 +89,9 @@ public class LessonManager {
 	public void printAllLesson(String id) throws Exception {
 		CRUDByID cID = new CourseCRUDByID();
 		
+		if (cID.readByID(id) == null) {
+			throw new EntityNotFoundException();
+		}
 		 Course temp = (Course) cID.readByID(id);
 				 
 			for(Lessons lesson : temp.getLessons()) {
@@ -103,13 +107,20 @@ public class LessonManager {
      */
 	public void printLesson(String courseID, String lessonID) throws Exception {
 		CRUDByID cID = new CourseCRUDByID();
-		
+	
 		 Course temp = (Course) cID.readByID(courseID);
-				 
+		 boolean check = true; 
 			for(Lessons lesson : temp.getLessons()) {
-				if(lesson.getLessonID().equals(lessonID))
-	    		lesson.printInfo();
+				if(lesson.getLessonID().equals(lessonID)) {
+		    		lesson.printInfo();
+					
+					check = false;
+				}
 	    	}
+		if(check) {
+			throw new EntityNotFoundException();
+		}
+			
 	}
 
     /**
@@ -139,14 +150,14 @@ public class LessonManager {
 						}
 						if(lesson.getVacancy()>0) {
 							lesson.addStudent(studentID);
+							DatabaseHandler.updateCourseData(courses);
+							return true;
 						}
-						
-						DatabaseHandler.updateCourseData(courses);
-						return true;
 					}
 				}
 			}
 		}
+		System.out.println("Please key in a valid ID"); //TODO: Remove this
 		return false;
 		
 	}

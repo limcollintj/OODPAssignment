@@ -36,10 +36,13 @@ public class Tutorial extends Lessons{
     /**
      * Prints the Tutorial information.
      * This includes the Lab ID and vacancy of this Tutorial.
+     * @throws Exception 
      */
-	public void printInfo() {
+	public void printInfo() throws Exception {
+
 		System.out.println("(Tutorial) LessonID: " + lessonID + ", Vacancy:" + vacancy+ "/" + this.maxVacancy);
 		super.printInfo();
+
 
 	}
 }

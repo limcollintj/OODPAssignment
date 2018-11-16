@@ -281,8 +281,9 @@ public class CourseManager{
      * Prints the Tutorial information of tutorials belonging to a certain Course
      * Tutorial information includes the tutorial ID and vacancy in this Tutorial group.
      * @param course <code>Course</code> whose Tutorial information we intend to print
+     * @throws Exception 
      */
-	 public void printTutorials(Course course) {
+	 public void printTutorials(Course course) throws Exception {
 		 ArrayList<Tutorial> tutorials = getTutorials(course);
 		 for(Tutorial tutorial : tutorials) {
 			 tutorial.printInfo();
@@ -311,8 +312,9 @@ public class CourseManager{
      * Prints the Lab information of labs belonging to a certain Course
      * Lab information includes the Lab ID and vacancy in this Lab.
      * @param course <code>Course</code> whose Lab information we intend to print
+     * @throws Exception 
      */
-	 public void printLabs(Course course) {
+	 public void printLabs(Course course) throws Exception {
 		 ArrayList<Lab> labs = getLabs(course);
 		 for(Lab lab : labs) {
 			 lab.printInfo();

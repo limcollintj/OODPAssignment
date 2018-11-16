@@ -17,7 +17,6 @@ public class RegisterMethods {
 
 	/**
 	 * Registers a student for a course
-	 * @throws Exception
 	 */
 
 	public static void registerCourse() {
@@ -39,6 +38,11 @@ public class RegisterMethods {
 		String courseID = Scan.readString(); 
 		
 		// Finds the course and throws exception if course is not found
+		
+		if(new CourseManager().getCourse(courseID) == null) {
+			throw new EntityNotFoundException();
+		}
+		
 		Course course = new CourseManager().getCourse(courseID);
 		
 		
@@ -88,13 +92,13 @@ public class RegisterMethods {
 			registerCourse();
 		}
 		catch (VacancyFullException e) {
-			e.getMessage(); 
+			System.out.println(e.getMessage()); 
 		}
 		catch(AlreadyRegisteredException e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 		catch (Exception e) {
-			e.getMessage(); 
+			System.out.println(e); 
 		}
 		
 	}

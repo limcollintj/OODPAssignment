@@ -38,7 +38,7 @@ public class Course implements Serializable {
     /**
      * Indication of whether this course has Coursework subcomponents.
      */
-    boolean haveSubComponents;
+    boolean haveSubComponents = false;
 
     /**
      * The exam weightage, course work weightage, assignment weightage and class participation weightage of this course respectively.
@@ -292,6 +292,7 @@ public class Course implements Serializable {
      * Course Information contains this Course's ID, vacancy number, Coordinator's name and Professor's name.
      */
     public void printCourseInfo() {
+    	System.out.println("");
     	System.out.print("Course ID: "+ courseID + "," + "\nVacancy: "+ vacancy + ", "
     			+ "\nMain Professor: " + this.profNames.get(0)
     			+ "\nProfessor names: ");
@@ -316,4 +317,11 @@ public class Course implements Serializable {
     	this.vacancy -= 1;
     }
     
+    public boolean haveSubComponent() {
+    	return this.haveSubComponents;
+    }
+    
+    public void setSubComponent(boolean haveSubComponent) {
+    	this.haveSubComponents = haveSubComponent;
+    }
 }

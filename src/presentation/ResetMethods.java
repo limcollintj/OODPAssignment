@@ -9,10 +9,14 @@ public class ResetMethods {
 	 * Resets all courses
 	 * @throws Exception
 	 */
-	public static void resetCourses() throws Exception {
+	public static void resetCourses(){
 		CourseManager cm = new CourseManager(); 
 		
-		cm.resetCourses();
+		try {
+			cm.resetCourses();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -20,10 +24,14 @@ public class ResetMethods {
 	 * @throws Exception
 	 */
 	
-	public static void resetStudents() throws Exception {
-		StudentManager sm = new StudentManager(); 
+	public static void resetStudents(){
 		
-		sm.resetStudents();
+		StudentManager sm = new StudentManager(); 
+		try {
+			sm.resetStudents();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

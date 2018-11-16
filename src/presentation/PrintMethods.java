@@ -17,7 +17,7 @@ public class PrintMethods {
 	 * Prints course statistics
 	 * @throws Exception
 	 */
-	public static void printCourseStatistics() throws Exception {
+	public static void printCourseStatistics(){
 		try {
 			System.out.print("Enter course ID: ");
 			String courseID = Scan.readString();
@@ -110,7 +110,7 @@ public class PrintMethods {
 			rm.printTranscript(studentID);
 		}
 		catch (EntityNotFoundException e) {
-			System.out.println("Student not found");
+			System.out.println(e.getMessage());
 		}
 		catch(Exception e) {
 			System.out.print(e);
@@ -123,7 +123,7 @@ public class PrintMethods {
 	 * Prints a list of all courses
 	 * @throws Exception
 	 */
-	public static void printAllCourses() throws Exception {
+	public static void printAllCourses(){
 		try {
 			CourseManager cm = new CourseManager();
 			cm.printCourses();
@@ -155,10 +155,14 @@ public class PrintMethods {
 	 * @param courseID Course ID
 	 * @throws Exception
 	 */
-	public static void printAllLessons(String courseID) throws Exception{
+	public static void printAllLessons(String courseID){
 		try {
 			new CourseManager().printLessons(courseID);
-		}catch(Exception e) {
+		}
+		catch (EntityNotFoundException e) {
+			System.out.println("Invalid ID");
+		}
+		catch(Exception e) {
 			System.out.print(e);
 		}
 	}
@@ -176,21 +180,22 @@ public class PrintMethods {
 	public static void printLesson() {
 		
 		try {
-			Scanner sc = new Scanner(System.in);
+			
 			String courseID,lessonID;
 			
 			System.out.println("Please enter course ID");
-			courseID = sc.nextLine(); 
+			courseID = Scan.readString();
 			
-			System.out.println("Please enter course ID");
-			lessonID = sc.nextLine();
+			System.out.println("Please enter lesson ID");
+			lessonID = Scan.readString();
 			
-			sc.close();
-			
+		
 			
 			new CourseManager().printLesson(courseID, lessonID);
 		}
-		
+		catch (EntityNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
 		}

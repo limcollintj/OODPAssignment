@@ -87,4 +87,15 @@ public class CourseUpdate {
 		}
 		DatabaseHandler.updateCourseData(courses);
 	}
+	
+	public void updateHaveSubComponent(String courseID, boolean haveSubComponent) throws Exception {
+		ArrayList<Course> courses= (ArrayList<Course>) DatabaseHandler.getCourseData();
+		for(Course course : courses) {
+    		if(course.getCourseID().equals(courseID)) {
+    			course.setSubComponent(haveSubComponent);
+    			break;
+    		}
+		}
+		DatabaseHandler.updateCourseData(courses);
+	}
 }

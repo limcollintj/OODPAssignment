@@ -3,6 +3,7 @@ package results;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import Exceptions.EntityNotFoundException;
 import functionalityClasses.CRUDByID;
 import functionalityClasses.CourseCRUDByID;
 import util.DataBaseManager;
@@ -21,12 +22,12 @@ public class ResultManager {
     /**
      * This Result Manager's <code>ArrayList</code> of Result objects.
      */
-	ArrayList<Result> results;
+	private ArrayList<Result> results;
 
     /**
      * This Result Manager's <code>CRUDByID</code> object.
      */
-	CRUDByID courseCRUD;
+	private CRUDByID courseCRUD;
 
 
     /**
@@ -80,8 +81,9 @@ public class ResultManager {
      */
 	public void updateResult(String courseID, String studentID, double mark, int option) throws Exception{
 		int index = getResultIndex(courseID, studentID);
-		if(option >3 | option < 1) {
-			throw new IllegalArgumentException("Option parameter can only be 1, 2 or 3.");
+		try {
+		if(option >4 | option < 1) {
+			throw new IllegalArgumentException("Option parameter can only be 1, 2 , 3 or 4.");
 		}
 		switch(option) {
 		case 1:
@@ -100,6 +102,10 @@ public class ResultManager {
 		
 		DatabaseHandler.updateResultData(this.results);
 		System.out.println("Result updated");
+		}
+		catch(IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
     /**
@@ -175,23 +181,31 @@ public class ResultManager {
 	}
 
     /**
-     * todo IDK?
+     * updates all all result components
      * @param courseID
      * @param studentID
      * @throws Exception
      */
 	private void updateAllResult(String courseID, String studentID) throws Exception{
 		Course course = (Course) courseCRUD.readByID(courseID);
+		if (course == null) {
+			throw new EntityNotFoundException();
+		}
 		int index = getResultIndex(courseID, studentID);
 		if(index != -1) {
+			
 			Result result = this.results.get(index);
-			double cwComponent = course.getASWeightage()*getASResult(result)/100 
-					+ course.getCPWeightage()*getCPResult(result)/100;
-			setCWResult(index, cwComponent);
+			
+			if(course.haveSubComponent()) {
+				
+				double cwComponent = course.getASWeightage()*getASResult(result)/100 
+						+ course.getCPWeightage()*getCPResult(result)/100;
+				setCWResult(index, cwComponent);
+			}
+			
 			double overall = course.getEXWeightage()*getEXResult(result)/100
 					+ course.getCWWeightage()*getCWResult(result)/100;
-			
-			// TODO: check whether student is registered in course
+		
 			setOverallResult(index, overall);
 			
 			DatabaseHandler.updateResultData(this.results);
