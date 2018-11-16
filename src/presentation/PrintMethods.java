@@ -7,6 +7,7 @@ import students.StudentManager;
 import util.Scan;
 
 /**
+ * Boundary layer holding all the print methods
  * 
  * @author LFM
  * @version 1.0
@@ -28,8 +29,6 @@ public class PrintMethods {
 		}
 	}
 
-	// Prints Exam marks
-
 	/**
 	 * Prints exam marks by students
 	 * @throws Exception
@@ -50,9 +49,6 @@ public class PrintMethods {
 		}
 	}
 
-
-	// Prints Students registered in a course
-
 	/**
 	 * Prints a list of students registered in a course
 	 * @throws Exception
@@ -68,11 +64,6 @@ public class PrintMethods {
 		}
 	}
 	
-	
-
-
-	// Prints vacancy in a course
-
 	/**
 	 * Prints the vacancy in a course
 	 * @throws Exception
@@ -88,8 +79,6 @@ public class PrintMethods {
 			System.out.print(e);
 		}
 	}
-
-	// Prints Student Transcripts
 
 	/**
 	 * Prints the student transcript
@@ -118,8 +107,6 @@ public class PrintMethods {
 		}
 	}
 
-	// Print All Courses
-
 	/**
 	 * Prints a list of all courses
 	 * @throws Exception
@@ -132,8 +119,6 @@ public class PrintMethods {
 			System.out.print(e);
 		}
 	}
-
-	// Print all students
 
 	/**
 	 * Prints a list of all students
@@ -149,11 +134,10 @@ public class PrintMethods {
 		}
 	}
 
-	//Prints All Lessons
-
 	/**
 	 * Prints a list of all Tutorial/Laboratory sessions in a course
 	 * @param courseID Course ID
+	 * throws EntityNotFoundException
 	 * @throws Exception
 	 */
 	public static void printAllLessons(String courseID){
@@ -168,10 +152,6 @@ public class PrintMethods {
 		}
 	}
 
-
-
-	// Prints specific Lesson
-
 	/**
 	 * Prints lessons
 	 * @param courseID Course ID
@@ -179,19 +159,12 @@ public class PrintMethods {
 	 * @throws Exception
 	 */
 	public static void printLesson() {
-		
 		try {
-			
 			String courseID,lessonID;
-			
 			System.out.println("Please enter course ID");
 			courseID = Scan.readString();
-			
 			System.out.println("Please enter lesson ID");
-			lessonID = Scan.readString();
-			
-		
-			
+			lessonID = Scan.readString();	
 			new CourseManager().printLesson(courseID, lessonID);
 		}
 		catch (EntityNotFoundException e) {
@@ -199,9 +172,6 @@ public class PrintMethods {
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
-		}
-		
-		
+		}	
 	}
-
 }

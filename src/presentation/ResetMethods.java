@@ -11,7 +11,6 @@ public class ResetMethods {
 	 */
 	public static void resetCourses(){
 		CourseManager cm = new CourseManager(); 
-		
 		try {
 			cm.resetCourses();
 		} catch (Exception e) {
@@ -23,9 +22,8 @@ public class ResetMethods {
 	 * Resets all students
 	 * @throws Exception
 	 */
-	
 	public static void resetStudents(){
-		
+
 		StudentManager sm = new StudentManager(); 
 		try {
 			sm.resetStudents();
@@ -33,5 +31,4 @@ public class ResetMethods {
 			e.printStackTrace();
 		}
 	}
-	
 }

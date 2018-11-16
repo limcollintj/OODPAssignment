@@ -1,9 +1,5 @@
 package presentation;
-import java.util.ArrayList;
 
-import courses.CourseManager;
-import students.StudentManager;
-import util.DataBaseManager;
 import util.Scan;
 
 
@@ -11,17 +7,16 @@ public class UniApp {
 	final static String studentDB = "Students.txt";
 	final static String courseDB = "Courses.txt";
   
-
+	//Main
     public static void main(String[] args){
         int choice;
 
-
+        //Loops until the user request to exit
         do {
         	System.out.println("");
             showMenu();
             System.out.println("\nEnter your choice: ");
             choice = Scan.readInteger();
-
             mainSwitch(choice);
         } while (choice != 12);
 
@@ -45,10 +40,8 @@ public class UniApp {
         System.out.println("8) View Course Information");
         System.out.println("9) Print Course Statistics");
         System.out.println("10) Print All Courses\n");
-        
         System.out.println("----------- Others ---------------");
         System.out.println("11) Others");
-        
         System.out.println("----------------------------------");
         System.out.println("12) Exit Programme");
         System.out.println("----------------------------------");
